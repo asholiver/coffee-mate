@@ -1,3 +1,3 @@
-#Coffee mate
+# Coffee mate
 
-repo for coffee mate app
+*repo for _coffee mate_ app*
