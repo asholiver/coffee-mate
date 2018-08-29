@@ -1,23 +1,29 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import axios from "axios";
 import { Header } from "./../../components";
 import { GroupDetails } from "./../../containers";
 import { move } from "./../../utils";
 
 class GroupsList extends Component {
     state = {
-        groups: [
-            {
-                id: 1,
-                name: "Coffee Legends"
-            },
-            {
-                id: 2,
-                name: "Kings of coffee"
-            }
-        ],
+        groups: [],
         new_group: "",
         active_group: 0
+    };
+
+    componentDidMount = () => {
+        // Make a request for a user with a given ID
+        axios
+            .get("https://coffee-mate-server.herokuapp.com/api/groups")
+            .then(response => {
+                this.setState({ groups: response.data });
+                console.log(response);
+            })
+            .catch(function(error) {
+                // handle error
+                console.log(error);
+            });
     };
 
     handleChange = e => {
@@ -62,9 +68,6 @@ class GroupsList extends Component {
                 <ol>
                     {this.state.groups.map((group, index) => (
                         <li key={index}>
-                            {/*<button onClick={this.setActive} value={group.id}>
-                                {group.name}
-                            </button>*/}
                             <Link to={`/group_details/${group.id}`}>
                                 {group.name}
                             </Link>

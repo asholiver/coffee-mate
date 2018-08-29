@@ -1,28 +1,42 @@
 import React, { Component } from "react";
 import { Header } from "./../../components";
 import { move } from "./../../utils";
-
-const groups = {
-    1: [
-        "Alex Nedoboi",
-        "Ashley Oliver",
-        "David Berner",
-        "Ev Komarevtsev",
-        "Gary Wood"
-    ],
-    2: ["Dick face", "Knob head", "Vaginal Passage", "({})", "8===D---"]
-};
+import axios from "axios";
 
 class GroupDetails extends Component {
     state = {
-        new_name: "",
-        names: groups[this.props.match.params.groupId]
+        is_loading: true,
+        names: [],
+        new_name: ""
     };
 
     handleChange = e => {
         this.setState({
             new_name: e.target.value
         });
+    };
+
+    componentDidMount = () => {
+        // Make a request for a user with a given ID
+        axios
+            .get(
+                `https://coffee-mate-server.herokuapp.com/api/groups/${this
+                    .props.match.params.groupId}`
+            )
+            .then(response => {
+                this.setState({
+                    names: response.data.members,
+                    group_name: response.data.name
+                });
+                console.log(response);
+            })
+            .catch(function(error) {
+                // handle error
+                console.log(error);
+            })
+            .then(() => {
+                this.setState({ is_loading: false });
+            });
     };
 
     addMember = e => {
@@ -45,22 +59,34 @@ class GroupDetails extends Component {
     };
 
     render() {
-        const { groupId } = this.props;
-        console.log(this.props);
-        return (
-            <ol>
-                {this.state.names.map((e, index) => (
-                    <li key={index}>
-                        {e}
-                        {index === 0 ? (
-                            <button onClick={this.completedOrder}>Done</button>
-                        ) : null}
-                        <button value={index} onClick={this.deleteMember}>
-                            Delete
-                        </button>
-                    </li>
-                ))}
-            </ol>
+        const { groupId, groupName } = this.props;
+        return this.state.is_loading ? (
+            <div>Loading</div>
+        ) : (
+            <div>
+                <Header
+                    title={this.state.group_name}
+                    onChange={this.handleChange}
+                    value={this.state.new_name}
+                    buttonTitle="Add member"
+                    buttonOnClick={this.addMember}
+                />
+                <ol>
+                    {this.state.names.map((e, index) => (
+                        <li key={index}>
+                            {e.first_name} {e.last_name}
+                            {index === 0 ? (
+                                <button onClick={this.completedOrder}>
+                                    Done
+                                </button>
+                            ) : null}
+                            <button value={index} onClick={this.deleteMember}>
+                                Delete
+                            </button>
+                        </li>
+                    ))}
+                </ol>
+            </div>
         );
     }
 }
