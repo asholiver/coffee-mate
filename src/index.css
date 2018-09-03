@@ -1,5 +1,36 @@
+#root {
+    --g-color-primary: #231200;
+    --g-color-secondary: #50351a;
+    --g-color-tertiary: #7f5e2d;
+    --g-color-quad: #ac8d40;
+    --g-color-quint: #d5c056;
+    --g-color-hex: #f9f871;
+}
+
+html {
+    background-color: #7f5e2d;
+}
+
+html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+}
+
+.c-layout {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }

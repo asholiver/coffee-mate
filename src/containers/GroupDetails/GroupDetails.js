@@ -63,7 +63,7 @@ class GroupDetails extends Component {
         return this.state.is_loading ? (
             <div>Loading</div>
         ) : (
-            <div>
+            <div className="App">
                 <Header
                     title={this.state.group_name}
                     onChange={this.handleChange}
@@ -71,10 +71,13 @@ class GroupDetails extends Component {
                     buttonTitle="Add member"
                     buttonOnClick={this.addMember}
                 />
-                <ol>
+                <p className="c-paragraph">Its your round</p>
+                <ol className="c-group-link-container">
                     {this.state.names.map((e, index) => (
-                        <li key={index}>
-                            {e.first_name} {e.last_name}
+                        <li className="c-group-link__item" key={index}>
+                            <span className="c-group-link__link">
+                                {e.first_name} {e.last_name}
+                            </span>
                             {index === 0 ? (
                                 <button onClick={this.completedOrder}>
                                     Done

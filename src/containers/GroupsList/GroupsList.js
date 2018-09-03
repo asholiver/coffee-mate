@@ -65,10 +65,13 @@ class GroupsList extends Component {
                     buttonTitle="Add group"
                     buttonOnClick={this.addGroup}
                 />
-                <ol>
+                <ol className="c-group-link-container">
                     {this.state.groups.map((group, index) => (
-                        <li key={index}>
-                            <Link to={`/group_details/${group.id}`}>
+                        <li className="c-group-link__item" key={index}>
+                            <Link
+                                className="c-group-link__link"
+                                to={`/group_details/${group.id}`}
+                            >
                                 {group.name}
                             </Link>
                             <button value={index} onClick={this.deleteGroup}>

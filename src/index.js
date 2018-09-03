@@ -8,9 +8,9 @@ import "./App.css";
 
 ReactDOM.render(
     <BrowserRouter>
-        <div>
+        <div className="c-layout">
             <Route exact path="/" component={GroupsList} />
-            <Route path="/group_details/:groupId" component={GroupDetails}  />
+            <Route path="/group_details/:groupId" component={GroupDetails} />
         </div>
     </BrowserRouter>,
     document.getElementById("root")
