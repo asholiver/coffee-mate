@@ -58,6 +58,10 @@
     transition: all 0.3s;
 }
 
+.c-group-link__item.is-active {
+    background-color: red;
+}
+
 .c-paragraph {
     margin: 16px;
     text-align: center;

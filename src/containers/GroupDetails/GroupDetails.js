@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header } from "./../../components";
+import { Header, GroupMember } from "./../../components";
 import { move } from "./../../utils";
 import axios from "axios";
 
@@ -59,34 +59,30 @@ class GroupDetails extends Component {
     };
 
     render() {
-        const { groupId, groupName } = this.props;
-        return this.state.is_loading ? (
+        const { group_name, new_name, names, is_loading } = this.state;
+        return is_loading ? (
             <div>Loading</div>
         ) : (
             <div className="App">
                 <Header
-                    title={this.state.group_name}
+                    title={group_name}
                     onChange={this.handleChange}
-                    value={this.state.new_name}
+                    value={new_name}
                     buttonTitle="Add member"
                     buttonOnClick={this.addMember}
+                    hasBackButton="true"
                 />
                 <p className="c-paragraph">Its your round</p>
                 <ol className="c-group-link-container">
-                    {this.state.names.map((e, index) => (
-                        <li className="c-group-link__item" key={index}>
-                            <span className="c-group-link__link">
-                                {e.first_name} {e.last_name}
-                            </span>
-                            {index === 0 ? (
-                                <button onClick={this.completedOrder}>
-                                    Done
-                                </button>
-                            ) : null}
-                            <button value={index} onClick={this.deleteMember}>
-                                Delete
-                            </button>
-                        </li>
+                    {names.map((e, index) => (
+                        <GroupMember
+                            name={`${e.first_name} ${e.last_name}`}
+                            handleDelete={this.deleteMember}
+                            handleComplete={this.completedOrder}
+                            id={e.display_order}
+                            isActive={index === 0}
+                            key={index}
+                        />
                     ))}
                 </ol>
             </div>

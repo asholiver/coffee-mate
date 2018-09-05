@@ -1,4 +1,4 @@
-#root {
+:root {
     --g-color-primary: #231200;
     --g-color-secondary: #50351a;
     --g-color-tertiary: #7f5e2d;
@@ -8,7 +8,7 @@
 }
 
 html {
-    background-color: #7f5e2d;
+    background-color: var(--g-color-hex);
 }
 
 html,
