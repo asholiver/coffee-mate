@@ -8,7 +8,10 @@
 }
 
 html {
-    background-color: var(--g-color-hex);
+    background-image: url("negative-space-coffee-beans.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
 }
 
 html,

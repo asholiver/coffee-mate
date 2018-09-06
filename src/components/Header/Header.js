@@ -12,7 +12,12 @@ const Header = ({
 }) => (
     <header className="App-header">
         <h1 className="App-title">{title}</h1>
-        <input type="text" onChange={onChange} value={value} />
+        <input
+            className="c-header__input"
+            type="text"
+            onChange={onChange}
+            value={value}
+        />
         <button type="submit" onClick={buttonOnClick}>
             {buttonTitle}
         </button>
