@@ -68,3 +68,26 @@
     padding: 16px;
     font-size: 24px;
 }
+.c-home-page-container {
+    align-items: center;
+    background-color: #000;
+    justify-content: center;
+    display: flex;
+    height: 550px;
+    width: 550px;
+    transform: rotate(45deg);
+}
+.c-home-page {
+    color: gold;
+    font-size: 24px;
+    text-transform: uppercase;
+    transform: rotate(-45deg);
+}
+
+.c-layout {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100%;
+}

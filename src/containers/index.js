@@ -1,4 +1,5 @@
 import GroupDetails from "./GroupDetails";
 import GroupsList from "./GroupsList";
+import HomePage from "./HomePage";
 
-export { GroupDetails, GroupsList };
+export { GroupDetails, GroupsList, HomePage };
