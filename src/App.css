@@ -78,10 +78,14 @@
     transform: rotate(45deg);
 }
 .c-home-page {
-    color: gold;
-    font-size: 24px;
-    text-transform: uppercase;
     transform: rotate(-45deg);
+}
+
+.c-home-page__title {
+    color: gold;
+    font-size: 46px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
 }
 
 .c-layout {
@@ -90,4 +94,39 @@
     justify-content: center;
     display: flex;
     height: 100%;
+}
+
+.c-form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.c-form-field__label {
+    color: white;
+}
+
+.c-button-group {
+    display: flex;
+
+    > button:not(:first-child),
+    > .c-button:not(:first-child) {
+        margin-left: 16px;
+    }
+
+    > .c-button-icon-only:not(:first-child) {
+        margin-left: 12px;
+    }
+}
+
+/*
+* Modifiers
+*/
+
+.c-button-group--right {
+    justify-content: flex-end;
+}
+
+.c-button-group--space-between {
+    justify-content: space-between;
 }

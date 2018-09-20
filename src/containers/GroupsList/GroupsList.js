@@ -74,7 +74,7 @@ class GroupsList extends Component {
     render() {
         const { groups, new_group } = this.state;
         return (
-            <div className="App">
+            <div className="">
                 <Header
                     title="Welcome to coffee mate"
                     onChange={this.handleChange}
