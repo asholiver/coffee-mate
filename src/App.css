@@ -68,6 +68,14 @@
     padding: 16px;
     font-size: 24px;
 }
+
+.h-container {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+
 .c-home-page-container {
     align-items: center;
     background-color: #000;
@@ -77,6 +85,7 @@
     width: 550px;
     transform: rotate(45deg);
 }
+
 .c-home-page {
     transform: rotate(-45deg);
 }
@@ -86,14 +95,6 @@
     font-size: 46px;
     text-transform: uppercase;
     margin-bottom: 32px;
-}
-
-.c-layout {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    height: 100%;
 }
 
 .c-form-field {

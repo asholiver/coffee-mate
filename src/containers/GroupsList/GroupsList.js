@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Header, GroupItem } from "./../../components";
 import { move } from "./../../utils";
@@ -74,7 +74,7 @@ class GroupsList extends Component {
     render() {
         const { groups, new_group } = this.state;
         return (
-            <div className="">
+            <Fragment>
                 <Header
                     title="Welcome to coffee mate"
                     onChange={this.handleChange}
@@ -93,7 +93,7 @@ class GroupsList extends Component {
                         />
                     ))}
                 </ol>
-            </div>
+            </Fragment>
         );
     }
 }
