@@ -15,14 +15,14 @@ const TextField = ({ label, name, type, value, isInvalid, errorMessage }) => {
             <input
                 id={`id_${name}`}
                 className="c-form-field__input"
-                type={type ? null : type || "text"}
+                type={type == null ? "text" : type}
                 name={name}
                 value={value}
             />
             <span className="c-form-field__error_message">
-                {errorMessage
-                    ? null
-                    : errorMessage || "This field is required."}
+                {errorMessage == null
+                    ? "This field is required."
+                    : errorMessage}
             </span>
         </div>
     );

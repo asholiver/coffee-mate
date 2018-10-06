@@ -1,7 +1,7 @@
 import React from "react";
-import { GroupsList } from "./containers";
+import { HomePage } from "./containers";
 import "./App.css";
 
-const App = () => <GroupsList />;
+const App = () => <HomePage />;
 
 export default App;

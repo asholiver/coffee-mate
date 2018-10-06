@@ -4,6 +4,31 @@
     margin-bottom: 16px;
 }
 
+.c-form-field__input {
+    border: 2px solid white;
+    border-radius: 3px;
+    margin-bottom: 4px;
+    font-size: 16px;
+    padding: 8px;
+}
+
 .c-form-field__label {
     color: white;
+    font-weight: lighter;
+    margin-bottom: 4px;
+}
+
+.c-form-field__error_message {
+    color: var(--g-color-red-500);
+    display: none;
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.c-form-field.is-invalid .c-form-field__input {
+    border: 2px solid var(--g-color-red-500);
+}
+
+.c-form-field.is-invalid .c-form-field__error_message {
+    display: block;
 }

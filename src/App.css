@@ -78,6 +78,7 @@
 
 .c-home-page-container {
     align-items: center;
+    animation: slide-fwd-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     background-color: #000;
     justify-content: center;
     display: flex;
@@ -86,8 +87,27 @@
     transform: rotate(45deg);
 }
 
+@keyframes slide-fwd-center {
+    0% {
+        transform: translateZ(0);
+    }
+    100% {
+        transform: translateZ(160px) rotate(45deg);
+    }
+}
+
 .c-home-page {
+    animation: opacity-fade-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
     transform: rotate(-45deg);
+}
+
+@keyframes opacity-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .c-home-page__title {
@@ -95,6 +115,20 @@
     font-size: 46px;
     text-transform: uppercase;
     margin-bottom: 32px;
+    animation: slide-bottom 1s ease-in-out 1s both;
+}
+
+@keyframes slide-bottom {
+    0% {
+        opacity: 0;
+        transform: translateY(-400px);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .c-button-group {

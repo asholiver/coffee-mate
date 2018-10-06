@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./index.css";
@@ -8,11 +8,11 @@ import "./App.css";
 
 ReactDOM.render(
     <BrowserRouter>
-        <div>
+        <Fragment>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/groups" component={GroupsList} />
             <Route path="/group_details/:groupId" component={GroupDetails} />
-        </div>
+        </Fragment>
     </BrowserRouter>,
     document.getElementById("root")
 );
