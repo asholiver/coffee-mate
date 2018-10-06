@@ -5,6 +5,7 @@ import "./index.css";
 import { GroupsList, GroupDetails, HomePage } from "./containers";
 import registerServiceWorker from "./registerServiceWorker";
 import "./App.css";
+import "./Keyframes.css";
 
 ReactDOM.render(
     <BrowserRouter>

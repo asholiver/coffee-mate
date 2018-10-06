@@ -1,35 +1,50 @@
-.App {
+.c-layout__body {
+    background-color: var(--g-color-blue-500);
+    height: 100vh;
+    padding: 160px 16px 0;
     text-align: center;
-    width: 100%;
 }
 
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
+.c-layout__header,
+.c-layout__footer {
+    background-color: var(--g-color-brown-500);
+    height: 100px;
+    position: fixed;
 }
 
-.App-header {
-    background-color: var(--g-color-primary);
-    height: 150px;
-    padding: 20px;
-    color: white;
+.c-layout__header {
+    border-bottom: 5px solid var(--g-color-white-500);
+    left: 0;
+    top: 0;
+    right: 0;
 }
 
-.App-title {
-    font-size: 1.5em;
+.c-layout__logo {
+    background-color: var(--g-color-brown-500);
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    border: 2px solid var(--g-color-white-500);
+    position: absolute;
 }
 
-.App-intro {
-    font-size: large;
+.c-layout__logo--top {
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -50%);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.c-layout__logo--bottom {
+    left: 50%;
+    bottom: 100%;
+    transform: translate(-50%, 50%);
+}
+
+.c-layout__footer {
+    border-top: 5px solid var(--g-color-white-500);
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .c-group-link-container {
@@ -79,7 +94,8 @@
 .c-home-page-container {
     align-items: center;
     animation: slide-fwd-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    background-color: #000;
+    background-color: var(--g-color-blue-500);
+    border: 5px solid var(--g-color-white-500);
     justify-content: center;
     display: flex;
     height: 550px;
@@ -87,48 +103,17 @@
     transform: rotate(45deg);
 }
 
-@keyframes slide-fwd-center {
-    0% {
-        transform: translateZ(0);
-    }
-    100% {
-        transform: translateZ(160px) rotate(45deg);
-    }
-}
-
 .c-home-page {
     animation: opacity-fade-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
     transform: rotate(-45deg);
 }
 
-@keyframes opacity-fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .c-home-page__title {
-    color: gold;
+    color: var(--g-color-white-500);
     font-size: 46px;
     text-transform: uppercase;
     margin-bottom: 32px;
     animation: slide-bottom 1s ease-in-out 1s both;
-}
-
-@keyframes slide-bottom {
-    0% {
-        opacity: 0;
-        transform: translateY(-400px);
-    }
-    10% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(0);
-    }
 }
 
 .c-button-group {

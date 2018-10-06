@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Header, GroupMember } from "./../../components";
+import React, { Component, Fragment } from "react";
+import { Header, GroupMember, Sidebar } from "./../../components";
 import { move } from "./../../utils";
 import axios from "axios";
 
@@ -7,7 +7,8 @@ class GroupDetails extends Component {
     state = {
         is_loading: true,
         names: [],
-        new_name: ""
+        new_name: "",
+        isSideBarVisible: false
     };
 
     handleChange = e => {
@@ -54,38 +55,49 @@ class GroupDetails extends Component {
         });
     };
 
+    toggleSidebar = e => {
+        this.setState({ isSideBarVisible: !this.state.isSideBarVisible });
+    };
+
     completedOrder = e => {
         this.setState({ names: move(this.state.names) });
     };
 
     render() {
-        const { group_name, new_name, names, is_loading } = this.state;
+        const {
+            group_name,
+            new_name,
+            names,
+            is_loading,
+            isSideBarVisible
+        } = this.state;
         return is_loading ? (
             <div>Loading</div>
         ) : (
-            <div className="App">
-                <Header
-                    title={group_name}
-                    onChange={this.handleChange}
-                    value={new_name}
-                    buttonTitle="Add member"
-                    buttonOnClick={this.addMember}
-                    hasBackButton="true"
-                />
-                <p className="c-paragraph">Its your round</p>
-                <ol className="c-group-link-container">
-                    {names.map((e, index) => (
-                        <GroupMember
-                            name={`${e.first_name} ${e.last_name}`}
-                            handleDelete={this.deleteMember}
-                            handleComplete={this.completedOrder}
-                            id={e.display_order}
-                            isActive={index === 0}
-                            key={index}
-                        />
-                    ))}
-                </ol>
-            </div>
+            <Fragment>
+                <Header buttonOnClick={this.toggleSidebar} />
+                <Sidebar isVisible={isSideBarVisible}>
+                    <button type="button" onClick={this.toggleSidebar}>
+                        Close
+                    </button>
+                </Sidebar>
+                <div className="c-layout__body">
+                    <p className="c-paragraph">Its your round</p>
+                    <ol className="c-group-link-container">
+                        {names.map((e, index) => (
+                            <GroupMember
+                                name={`${e.first_name} ${e.last_name}`}
+                                handleDelete={this.deleteMember}
+                                handleComplete={this.completedOrder}
+                                id={e.display_order}
+                                isActive={index === 0}
+                                key={index}
+                            />
+                        ))}
+                    </ol>
+                </div>
+                <div className="c-layout__footer" />
+            </Fragment>
         );
     }
 }

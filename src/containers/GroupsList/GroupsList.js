@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import { Header, GroupItem } from "./../../components";
+import { Header, GroupItem, Sidebar } from "./../../components";
 import { move } from "./../../utils";
 
 class GroupsList extends Component {
     state = {
         groups: [],
-        new_group: ""
+        new_group: "",
+        isSideBarVisible: false
     };
     componentDidMount = () => {
         // Make a request for a user with a given ID
@@ -67,32 +68,41 @@ class GroupsList extends Component {
         this.setState({ groups: move(this.state.groups) });
     };
 
+    toggleSidebar = e => {
+        this.setState({ isSideBarVisible: !this.state.isSideBarVisible });
+    };
+
     setActive = e => {
         this.setState({ active_group: e.target.value });
     };
 
     render() {
-        const { groups, new_group } = this.state;
+        const { groups, isSideBarVisible } = this.state;
         return (
             <Fragment>
-                <Header
-                    title="Welcome to coffee mate"
-                    onChange={this.handleChange}
-                    value={new_group}
-                    buttonTitle="Add group"
-                    buttonOnClick={this.addGroup}
-                    hasBackButton="false"
-                />
-                <ol className="c-group-link-container">
-                    {groups.map((group, index) => (
-                        <GroupItem
-                            key={index}
-                            handleDelete={this.deleteGroup}
-                            name={group.name}
-                            id={group.id}
-                        />
-                    ))}
-                </ol>
+                <Header buttonOnClick={this.toggleSidebar} />
+                <Sidebar isVisible={isSideBarVisible}>
+                    <button type="button" onClick={this.toggleSidebar}>
+                        Close
+                    </button>
+                    <ol className="c-group-link-container">
+                        {groups.map((group, index) => (
+                            <GroupItem
+                                key={index}
+                                handleDelete={this.deleteGroup}
+                                name={group.name}
+                                id={group.id}
+                            />
+                        ))}
+                    </ol>
+                </Sidebar>
+                <div className="c-layout__body">
+                    <p>Welcome back ash!</p>
+                    <p>Its your round on these groups</p>
+                </div>
+                <div className="c-layout__footer">
+                    <div className="c-layout__logo c-layout__logo--bottom" />
+                </div>
             </Fragment>
         );
     }

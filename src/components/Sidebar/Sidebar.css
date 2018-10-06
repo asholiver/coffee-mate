@@ -1,0 +1,14 @@
+.c-sidebar {
+    background-color: var(--g-color-brown-500);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    left: -300px;
+    z-index: 1;
+}
+
+.c-sidebar.is-active {
+    border-right: 2px solid var(--g-color-white-500);
+    animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
