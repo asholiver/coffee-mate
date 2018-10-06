@@ -1,0 +1,9 @@
+.c-form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.c-form-field__label {
+    color: white;
+}
