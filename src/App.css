@@ -5,18 +5,10 @@
     text-align: center;
 }
 
-.c-layout__header,
 .c-layout__footer {
     background-color: var(--g-color-brown-500);
     height: 100px;
     position: fixed;
-}
-
-.c-layout__header {
-    border-bottom: 5px solid var(--g-color-white-500);
-    left: 0;
-    top: 0;
-    right: 0;
 }
 
 .c-layout__logo {

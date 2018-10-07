@@ -1,13 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ButtonIconOnly from "./../ButtonIconOnly";
+import Icon from "./../Icon";
 import "./Header.css";
 
 const Header = ({ buttonOnClick }) => (
-    <header className="c-layout__header">
-        <div className="c-layout__logo c-layout__logo--top" />
-        <button type="button" onClick={buttonOnClick}>
-            sidebar
-        </button>
+    <header className="c-header">
+        <div className="c-header__logo">
+            <Icon icon="coffee" isLarge="true" />
+        </div>
+        <ButtonIconOnly buttonOnClick={buttonOnClick} icon="hamburger" />
+        <ButtonIconOnly buttonOnClick={buttonOnClick} icon="cogs" />
     </header>
 );
 

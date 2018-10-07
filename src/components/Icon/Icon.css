@@ -1,0 +1,11 @@
+.c-icon {
+    color: var(--g-color-white-500);
+    display: block;
+    height: 48px;
+    width: 48px;
+}
+
+.c-icon--large {
+    height: 60px;
+    width: 60px;
+}

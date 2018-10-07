@@ -1,3 +1,28 @@
-.c-header__input {
-    opacity: 1;
+.c-header {
+    align-items: center;
+    background-color: var(--g-color-brown-500);
+    border-bottom: 5px solid var(--g-color-white-500);
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    left: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
 }
+
+.c-header__logo {
+    align-items: center;
+    background-color: var(--g-color-brown-500);
+    border: 2px solid var(--g-color-white-500);
+    border-radius: 50%;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    top: 100%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+}
+
