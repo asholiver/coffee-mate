@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./index.css";
-import { GroupsList, GroupDetails, HomePage } from "./containers";
+import { App } from "./layout";
+import { LandingPage } from "./containers";
 import registerServiceWorker from "./registerServiceWorker";
 import { Icons } from "./components";
 import "./App.css";
@@ -12,9 +13,8 @@ ReactDOM.render(
     <BrowserRouter>
         <Fragment>
             <Icons />
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/groups" component={GroupsList} />
-            <Route path="/group_details/:groupId" component={GroupDetails} />
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/app" component={App} />
         </Fragment>
     </BrowserRouter>,
     document.getElementById("root")

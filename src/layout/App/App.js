@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import { Header, GroupItem, Sidebar } from "./../../components";
+import { Footer, Header, Body, Sidebar } from "./../../layout";
+import { GroupItem } from "./../../components";
 import { move } from "./../../utils";
 
-class GroupsList extends Component {
+class App extends Component {
     state = {
         groups: [],
         new_group: "",
@@ -75,7 +76,6 @@ class GroupsList extends Component {
     setActive = e => {
         this.setState({ active_group: e.target.value });
     };
-
     render() {
         const { groups, isSideBarVisible } = this.state;
         return (
@@ -96,16 +96,11 @@ class GroupsList extends Component {
                         ))}
                     </ol>
                 </Sidebar>
-                <div className="c-layout__body">
-                    <p>Welcome back ash!</p>
-                    <p>Its your round on these groups</p>
-                </div>
-                <div className="c-layout__footer">
-                    <div className="c-layout__logo c-layout__logo--bottom" />
-                </div>
+                <Body />
+                <Footer />
             </Fragment>
         );
     }
 }
 
-export default GroupsList;
+export default App;

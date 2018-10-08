@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Header, GroupMember, Sidebar } from "./../../components";
+import { GroupMember } from "./../../components";
 import { move } from "./../../utils";
 import axios from "axios";
 
@@ -55,10 +55,6 @@ class GroupDetails extends Component {
         });
     };
 
-    toggleSidebar = e => {
-        this.setState({ isSideBarVisible: !this.state.isSideBarVisible });
-    };
-
     completedOrder = e => {
         this.setState({ names: move(this.state.names) });
     };
@@ -75,28 +71,19 @@ class GroupDetails extends Component {
             <div>Loading</div>
         ) : (
             <Fragment>
-                <Header buttonOnClick={this.toggleSidebar} />
-                <Sidebar isVisible={isSideBarVisible}>
-                    <button type="button" onClick={this.toggleSidebar}>
-                        Close
-                    </button>
-                </Sidebar>
-                <div className="c-layout__body">
-                    <p className="c-paragraph">Its your round</p>
-                    <ol className="c-group-link-container">
-                        {names.map((e, index) => (
-                            <GroupMember
-                                name={`${e.first_name} ${e.last_name}`}
-                                handleDelete={this.deleteMember}
-                                handleComplete={this.completedOrder}
-                                id={e.display_order}
-                                isActive={index === 0}
-                                key={index}
-                            />
-                        ))}
-                    </ol>
-                </div>
-                <div className="c-layout__footer" />
+                <p className="c-paragraph">Its your round</p>
+                <ol className="c-group-link-container">
+                    {names.map((e, index) => (
+                        <GroupMember
+                            name={`${e.first_name} ${e.last_name}`}
+                            handleDelete={this.deleteMember}
+                            handleComplete={this.completedOrder}
+                            id={e.display_order}
+                            isActive={index === 0}
+                            key={index}
+                        />
+                    ))}
+                </ol>
             </Fragment>
         );
     }

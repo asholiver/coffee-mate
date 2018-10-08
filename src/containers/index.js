@@ -1,5 +1,5 @@
 import GroupDetails from "./GroupDetails";
-import GroupsList from "./GroupsList";
-import HomePage from "./HomePage";
+import LandingPage from "./LandingPage";
+import Welcome from "./Welcome";
 
-export { GroupDetails, GroupsList, HomePage };
+export { GroupDetails, LandingPage, Welcome };

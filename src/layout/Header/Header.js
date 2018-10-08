@@ -1,6 +1,5 @@
 import React from "react";
-import ButtonIconOnly from "./../ButtonIconOnly";
-import Icon from "./../Icon";
+import { ButtonIconOnly, Icon } from "./../../components";
 import "./Header.css";
 
 const Header = ({ buttonOnClick }) => (

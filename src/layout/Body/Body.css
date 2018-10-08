@@ -1,0 +1,6 @@
+.c-layout__body {
+    background-color: var(--g-color-blue-500);
+    height: 100vh;
+    padding: 160px 16px 0;
+    text-align: center;
+}

@@ -2,15 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { TextField } from "./../../components";
 
-class HomePage extends Component {
+class LandingPage extends Component {
     render() {
         return (
             <div className="h-container">
                 <div className="an-slide-fwd-center c-home-page-container">
                     <div className="c-home-page">
-                        <h1 className="c-home-page__title">
-                            Coffee Mate
-                        </h1>
+                        <h1 className="c-home-page__title">Coffee Mate</h1>
                         <TextField label="Username" name="new_username" />
                         <TextField
                             label="Password"
@@ -28,7 +26,7 @@ class HomePage extends Component {
                             </button>
                             <Link
                                 className="c-button c-button--secondary"
-                                to="/groups"
+                                to="/app"
                             >
                                 Login
                             </Link>
@@ -40,4 +38,4 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage;
+export default LandingPage;

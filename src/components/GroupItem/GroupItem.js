@@ -5,7 +5,7 @@ import "./GroupItem.css";
 const GroupItem = ({ name, handleDelete, id }) => {
     return (
         <li className="c-group-link__item">
-            <Link className="c-group-link__link" to={`/group_details/${id}`}>
+            <Link className="c-group-link__link" to={`/app/group_details/${id}`}>
                 {name}
             </Link>
             <button value={id} onClick={handleDelete}>
