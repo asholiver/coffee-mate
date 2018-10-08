@@ -18,16 +18,90 @@ const Icons = () => (
             />
         </symbol>
         <symbol id="coffee-icon" viewBox="0 0 64 64">
-            <rect transform="matrix(.124 -.9923 .9923 .124 -20.091 89.241)" x="36.5" y="55" width="8.1" height="2" fill="currentColor" fillRule="evenodd"/>
-            <path d="m51 19h-38c-1.9 0-3-1.1-3-3v-4c0-1.9 1.1-3 3-3h2.2l0.8-4.1c0-2.4 1.5-3.9 4-3.9h24c2.4 0 4 1.5 4 3.9l0.8 4.1h2.2c1.9 0 3 1.1 3 3v4c0 1.9-1.1 3-3 3zm-38-8c-0.8 0-1 0.2-1 1v4c0 0.8 0.2 1 1 1h38c0.8 0 1-0.2 1-1v-4c0-0.8-0.2-1-1-1h-3.8l-1.2-6c0-1.3-0.7-2-2-2h-24c-1.4 0-2 0.6-2 2v0.2l-1.2 5.8h-3.8z" fill="currentColor" fillRule="evenodd"/>
-            <rect x="27" y="9" width="17" height="2" fill="currentColor" fillRule="evenodd"/>
-            <rect x="23" y="9" width="2" height="2" fill="currentColor" fillRule="evenodd"/>
-            <rect x="19" y="9" width="2" height="2" fill="currentColor" fillRule="evenodd"/>
-            <rect transform="matrix(.1646 -.9864 .9864 .1646 17.264 68.383)" x="42.9" y="23" width="12.2" height="2" fill="currentColor" fillRule="evenodd"/>
-            <path d="m43 63h-22c-1.3 0-2-1-2-1.9l-2-13.9 2-0.3 2 14.1h22v-0.1l2-14 2 0.3-2 13.9c0 0.9-0.7 1.9-2 1.9z" fill="currentColor" fillRule="evenodd"/>
-            <rect transform="matrix(.9904 -.1382 .1382 .9904 -3.1821 2.3281)" x="14.2" y="18" width="2" height="12.1" fill="currentColor" fillRule="evenodd"/>
-            <path d="m46 48h-28c-1 0-1.9-0.8-2-1.9l-2-15c0-0.3-0.1-1 0.4-1.5 0.3-0.3 0.7-0.6 1.6-0.6h32c0.8 0 1.3 0.3 1.6 0.6 0.3 0.4 0.5 0.9 0.4 1.5l-2 15c-0.1 1.1-1 1.9-2 1.9zm-30-17l2 14.9c0 0.1 0 0.1 0.1 0.1h27.9v-0.1l2-14.9h-32z" fill="currentColor" fillRule="evenodd"/>
-            <path d="m32 45c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6zm0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z" fill="currentColor" fillRule="evenodd"/>
+            <rect
+                transform="matrix(.124 -.9923 .9923 .124 -20.091 89.241)"
+                x="36.5"
+                y="55"
+                width="8.1"
+                height="2"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+            <path
+                d="m51 19h-38c-1.9 0-3-1.1-3-3v-4c0-1.9 1.1-3 3-3h2.2l0.8-4.1c0-2.4 1.5-3.9 4-3.9h24c2.4 0 4 1.5 4 3.9l0.8 4.1h2.2c1.9 0 3 1.1 3 3v4c0 1.9-1.1 3-3 3zm-38-8c-0.8 0-1 0.2-1 1v4c0 0.8 0.2 1 1 1h38c0.8 0 1-0.2 1-1v-4c0-0.8-0.2-1-1-1h-3.8l-1.2-6c0-1.3-0.7-2-2-2h-24c-1.4 0-2 0.6-2 2v0.2l-1.2 5.8h-3.8z"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+            <rect
+                x="27"
+                y="9"
+                width="17"
+                height="2"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+            <rect
+                x="23"
+                y="9"
+                width="2"
+                height="2"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+            <rect
+                x="19"
+                y="9"
+                width="2"
+                height="2"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+            <rect
+                transform="matrix(.1646 -.9864 .9864 .1646 17.264 68.383)"
+                x="42.9"
+                y="23"
+                width="12.2"
+                height="2"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+            <path
+                d="m43 63h-22c-1.3 0-2-1-2-1.9l-2-13.9 2-0.3 2 14.1h22v-0.1l2-14 2 0.3-2 13.9c0 0.9-0.7 1.9-2 1.9z"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+            <rect
+                transform="matrix(.9904 -.1382 .1382 .9904 -3.1821 2.3281)"
+                x="14.2"
+                y="18"
+                width="2"
+                height="12.1"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+            <path
+                d="m46 48h-28c-1 0-1.9-0.8-2-1.9l-2-15c0-0.3-0.1-1 0.4-1.5 0.3-0.3 0.7-0.6 1.6-0.6h32c0.8 0 1.3 0.3 1.6 0.6 0.3 0.4 0.5 0.9 0.4 1.5l-2 15c-0.1 1.1-1 1.9-2 1.9zm-30-17l2 14.9c0 0.1 0 0.1 0.1 0.1h27.9v-0.1l2-14.9h-32z"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+            <path
+                d="m32 45c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6zm0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+        </symbol>
+
+        <symbol id="symbol-icon" viewBox="0 0 32 32">
+            <path
+                fillRule="evenodd"
+                fill="currentColor"
+                d="m20 5e-3c-6.627 0-12 5.373-12 12 0 2.026 0.507 3.933 1.395 5.608l-8.344 8.342 7e-3 6e-3c-0.652 0.641-1.058 1.529-1.058 2.516 0 1.949 1.58 3.529 3.529 3.529 0.985 0 1.874-0.406 2.515-1.059l-2e-3 -2e-3 8.341-8.34c1.676 0.891 3.586 1.4 5.617 1.4 6.627 0 12-5.373 12-12s-5.373-12-12-12zm-15.205 29.692c-0.322 0.334-0.768 0.543-1.266 0.543-0.975 0-1.765-0.789-1.765-1.764 0-0.498 0.21-0.943 0.543-1.266l-9e-3 -8e-3 8.066-8.066c0.705 0.951 1.545 1.791 2.494 2.498l-8.063 8.063zm15.205-7.691c-5.522 0-10-4.479-10-10 0-5.522 4.478-10 10-10 5.521 0 10 4.478 10 10 0 5.521-4.479 10-10 10z"
+            />
+            <path
+                fillRule="evenodd"
+                fill="currentColor"
+                d="m20 5.005c-3.867 0-7 3.134-7 7 0 0.276 0.224 0.5 0.5 0.5s0.5-0.224 0.5-0.5c0-3.313 2.686-6 6-6 0.275 0 0.5-0.224 0.5-0.5s-0.225-0.5-0.5-0.5z"
+            />
         </symbol>
     </svg>
 );

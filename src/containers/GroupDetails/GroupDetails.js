@@ -60,13 +60,7 @@ class GroupDetails extends Component {
     };
 
     render() {
-        const {
-            group_name,
-            new_name,
-            names,
-            is_loading,
-            isSideBarVisible
-        } = this.state;
+        const { names, is_loading } = this.state;
         return is_loading ? (
             <div>Loading</div>
         ) : (
