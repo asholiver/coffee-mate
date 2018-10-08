@@ -2,7 +2,15 @@ import React from "react";
 import classNames from "classnames";
 import "./TextField.css";
 
-const TextField = ({ label, name, type, value, isInvalid, errorMessage }) => {
+const TextField = ({
+    label,
+    name,
+    type,
+    value,
+    isInvalid,
+    errorMessage,
+    onChange
+}) => {
     const getClasses = classNames({
         "c-form-field": true,
         "is-invalid": isInvalid
@@ -17,6 +25,7 @@ const TextField = ({ label, name, type, value, isInvalid, errorMessage }) => {
                 className="c-form-field__input"
                 type={type == null ? "text" : type}
                 name={name}
+                onChange={onChange}
                 value={value}
             />
             <span className="c-form-field__error_message">
