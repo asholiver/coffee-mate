@@ -14,7 +14,7 @@ class Sidebar extends Component {
         axios
             .get(
                 `https://coffee-mate-server.herokuapp.com/api/groups?member=${this
-                    .props.match.params.userId}`
+                    .props.userId}`
             )
             .then(response => {
                 this.setState({ groups: response.data });

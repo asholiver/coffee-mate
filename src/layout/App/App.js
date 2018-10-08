@@ -5,6 +5,7 @@ import { move } from "./../../utils";
 
 class App extends Component {
     state = {
+        userId: 2,
         isSideBarVisible: false
     };
 
@@ -51,13 +52,14 @@ class App extends Component {
         this.setState({ isSideBarVisible: !this.state.isSideBarVisible });
     };
     render() {
-        const { isSideBarVisible } = this.state;
+        const { isSideBarVisible, userId } = this.state;
         return (
             <Fragment>
                 <Header buttonOnClick={this.toggleSidebar} />
                 <Sidebar
                     isVisible={isSideBarVisible}
                     onClick={this.toggleSidebar}
+                    userId={userId}
                 />
                 <Body />
                 <Footer />
