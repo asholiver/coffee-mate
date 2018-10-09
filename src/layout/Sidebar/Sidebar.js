@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Sidebar.css";
-import { GroupItem } from "./../../components";
+import { NavList } from "./../../components";
 import axios from "axios";
 import classNames from "classnames";
 
@@ -39,18 +39,7 @@ class Sidebar extends Component {
                 <button type="button" onClick={onClick}>
                     Close
                 </button>
-                <ol className="c-group-link-container">
-                    {groups.map((group, index) => (
-                        <GroupItem
-                            key={index}
-                            handleDelete={this.deleteGroup}
-                            name={group.name}
-                            userId={userId}
-                            id={group.id}
-                            toggleSidebar={onClick}
-                        />
-                    ))}
-                </ol>
+                <NavList arr={groups} onClick={onClick} userId={userId} />
             </div>
         );
     }

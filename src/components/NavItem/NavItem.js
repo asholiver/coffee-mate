@@ -1,22 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./GroupItem.css";
+import "./NavItem.css";
 
-const GroupItem = ({ name, handleDelete, id, userId, toggleSidebar }) => {
+const NavItem = ({ name, id, userId, handleClick }) => {
     return (
         <li className="c-group-link__item">
             <NavLink
                 className="c-group-link__link"
-                onClick={toggleSidebar}
+                onClick={handleClick == null ? null : handleClick}
                 to={`/app/${userId}/group_details/${id}`}
             >
                 {name}
             </NavLink>
-            <button value={id} onClick={handleDelete}>
-                Delete
-            </button>
         </li>
     );
 };
 
-export default GroupItem;
+export default NavItem;
