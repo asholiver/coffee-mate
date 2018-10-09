@@ -1,13 +1,15 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
-import "./index.css";
 import { App } from "./layout";
 import { LandingPage } from "./containers";
 import registerServiceWorker from "./registerServiceWorker";
 import { Icons } from "./components";
-import "./App.css";
-import "./Keyframes.css";
+import "./css/Helpers.css";
+import "./css/Settings.css";
+import "./css/Resets.css";
+import "./css/Shame.css";
+import "./css/Keyframes.css";
 
 ReactDOM.render(
     <BrowserRouter>
