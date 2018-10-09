@@ -1,33 +1,3 @@
-.c-group-link-container {
-    display: block;
-    margin: 16px;
-}
-
-.c-group-link__item {
-    align-items: center;
-    display: flex;
-    border-bottom: 1px solid var(--g-color-primary);
-    padding: 0 16px;
-}
-
-.c-group-link__link {
-    color: var(--g-color-primary);
-    display: block;
-    text-decoration: none;
-    padding: 32px 0px;
-    width: 100%;
-}
-
-.c-group-link__item:hover {
-    color: #fff;
-    background-color: var(--g-color-quad);
-    transition: all 0.3s;
-}
-
-.c-group-link__item.is-active {
-    background-color: red;
-}
-
 .c-paragraph {
     margin: 16px;
     text-align: center;

@@ -1,17 +1,22 @@
 import React from "react";
 import NavItem from "./../NavItem";
 import "./NavList.css";
+import classNames from "classnames";
 
-const NavList = ({ arr, onClick, userId }) => {
+const NavList = ({ arr, onClick, isColumn, to }) => {
+    const classes = classNames({
+        "c-nav": true,
+        "c-nav--column": isColumn
+    });
     return (
-        <ul>
+        <ul className={classes}>
             {arr.map((item, index) => (
                 <NavItem
+                    to={`${to}${item.id}`}
                     key={index}
                     name={item.name}
-                    userId={userId}
-                    id={item.id}
-                    toggleSidebar={onClick}
+                    handleClick={onClick}
+                    isColumn={isColumn}
                 />
             ))}
         </ul>

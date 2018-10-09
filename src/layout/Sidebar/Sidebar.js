@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Sidebar.css";
-import { NavList } from "./../../components";
+import { NavList, ButtonIconOnly } from "./../../components";
 import axios from "axios";
 import classNames from "classnames";
 
@@ -34,12 +34,24 @@ class Sidebar extends Component {
             "is-active": isVisible,
             "is-hidden": !isVisible
         });
+        const buttonClass = classNames({
+            "c-sidebar__close": true
+        });
         return (
             <div className={classes}>
-                <button type="button" onClick={onClick}>
-                    Close
-                </button>
-                <NavList arr={groups} onClick={onClick} userId={userId} />
+                <ButtonIconOnly
+                    buttonOnClick={onClick}
+                    icon="close"
+                    classes={buttonClass}
+                    size="x-small"
+                    helpText="close sidebar"
+                />
+                <NavList
+                    arr={groups}
+                    onClick={onClick}
+                    isColumn="true"
+                    to={`/app/${userId}/group_details/`}
+                />
             </div>
         );
     }

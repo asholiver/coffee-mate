@@ -2,13 +2,16 @@ import React from "react";
 import classNames from "classnames";
 import "./Icon.css";
 
-const Icon = ({ icon, isLarge }) => {
+const Icon = ({ icon, size, ariaHidden }) => {
     const getClasses = classNames({
         "c-icon": true,
-        "c-icon--large": isLarge
+        [`c-icon--${size}`]: size == null ? false : true
     });
     return (
-        <svg aria-hidden="true" className={getClasses}>
+        <svg
+            aria-hidden={ariaHidden == null ? true : ariaHidden}
+            className={getClasses}
+        >
             <use xlinkHref={`#${icon}-icon`} />
         </svg>
     );

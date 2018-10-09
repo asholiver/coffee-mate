@@ -2,13 +2,15 @@
     align-items: center;
     background-color: var(--g-color-brown-500);
     border-bottom: 5px solid var(--g-color-white-500);
+    box-sizing: border-box;
     display: flex;
-    height: 100px;
+    height: var(--g-header-height);
     justify-content: space-between;
     left: 0;
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 2;
 }
 
 .c-header__logo {
@@ -17,12 +19,12 @@
     border: 2px solid var(--g-color-white-500);
     border-radius: 50%;
     display: flex;
-    height: 100px;
+    height: var(--g-header-height);
     justify-content: center;
     left: 50%;
     position: absolute;
     top: 100%;
     transform: translate(-50%, -50%);
-    width: 100px;
+    width: var(--g-header-height);
 }
 

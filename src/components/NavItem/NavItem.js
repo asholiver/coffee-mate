@@ -1,14 +1,20 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./NavItem.css";
+import classNames from "classnames";
 
-const NavItem = ({ name, id, userId, handleClick }) => {
+const NavItem = ({ name, id, userId, handleClick, isColumn, to }) => {
+    const classes = classNames({
+        "c-nav-item": true,
+        "c-nav-item--column": isColumn,
+        "c-nav--inline": !isColumn
+    });
     return (
-        <li className="c-group-link__item">
+        <li className={classes}>
             <NavLink
-                className="c-group-link__link"
+                className="c-nav-item__link"
                 onClick={handleClick == null ? null : handleClick}
-                to={`/app/${userId}/group_details/${id}`}
+                to={to}
             >
                 {name}
             </NavLink>

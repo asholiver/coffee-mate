@@ -1,6 +1,12 @@
 .c-layout__body {
     background-color: var(--g-color-blue-500);
-    height: 100vh;
-    padding: 160px 16px 0;
+    position: fixed;
+    top: var(--g-header-height);
+    bottom: var(--g-footer-height);
+    left: 0;
+    right: 0;
+    padding: 60px 16px 16px;
+    overflow-x: auto;
     text-align: center;
+    z-index: 1;
 }

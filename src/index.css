@@ -9,6 +9,9 @@
     --g-color-blue-500: #96cbd1;
     --g-color-brown-500: #573646;
     --g-color-white-500: #fefef2;
+
+    --g-header-height: 100px;
+    --g-footer-height: 100px;
 }
 
 html {
@@ -47,4 +50,25 @@ button {
 
 .h-hide {
     display: none;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers.
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line, see:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.h-hide-visually {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap; /* 1 */
 }

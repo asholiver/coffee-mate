@@ -5,10 +5,18 @@ import "./Header.css";
 const Header = ({ buttonOnClick }) => (
     <header className="c-header">
         <div className="c-header__logo">
-            <Icon icon="coffee" isLarge="true" />
+            <Icon icon="coffee" size="large" ariaHidden="false" />
         </div>
-        <ButtonIconOnly buttonOnClick={buttonOnClick} icon="hamburger" />
-        <ButtonIconOnly buttonOnClick={buttonOnClick} icon="cogs" />
+        <ButtonIconOnly
+            buttonOnClick={buttonOnClick}
+            icon="hamburger"
+            helpText="open sidebar"
+        />
+        <ButtonIconOnly
+            buttonOnClick={buttonOnClick}
+            icon="cogs"
+            helpText="settings"
+        />
     </header>
 );
 
