@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import { Footer, Header, Body, Sidebar } from "./../../layout";
+import { Route } from "react-router-dom";
+import { Welcome, GroupDetails } from "./../../containers";
+import { Header, Sidebar } from "./../../layout";
 import { move } from "./../../utils";
 
 class App extends Component {
     state = {
-        userId: 2,
+        userId: this.props.match.params.userId,
         isSideBarVisible: false
     };
 
@@ -61,8 +63,11 @@ class App extends Component {
                     onClick={this.toggleSidebar}
                     userId={userId}
                 />
-                <Body />
-                <Footer />
+                <Route exact path="/app/:userId" component={Welcome} />
+                <Route
+                    path="/app/:userId/group_details/:groupId"
+                    component={GroupDetails}
+                />
             </Fragment>
         );
     }

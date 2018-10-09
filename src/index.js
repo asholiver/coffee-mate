@@ -14,7 +14,7 @@ ReactDOM.render(
         <Fragment>
             <Icons />
             <Route exact path="/" component={LandingPage} />
-            <Route path="/app" component={App} />
+            <Route path="/app/:userId" component={App} />
         </Fragment>
     </BrowserRouter>,
     document.getElementById("root")

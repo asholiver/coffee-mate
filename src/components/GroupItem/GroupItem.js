@@ -1,13 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./GroupItem.css";
 
-const GroupItem = ({ name, handleDelete, id }) => {
+const GroupItem = ({ name, handleDelete, id, userId, toggleSidebar }) => {
     return (
         <li className="c-group-link__item">
-            <Link className="c-group-link__link" to={`/app/group_details/${id}`}>
+            <NavLink
+                className="c-group-link__link"
+                onClick={toggleSidebar}
+                to={`/app/${userId}/group_details/${id}`}
+            >
                 {name}
-            </Link>
+            </NavLink>
             <button value={id} onClick={handleDelete}>
                 Delete
             </button>

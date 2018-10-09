@@ -27,7 +27,7 @@ class Sidebar extends Component {
     };
 
     render() {
-        const { isVisible, onClick } = this.props;
+        const { isVisible, onClick, userId } = this.props;
         const { groups } = this.state;
         const classes = classNames({
             "c-sidebar": true,
@@ -45,7 +45,9 @@ class Sidebar extends Component {
                             key={index}
                             handleDelete={this.deleteGroup}
                             name={group.name}
+                            userId={userId}
                             id={group.id}
+                            toggleSidebar={onClick}
                         />
                     ))}
                 </ol>

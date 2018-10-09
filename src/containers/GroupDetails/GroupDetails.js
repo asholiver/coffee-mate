@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { GroupMember } from "./../../components";
+import { Body, Footer } from "./../../layout";
 import { move } from "./../../utils";
 import axios from "axios";
 
@@ -65,19 +66,22 @@ class GroupDetails extends Component {
             <div>Loading</div>
         ) : (
             <Fragment>
-                <p className="c-paragraph">Its your round</p>
-                <ol className="c-group-link-container">
-                    {names.map((e, index) => (
-                        <GroupMember
-                            name={`${e.first_name} ${e.last_name}`}
-                            handleDelete={this.deleteMember}
-                            handleComplete={this.completedOrder}
-                            id={e.display_order}
-                            isActive={index === 0}
-                            key={index}
-                        />
-                    ))}
-                </ol>
+                <Body>
+                    <p className="c-paragraph">Its your round</p>
+                    <ol className="c-group-link-container">
+                        {names.map((e, index) => (
+                            <GroupMember
+                                name={`${e.first_name} ${e.last_name}`}
+                                handleDelete={this.deleteMember}
+                                handleComplete={this.completedOrder}
+                                id={e.display_order}
+                                isActive={index === 0}
+                                key={index}
+                            />
+                        ))}
+                    </ol>
+                </Body>
+                <Footer />
             </Fragment>
         );
     }
