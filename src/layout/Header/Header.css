@@ -1,4 +1,4 @@
-.c-header {
+.l-header {
     align-items: center;
     background-color: var(--g-color-brown-500);
     border-bottom: 5px solid var(--g-color-white-500);
@@ -13,7 +13,7 @@
     z-index: 2;
 }
 
-.c-header__logo {
+.l-header__logo {
     align-items: center;
     background-color: var(--g-color-brown-500);
     border: 2px solid var(--g-color-white-500);

@@ -1,4 +1,4 @@
-.c-footer {
+.l-footer {
     background-color: var(--g-color-brown-500);
     border-top: 5px solid var(--g-color-white-500);
     bottom: 0;
@@ -10,7 +10,7 @@
     z-index: 2;
 }
 
-.c-footer__logo {
+.l-footer__logo {
     align-items: center;
     background-color: var(--g-color-brown-500);
     border: 2px solid var(--g-color-white-500);

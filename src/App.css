@@ -37,27 +37,4 @@
     animation: slide-bottom 1s ease-in-out 1s both;
 }
 
-.c-button-group {
-    display: flex;
 
-    > button:not(:first-child),
-    > .c-button:not(:first-child) {
-        margin-left: 16px;
-    }
-
-    > .c-button-icon-only:not(:first-child) {
-        margin-left: 12px;
-    }
-}
-
-/*
-* Modifiers
-*/
-
-.c-button-group--right {
-    justify-content: flex-end;
-}
-
-.c-button-group--space-between {
-    justify-content: space-between;
-}

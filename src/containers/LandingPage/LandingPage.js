@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { TextField } from "./../../components";
+import { TextField, Button, ButtonGroup } from "./../../components";
 
 class LandingPage extends Component {
     state = {
@@ -33,20 +33,15 @@ class LandingPage extends Component {
                             onChange={this.handleChange}
                             errorMessage="The password you have entered is incorrect"
                         />
-                        <div className="c-button-group c-button-group--space-between">
-                            <button
-                                type="button"
-                                className="c-button c-button--secondary"
-                            >
-                                Signup
-                            </button>
+                        <ButtonGroup type="space-between">
+                            <Button text="Signup" buttonStyle="secondary" />
                             <Link
                                 className="c-button c-button--secondary"
                                 to="/app/2"
                             >
                                 Login
                             </Link>
-                        </div>
+                        </ButtonGroup>
                     </div>
                 </div>
             </div>

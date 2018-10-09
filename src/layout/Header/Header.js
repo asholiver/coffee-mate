@@ -3,8 +3,8 @@ import { ButtonIconOnly, Icon } from "./../../components";
 import "./Header.css";
 
 const Header = ({ buttonOnClick }) => (
-    <header className="c-header">
-        <div className="c-header__logo">
+    <header className="l-header">
+        <div className="l-header__logo">
             <Icon icon="coffee" size="large" ariaHidden="false" />
         </div>
         <ButtonIconOnly

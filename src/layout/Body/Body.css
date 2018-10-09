@@ -1,4 +1,4 @@
-.c-layout__body {
+.l-body {
     background-color: var(--g-color-blue-500);
     position: fixed;
     top: var(--g-header-height);
