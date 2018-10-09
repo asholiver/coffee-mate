@@ -8,7 +8,7 @@ const ButtonIconOnly = ({ buttonOnClick, icon, classes, size, helpText }) => (
         className={`c-button-icon-only ${classes}`}
         onClick={buttonOnClick}
     >
-        <span class="h-hide-visually">{helpText}</span>
+        <span className="h-hide-visually">{helpText}</span>
         <Icon icon={icon} size={size} />
     </button>
 );
