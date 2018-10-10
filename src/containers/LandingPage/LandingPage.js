@@ -34,7 +34,7 @@ class LandingPage extends Component {
                             errorMessage="The password you have entered is incorrect"
                         />
                         <ButtonGroup type="space-between">
-                            <Button text="Signup" buttonStyle="secondary" />
+                            <Button text="Signup" buttonStyle="primary" />
                             <Link
                                 className="c-button c-button--secondary"
                                 to="/app/2"

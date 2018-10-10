@@ -40,19 +40,23 @@ class GroupSettings extends Component {
                 <Body>
                     <p>Name: {data.name}</p>
                     <p>Admin: {data.created_by}</p>
-                    <p>
-                        Members:
-                        {members.map(member => (
-                            <p key={member.user_id}>
-                                <p>
-                                    {member.first_name} {member.last_name}
+                    {members != null ? (
+                        <p>
+                            Members:
+                            {members.map(member => (
+                                <p key={member.user_id}>
+                                    <p>
+                                        {member.first_name} {member.last_name}
+                                    </p>
+                                    <p>Order: {member.display_order}</p>
+                                    <p>{member.user_id}</p>
+                                    <p>Joined group: {member.added_on}</p>
                                 </p>
-                                <p>Order: {member.display_order}</p>
-                                <p>{member.user_id}</p>
-                                <p>Joined group: {member.added_on}</p>
-                            </p>
-                        ))}
-                    </p>
+                            ))}
+                        </p>
+                    ) : (
+                        <p>No Members</p>
+                    )}
                 </Body>
                 <Footer hasLinks="true" groupId={groupId} userId={userId} />
             </Fragment>

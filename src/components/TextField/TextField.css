@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
+    text-align: left;
 }
 
 .c-form-field__input {

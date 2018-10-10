@@ -5,7 +5,7 @@ import classNames from "classnames";
 const Button = ({ text, buttonStyle, type, onClick }) => {
     const classes = classNames({
         "c-button": true,
-        [`c-button--${buttonStyle}`]: buttonStyle == null ? "primary" : true
+        [`c-button--${buttonStyle}`]: buttonStyle == null ? false : true
     });
     return (
         <button

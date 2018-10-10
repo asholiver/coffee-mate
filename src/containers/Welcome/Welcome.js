@@ -31,6 +31,7 @@ class GroupsList extends Component {
 
     render() {
         const { name } = this.state;
+        const { userId } = this.props;
         return (
             <Fragment>
                 <Body>
@@ -45,7 +46,7 @@ class GroupsList extends Component {
                     </p>
                     <p>) loop</p>
                 </Body>
-                <Footer userId="userId" hasLinks={false} />
+                <Footer userId={userId} hasLinks={false} />
             </Fragment>
         );
     }

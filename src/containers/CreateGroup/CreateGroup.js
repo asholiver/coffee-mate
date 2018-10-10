@@ -1,51 +1,65 @@
 import React, { Component, Fragment } from "react";
 import { Body, Footer } from "./../../layout";
+import { TextField, Button } from "./../../components";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 class CreateGroup extends Component {
     state = {
-        is_loading: true,
-        names: []
+        newGroupId: 0,
+        userId: this.props.match.params.userId,
+        new_group: ""
     };
-    componentDidMount = () => {
-        // Make a request for a user with a given ID
+
+    handleChange = e => {
+        this.setState({
+            new_group: e.target.value
+        });
+    };
+
+    addGroup = e => {
         axios
-            .get(
-                `https://coffee-mate-server.herokuapp.com/api/users/${this.props
-                    .match.params.userId}`
-            )
+            .post("https://coffee-mate-server.herokuapp.com/api/groups", {
+                new_name: this.state.new_group
+            })
             .then(response => {
                 this.setState({
-                    name: response.data.first_name
+                    newGroupId: response.data.id,
+                    new_group: ""
                 });
-                console.log(response);
             })
             .catch(function(error) {
-                // handle error
                 console.log(error);
-            })
-            .then(() => {
-                this.setState({ is_loading: false });
             });
     };
 
     render() {
-        const { name } = this.state;
+        const { userId, newGroupId } = this.state;
+        if (newGroupId > 0) {
+            return (
+                <Redirect
+                    to={`/app/${this.props.match.params
+                        .userId}/group_details/${newGroupId}`}
+                />
+            );
+        }
+
         return (
             <Fragment>
                 <Body>
-                    <p>Welcome back {name}!</p>
-                    <p>Its your round on these groups</p>
-                    <p>for r in (</p>
-                    <p>select *</p>
-                    <p>from groups </p>
-                    <p>
-                        where id = (select group_id from group_members where
-                        user_id = state.userId and display_order = 1)
-                    </p>
-                    <p>) loop</p>
+                    <TextField
+                        label="Group name"
+                        name="new_group"
+                        onChange={this.handleChange}
+                    />
+                    <Button
+                        type="submit"
+                        text="Create"
+                        buttonStyle="primary"
+                        onClick={this.addGroup}
+                    />
                 </Body>
-                <Footer userId="userId" hasLinks={false} />
+                <Footer userId={userId} hasLinks={false} />
             </Fragment>
         );
     }

@@ -7,6 +7,7 @@ import axios from "axios";
 class GroupDetails extends Component {
     state = {
         is_loading: true,
+        group_name: "",
         names: [],
         new_name: "",
         isSideBarVisible: false
@@ -61,28 +62,33 @@ class GroupDetails extends Component {
     };
 
     render() {
-        const { names, is_loading } = this.state;
+        const { names, is_loading, group_name } = this.state;
         return is_loading ? (
             <div>Loading</div>
         ) : (
             <Fragment>
                 <Body>
+                    <p className="c-paragraph">{group_name}</p>
                     <p className="c-paragraph">Its your round</p>
-                    <ol className="c-group-link-container">
-                        {names.map((e, index) => (
-                            <GroupMember
-                                name={`${e.first_name} ${e.last_name}`}
-                                handleDelete={this.deleteMember}
-                                handleComplete={this.completedOrder}
-                                id={e.display_order}
-                                isActive={index === 0}
-                                key={index}
-                            />
-                        ))}
-                    </ol>
+                    {names != null ? (
+                        <ol className="c-group-link-container">
+                            {names.map((e, index) => (
+                                <GroupMember
+                                    name={`${e.first_name} ${e.last_name}`}
+                                    handleDelete={this.deleteMember}
+                                    handleComplete={this.completedOrder}
+                                    id={e.display_order}
+                                    isActive={index === 0}
+                                    key={index}
+                                />
+                            ))}
+                        </ol>
+                    ) : (
+                        <p>There are no members in this group</p>
+                    )}
                 </Body>
                 <Footer
-                    hasLinks="true"
+                    hasLinks={true}
                     groupId={this.props.match.params.groupId}
                     userId={this.props.match.params.userId}
                 />

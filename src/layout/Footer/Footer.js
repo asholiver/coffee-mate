@@ -27,7 +27,6 @@ const Footer = ({ userId, groupId, hasLinks }) => {
 };
 
 Footer.propTypes = {
-    userId: PropTypes.number,
     groupId: PropTypes.number,
     hasLinks: PropTypes.bool
 };
