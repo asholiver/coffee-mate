@@ -28,6 +28,14 @@ const NavList = ({ arr, onClick, isColumn, to, userId, hasHome }) => {
                     isColumn={isColumn}
                 />
             ))}
+            {hasHome ? (
+                <NavItem
+                    to={`/app/${userId}/create_group`}
+                    name="Add new Group"
+                    handleClick={onClick}
+                    isColumn={isColumn}
+                />
+            ) : null}
         </ul>
     );
 };

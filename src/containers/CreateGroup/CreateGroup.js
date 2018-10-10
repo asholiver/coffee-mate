@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Body, Footer } from "./../../layout";
 import axios from "axios";
 
-class GroupsList extends Component {
+class CreateGroup extends Component {
     state = {
         is_loading: true,
         names: []
@@ -51,4 +51,4 @@ class GroupsList extends Component {
     }
 }
 
-export default GroupsList;
+export default CreateGroup;

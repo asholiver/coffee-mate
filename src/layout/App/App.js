@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Route } from "react-router-dom";
 import {
+    CreateGroup,
     Welcome,
     GroupDetails,
     GroupSearch,
@@ -70,6 +71,12 @@ class App extends Component {
                 />
                 <Route exact path="/app/:userId" component={Welcome} />
                 <Route
+                    exact
+                    path="/app/:userId/create_group"
+                    component={CreateGroup}
+                />
+                <Route
+                    exact
                     path="/app/:userId/group_details/:groupId"
                     component={GroupDetails}
                 />

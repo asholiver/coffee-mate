@@ -13,9 +13,16 @@
 }
 
 .c-nav-item:hover {
-    color: #fff;
-    background-color: var(--g-color-quad);
+    background-color: var(--g-color-blue-500);
     transition: all 0.3s;
+}
+
+.c-nav-item:hover .c-nav-item__link {
+    color: var(--g-color-brown-500);
+}
+
+.c-nav-item__link.active {
+    color: var(--g-color-blue-500);
 }
 
 .c-nav-item__item.is-active {

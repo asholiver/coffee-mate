@@ -5,19 +5,22 @@ import { Body, Footer } from "./../../layout";
 class GroupSettings extends Component {
     state = {
         is_loading: true,
+        userId: this.props.match.params.userId,
         groupId: this.props.match.params.groupId,
-        names: []
+        data: [],
+        members: []
     };
     componentDidMount = () => {
         // Make a request for a user with a given ID
         axios
             .get(
-                `https://coffee-mate-server.herokuapp.com/api/users/${this.props
-                    .match.params.userId}`
+                `https://coffee-mate-server.herokuapp.com/api/groups/${this
+                    .props.match.params.groupId}`
             )
             .then(response => {
                 this.setState({
-                    name: response.data.first_name
+                    data: response.data,
+                    members: response.data.members
                 });
                 console.log(response);
             })
@@ -31,15 +34,27 @@ class GroupSettings extends Component {
     };
 
     render() {
-        const { name } = this.state;
+        const { userId, groupId, data, members } = this.state;
         return (
             <Fragment>
-                <Body>SETTINGS HERE</Body>
-                <Footer
-                    hasLinks="true"
-                    groupId={this.props.match.params.groupId}
-                    userId={this.props.match.params.userId}
-                />
+                <Body>
+                    <p>Name: {data.name}</p>
+                    <p>Admin: {data.created_by}</p>
+                    <p>
+                        Members:
+                        {members.map(member => (
+                            <p key={member.user_id}>
+                                <p>
+                                    {member.first_name} {member.last_name}
+                                </p>
+                                <p>Order: {member.display_order}</p>
+                                <p>{member.user_id}</p>
+                                <p>Joined group: {member.added_on}</p>
+                            </p>
+                        ))}
+                    </p>
+                </Body>
+                <Footer hasLinks="true" groupId={groupId} userId={userId} />
             </Fragment>
         );
     }

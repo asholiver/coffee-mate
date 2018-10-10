@@ -13,7 +13,7 @@ class Sidebar extends Component {
         // Make a request for a user with a given ID
         axios
             .get(
-                `https://coffee-mate-server.herokuapp.com/api/groups?member=${this
+                `https://coffee-mate-server.herokuapp.com/api/groups?owner=${this
                     .props.userId}`
             )
             .then(response => {
