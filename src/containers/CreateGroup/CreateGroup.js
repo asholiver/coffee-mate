@@ -59,7 +59,7 @@ class CreateGroup extends Component {
                         onClick={this.addGroup}
                     />
                 </Body>
-                <Footer userId={userId} hasLinks={false} />
+                <Footer userId={Number(userId)} hasLinks={false} />
             </Fragment>
         );
     }

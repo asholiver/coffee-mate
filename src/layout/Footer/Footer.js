@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import { NavList, ButtonIconOnly } from "./../../components";
+import { NavList } from "./../../components";
 import PropTypes from "prop-types";
 
 const Footer = ({ userId, groupId, hasLinks }) => {
@@ -27,6 +27,7 @@ const Footer = ({ userId, groupId, hasLinks }) => {
 };
 
 Footer.propTypes = {
+    userId: PropTypes.number,
     groupId: PropTypes.number,
     hasLinks: PropTypes.bool
 };

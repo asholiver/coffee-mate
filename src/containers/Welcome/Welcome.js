@@ -30,9 +30,13 @@ class GroupsList extends Component {
     };
 
     render() {
-        const { name } = this.state;
+        const { name, is_loading } = this.state;
         const { userId } = this.props;
-        return (
+        return is_loading ? (
+            <Body>
+                <div>Loading...</div>
+            </Body>
+        ) : (
             <Fragment>
                 <Body>
                     <p>Welcome back {name}!</p>
@@ -46,7 +50,7 @@ class GroupsList extends Component {
                     </p>
                     <p>) loop</p>
                 </Body>
-                <Footer userId={userId} hasLinks={false} />
+                <Footer userId={Number(userId)} hasLinks={false} />
             </Fragment>
         );
     }

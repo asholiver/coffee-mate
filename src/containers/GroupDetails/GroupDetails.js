@@ -9,8 +9,7 @@ class GroupDetails extends Component {
         is_loading: true,
         group_name: "",
         names: [],
-        new_name: "",
-        isSideBarVisible: false
+        new_name: ""
     };
 
     handleChange = e => {
@@ -64,7 +63,9 @@ class GroupDetails extends Component {
     render() {
         const { names, is_loading, group_name } = this.state;
         return is_loading ? (
-            <div>Loading</div>
+            <Body>
+                <div>Loading...</div>
+            </Body>
         ) : (
             <Fragment>
                 <Body>
@@ -89,8 +90,8 @@ class GroupDetails extends Component {
                 </Body>
                 <Footer
                     hasLinks={true}
-                    groupId={this.props.match.params.groupId}
-                    userId={this.props.match.params.userId}
+                    groupId={Number(this.props.match.params.groupId)}
+                    userId={Number(this.props.match.params.userId)}
                 />
             </Fragment>
         );

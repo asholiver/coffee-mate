@@ -30,14 +30,13 @@ class GroupSearch extends Component {
     };
 
     render() {
-        const { name } = this.state;
         return (
             <Fragment>
                 <Body>SEARCH</Body>
                 <Footer
-                    hasLinks="true"
-                    groupId={this.props.match.params.groupId}
-                    userId={this.props.match.params.userId}
+                    hasLinks={true}
+                    groupId={Number(this.props.match.params.groupId)}
+                    userId={Number(this.props.match.params.userId)}
                 />
             </Fragment>
         );
