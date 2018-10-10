@@ -1,12 +1,11 @@
 .c-nav-item {
     align-items: center;
     display: flex;
-
     padding: 0 16px;
 }
 
 .c-nav-item__link {
-    color: var(--g-color-primary);
+    color: var(--g-color-white-500);
     display: block;
     text-decoration: none;
     padding: 32px 0px;
@@ -23,14 +22,12 @@
     background-color: red;
 }
 
-.c-nav--border .c-nav-item {
-    border-bottom: 1px solid var(--g-color-primary);
-}
-
 .c-nav-item--column {
-    border-bottom: 1px solid var(--g-color-primary);
+    border-bottom: 1px solid var(--g-color-white-500);
 }
 
 .c-nav-item--inline {
-    border-right: 1px solid var(--g-color-primary);
+    border-right: 1px solid var(--g-color-white-500);
+    flex-grow: 1;
+    text-align: center;
 }

@@ -1,7 +1,12 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Route } from "react-router-dom";
-import { Welcome, GroupDetails } from "./../../containers";
+import {
+    Welcome,
+    GroupDetails,
+    GroupSearch,
+    GroupSettings
+} from "./../../containers";
 import { Header, Sidebar } from "./../../layout";
 import { move } from "./../../utils";
 
@@ -67,6 +72,16 @@ class App extends Component {
                 <Route
                     path="/app/:userId/group_details/:groupId"
                     component={GroupDetails}
+                />
+                <Route
+                    exact
+                    path="/app/:userId/group_details/:groupId/search"
+                    component={GroupSearch}
+                />
+                <Route
+                    exact
+                    path="/app/:userId/group_details/:groupId/settings"
+                    component={GroupSettings}
                 />
             </Fragment>
         );

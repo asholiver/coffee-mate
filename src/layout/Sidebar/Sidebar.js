@@ -47,9 +47,11 @@ class Sidebar extends Component {
                     helpText="close sidebar"
                 />
                 <NavList
+                    hasHome="true"
                     arr={groups}
                     onClick={onClick}
                     isColumn="true"
+                    userId={userId}
                     to={`/app/${userId}/group_details/`}
                 />
             </div>

@@ -81,7 +81,11 @@ class GroupDetails extends Component {
                         ))}
                     </ol>
                 </Body>
-                <Footer />
+                <Footer
+                    hasLinks="true"
+                    groupId={this.props.match.params.groupId}
+                    userId={this.props.match.params.userId}
+                />
             </Fragment>
         );
     }

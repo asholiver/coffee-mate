@@ -1,8 +1,12 @@
 .c-nav {
     display: flex;
-    width: 100%;
 }
 
 .c-nav--column {
     flex-direction: column;
+    width: 100%;
+}
+
+.c-nav--inline {
+    height: 100%;
 }

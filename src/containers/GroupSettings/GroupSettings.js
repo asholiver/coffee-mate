@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from "react";
-import { Body, Footer } from "./../../layout";
 import axios from "axios";
+import { Body, Footer } from "./../../layout";
 
-class GroupsList extends Component {
+class GroupSettings extends Component {
     state = {
         is_loading: true,
+        groupId: this.props.match.params.groupId,
         names: []
     };
     componentDidMount = () => {
@@ -33,22 +34,15 @@ class GroupsList extends Component {
         const { name } = this.state;
         return (
             <Fragment>
-                <Body>
-                    <p>Welcome back {name}!</p>
-                    <p>Its your round on these groups</p>
-                    <p>for r in (</p>
-                    <p>select *</p>
-                    <p>from groups </p>
-                    <p>
-                        where id = (select group_id from group_members where
-                        user_id = state.userId and display_order = 1)
-                    </p>
-                    <p>) loop</p>
-                </Body>
-                <Footer userId="userId" hasLinks="false" />
+                <Body>SETTINGS HERE</Body>
+                <Footer
+                    hasLinks="true"
+                    groupId={this.props.match.params.groupId}
+                    userId={this.props.match.params.userId}
+                />
             </Fragment>
         );
     }
 }
 
-export default GroupsList;
+export default GroupSettings;

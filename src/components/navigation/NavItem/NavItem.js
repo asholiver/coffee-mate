@@ -7,7 +7,7 @@ const NavItem = ({ name, id, userId, handleClick, isColumn, to }) => {
     const classes = classNames({
         "c-nav-item": true,
         "c-nav-item--column": isColumn,
-        "c-nav--inline": !isColumn
+        "c-nav-item--inline": !isColumn
     });
     return (
         <li className={classes}>
