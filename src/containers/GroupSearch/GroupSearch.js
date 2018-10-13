@@ -4,8 +4,8 @@ import { Page } from "./../../layout";
 
 class GroupSearch extends Component {
     state = {
-        userId: this.props.match.params.userId,
-        groupId: this.props.match.params.groupId,
+        userId: Number(this.props.match.params.userId),
+        groupId: Number(this.props.match.params.groupId),
         isLoading: true,
         names: []
     };

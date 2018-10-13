@@ -4,7 +4,7 @@ import axios from "axios";
 
 class Welcome extends Component {
     state = {
-        userId: this.props.match.params.userId,
+        userId: Number(this.props.match.params.userId),
         isLoading: true,
         names: []
     };

@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { ErrorMessage, Label } from "./../index";
 import "./TextField.css";
 
 const TextField = ({
@@ -17,9 +18,7 @@ const TextField = ({
     });
     return (
         <div className={getClasses}>
-            <label className="c-form-field__label" htmlFor={`id_${name}`}>
-                {label}
-            </label>
+            <Label name={name} text={label} />
             <input
                 id={`id_${name}`}
                 className="c-form-field__input"
@@ -28,11 +27,7 @@ const TextField = ({
                 onChange={onChange}
                 value={value}
             />
-            <span className="c-form-field__error_message">
-                {errorMessage == null
-                    ? "This field is required."
-                    : errorMessage}
-            </span>
+            <ErrorMessage message={errorMessage} />
         </div>
     );
 };

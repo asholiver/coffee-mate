@@ -1,16 +1,18 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Page } from "./../../layout";
-import { Button } from "./../../components";
+import { Button, Select } from "./../../components";
 import { Redirect } from "react-router-dom";
 
 class GroupSettings extends Component {
     state = {
         isLoading: true,
-        userId: this.props.match.params.userId,
-        groupId: this.props.match.params.groupId,
+        userId: Number(this.props.match.params.userId),
+        groupId: Number(this.props.match.params.groupId),
         data: [],
-        members: []
+        members: [],
+        new_member: "",
+        select: [{ name: "hello", value: "2" }, { name: "goodbye", value: "2" }]
     };
     componentDidMount = () => {
         // Make a request for a user with a given ID
@@ -51,31 +53,58 @@ class GroupSettings extends Component {
             });
     };
 
+    handleChange = e => {
+        this.setState({ new_member: e.target.value });
+    };
+
+    addMember = e => {
+        axios
+            .post("https://coffee-mate-server.herokuapp.com/api//user_groups", {
+                user_id: this.state.new_member
+            })
+            .then(response => {
+                this.setState({
+                    new_member: ""
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    };
+
     render() {
         const { userId, groupId, data, members, isLoading } = this.state;
         if (groupId > 0) {
             return (
-                <Page hasLinks={true} groupId={groupId} userId={userId} isLoading={isLoading}>
+                <Page
+                    hasLinks={true}
+                    groupId={groupId}
+                    userId={userId}
+                    isLoading={isLoading}
+                >
                     <Fragment>
+                        <Select
+                            label="test"
+                            name="new_member"
+                            options={this.state.select}
+                        />
                         <p>Name: {data.name}</p>
                         <p>Admin: {data.created_by}</p>
                         {members != null ? (
-                            <p>
+                            <div>
                                 Members:
                                 {members.map(member => (
-                                    <p key={member.user_id}>
+                                    <div key={member.user_id}>
                                         <p>
                                             {member.first_name}{" "}
                                             {member.last_name}
                                         </p>
                                         <p>Order: {member.display_order}</p>
                                         <p>{member.user_id}</p>
-                                        <p>
-                                            Joined group: {member.added_on}
-                                        </p>
-                                    </p>
+                                        <p>Joined group: {member.added_on}</p>
+                                    </div>
                                 ))}
-                            </p>
+                            </div>
                         ) : (
                             <p>No Members</p>
                         )}

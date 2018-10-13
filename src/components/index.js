@@ -1,9 +1,9 @@
 import { Button, ButtonGroup, ButtonIconOnly } from "./buttons";
+import { Select, TextField } from "./FormFields";
 import { Icon, Icons } from "./icons";
 import Link from "./Link";
 import GroupMember from "./GroupMember";
 import { NavItem, NavList } from "./navigation";
-import TextField from "./TextField";
 
 export {
     Button,
@@ -15,5 +15,6 @@ export {
     GroupMember,
     NavItem,
     NavList,
+    Select,
     TextField
 };

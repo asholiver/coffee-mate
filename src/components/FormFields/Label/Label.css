@@ -1,0 +1,6 @@
+.c-form-field__error_message {
+    color: var(--g-color-red-500);
+    display: none;
+    font-size: 12px;
+    font-weight: lighter;
+}

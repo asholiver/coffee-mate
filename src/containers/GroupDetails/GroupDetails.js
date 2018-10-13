@@ -6,8 +6,8 @@ import axios from "axios";
 
 class GroupDetails extends Component {
     state = {
-        userId: this.props.match.params.userId,
-        groupId: this.props.match.params.groupId,
+        userId: Number(this.props.match.params.userId),
+        groupId: Number(this.props.match.params.groupId),
         isLoading: true,
         group_name: "",
         names: []
