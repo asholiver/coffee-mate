@@ -1,9 +1,11 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import axios from "axios";
-import { Body, Footer } from "./../../layout";
+import { Page } from "./../../layout";
 
 class GroupSearch extends Component {
     state = {
+        userId: this.props.match.params.userId,
+        groupId: this.props.match.params.groupId,
         is_loading: true,
         names: []
     };
@@ -30,15 +32,11 @@ class GroupSearch extends Component {
     };
 
     render() {
+        const { userId, groupId } = this.state;
         return (
-            <Fragment>
-                <Body>SEARCH</Body>
-                <Footer
-                    hasLinks={true}
-                    groupId={Number(this.props.match.params.groupId)}
-                    userId={Number(this.props.match.params.userId)}
-                />
-            </Fragment>
+            <Page hasLinks={true} userId={userId} groupId={groupId}>
+                SEARCH
+            </Page>
         );
     }
 }

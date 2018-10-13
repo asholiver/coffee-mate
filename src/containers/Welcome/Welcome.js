@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
-import { Body, Footer } from "./../../layout";
+import { Page } from "./../../layout";
 import axios from "axios";
 
-class GroupsList extends Component {
+class Welcome extends Component {
     state = {
+        userId: this.props.match.params.userId,
         is_loading: true,
         names: []
     };
@@ -30,30 +31,28 @@ class GroupsList extends Component {
     };
 
     render() {
-        const { name, is_loading } = this.state;
-        const { userId } = this.props;
-        return is_loading ? (
-            <Body>
-                <div>Loading...</div>
-            </Body>
-        ) : (
-            <Fragment>
-                <Body>
-                    <p>Welcome back {name}!</p>
-                    <p>Its your round on these groups</p>
-                    <p>for r in (</p>
-                    <p>select *</p>
-                    <p>from groups </p>
-                    <p>
-                        where id = (select group_id from group_members where
-                        user_id = state.userId and display_order = 1)
-                    </p>
-                    <p>) loop</p>
-                </Body>
-                <Footer userId={Number(userId)} hasLinks={false} />
-            </Fragment>
+        const { name, is_loading, userId } = this.state;
+        return (
+            <Page hasLinks={false} userId={userId}>
+                {is_loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <Fragment>
+                        <p>Welcome back {name}!</p>
+                        <p>Its your round on these groups</p>
+                        <p>for r in (</p>
+                        <p>select *</p>
+                        <p>from groups </p>
+                        <p>
+                            where id = (select group_id from group_members where
+                            user_id = state.userId and display_order = 1)
+                        </p>
+                        <p>) loop</p>
+                    </Fragment>
+                )}
+            </Page>
         );
     }
 }
 
-export default GroupsList;
+export default Welcome;

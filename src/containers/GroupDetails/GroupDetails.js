@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { GroupMember } from "./../../components";
-import { Body, Footer } from "./../../layout";
+import { Page } from "./../../layout";
 import { move } from "./../../utils";
 import axios from "axios";
 
 class GroupDetails extends Component {
     state = {
+        userId: this.props.match.params.userId,
+        groupId: this.props.match.params.groupId,
         is_loading: true,
         group_name: "",
         names: [],
@@ -61,39 +63,34 @@ class GroupDetails extends Component {
     };
 
     render() {
-        const { names, is_loading, group_name } = this.state;
-        return is_loading ? (
-            <Body>
-                <div>Loading...</div>
-            </Body>
-        ) : (
-            <Fragment>
-                <Body>
-                    <p className="c-paragraph">{group_name}</p>
-                    <p className="c-paragraph">Its your round</p>
-                    {names != null ? (
-                        <ol className="c-group-link-container">
-                            {names.map((e, index) => (
-                                <GroupMember
-                                    name={`${e.first_name} ${e.last_name}`}
-                                    handleDelete={this.deleteMember}
-                                    handleComplete={this.completedOrder}
-                                    id={e.display_order}
-                                    isActive={index === 0}
-                                    key={index}
-                                />
-                            ))}
-                        </ol>
-                    ) : (
-                        <p>There are no members in this group</p>
-                    )}
-                </Body>
-                <Footer
-                    hasLinks={true}
-                    groupId={Number(this.props.match.params.groupId)}
-                    userId={Number(this.props.match.params.userId)}
-                />
-            </Fragment>
+        const { names, is_loading, group_name, userId, groupId } = this.state;
+        return (
+            <Page hasLinks={true} userId={userId} groupId={groupId}>
+                {is_loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <Fragment>
+                        <p className="c-paragraph">{group_name}</p>
+                        <p className="c-paragraph">Its your round</p>
+                        {names != null ? (
+                            <ol className="c-group-link-container">
+                                {names.map((e, index) => (
+                                    <GroupMember
+                                        name={`${e.first_name} ${e.last_name}`}
+                                        handleDelete={this.deleteMember}
+                                        handleComplete={this.completedOrder}
+                                        id={e.display_order}
+                                        isActive={index === 0}
+                                        key={index}
+                                    />
+                                ))}
+                            </ol>
+                        ) : (
+                            <p>There are no members in this group</p>
+                        )}
+                    </Fragment>
+                )}
+            </Page>
         );
     }
 }

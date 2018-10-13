@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from "react";
-import { Body, Footer } from "./../../layout";
+import React, { Component } from "react";
+import { Page } from "./../../layout";
 import { TextField, Button } from "./../../components";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
@@ -37,30 +37,24 @@ class CreateGroup extends Component {
         const { userId, newGroupId } = this.state;
         if (newGroupId > 0) {
             return (
-                <Redirect
-                    to={`/app/${this.props.match.params
-                        .userId}/group_details/${newGroupId}`}
-                />
+                <Redirect to={`/app/${userId}/group_details/${newGroupId}`} />
             );
         }
 
         return (
-            <Fragment>
-                <Body>
-                    <TextField
-                        label="Group name"
-                        name="new_group"
-                        onChange={this.handleChange}
-                    />
-                    <Button
-                        type="submit"
-                        text="Create"
-                        buttonStyle="primary"
-                        onClick={this.addGroup}
-                    />
-                </Body>
-                <Footer userId={Number(userId)} hasLinks={false} />
-            </Fragment>
+            <Page hasLinks={false} userId={userId}>
+                <TextField
+                    label="Group name"
+                    name="new_group"
+                    onChange={this.handleChange}
+                />
+                <Button
+                    type="submit"
+                    text="Create"
+                    buttonStyle="primary"
+                    onClick={this.addGroup}
+                />
+            </Page>
         );
     }
 }
