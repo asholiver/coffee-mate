@@ -6,7 +6,7 @@ class GroupSearch extends Component {
     state = {
         userId: this.props.match.params.userId,
         groupId: this.props.match.params.groupId,
-        is_loading: true,
+        isLoading: true,
         names: []
     };
     componentDidMount = () => {
@@ -27,14 +27,19 @@ class GroupSearch extends Component {
                 console.log(error);
             })
             .then(() => {
-                this.setState({ is_loading: false });
+                this.setState({ isLoading: false });
             });
     };
 
     render() {
-        const { userId, groupId } = this.state;
+        const { userId, groupId, isLoading } = this.state;
         return (
-            <Page hasLinks={true} userId={userId} groupId={groupId}>
+            <Page
+                hasLinks={true}
+                userId={userId}
+                groupId={groupId}
+                isLoading={isLoading}
+            >
                 SEARCH
             </Page>
         );

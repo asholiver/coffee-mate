@@ -55,41 +55,37 @@ class GroupSettings extends Component {
         const { userId, groupId, data, members, isLoading } = this.state;
         if (groupId > 0) {
             return (
-                <Page hasLinks={true} groupId={groupId} userId={userId}>
-                    {isLoading ? (
-                        <div>Loading...</div>
-                    ) : (
-                        <Fragment>
-                            <p>Name: {data.name}</p>
-                            <p>Admin: {data.created_by}</p>
-                            {members != null ? (
-                                <p>
-                                    Members:
-                                    {members.map(member => (
-                                        <p key={member.user_id}>
-                                            <p>
-                                                {member.first_name}{" "}
-                                                {member.last_name}
-                                            </p>
-                                            <p>Order: {member.display_order}</p>
-                                            <p>{member.user_id}</p>
-                                            <p>
-                                                Joined group: {member.added_on}
-                                            </p>
+                <Page hasLinks={true} groupId={groupId} userId={userId} isLoading={isLoading}>
+                    <Fragment>
+                        <p>Name: {data.name}</p>
+                        <p>Admin: {data.created_by}</p>
+                        {members != null ? (
+                            <p>
+                                Members:
+                                {members.map(member => (
+                                    <p key={member.user_id}>
+                                        <p>
+                                            {member.first_name}{" "}
+                                            {member.last_name}
                                         </p>
-                                    ))}
-                                </p>
-                            ) : (
-                                <p>No Members</p>
-                            )}
-                            <Button
-                                type="submit"
-                                text="Delete"
-                                buttonStyle="primary"
-                                onClick={this.deleteGroup}
-                            />
-                        </Fragment>
-                    )}
+                                        <p>Order: {member.display_order}</p>
+                                        <p>{member.user_id}</p>
+                                        <p>
+                                            Joined group: {member.added_on}
+                                        </p>
+                                    </p>
+                                ))}
+                            </p>
+                        ) : (
+                            <p>No Members</p>
+                        )}
+                        <Button
+                            type="submit"
+                            text="Delete"
+                            buttonStyle="primary"
+                            onClick={this.deleteGroup}
+                        />
+                    </Fragment>
                 </Page>
             );
         }

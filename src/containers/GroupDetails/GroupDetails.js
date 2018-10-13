@@ -8,16 +8,9 @@ class GroupDetails extends Component {
     state = {
         userId: this.props.match.params.userId,
         groupId: this.props.match.params.groupId,
-        is_loading: true,
+        isLoading: true,
         group_name: "",
-        names: [],
-        new_name: ""
-    };
-
-    handleChange = e => {
-        this.setState({
-            new_name: e.target.value
-        });
+        names: []
     };
 
     componentDidMount = () => {
@@ -39,15 +32,8 @@ class GroupDetails extends Component {
                 console.log(error);
             })
             .then(() => {
-                this.setState({ is_loading: false });
+                this.setState({ isLoading: false });
             });
-    };
-
-    addMember = e => {
-        this.setState({
-            names: this.state.names.concat(this.state.new_name),
-            new_name: ""
-        });
     };
 
     deleteMember = e => {
@@ -59,37 +45,51 @@ class GroupDetails extends Component {
     };
 
     completedOrder = e => {
+        axios
+            .post("https://coffee-mate-server.herokuapp.com/api/groups", {
+                new_name: this.state.new_group
+            })
+            .then(response => {
+                this.setState({
+                    newGroupId: response.data.id,
+                    new_group: ""
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
         this.setState({ names: move(this.state.names) });
     };
 
     render() {
-        const { names, is_loading, group_name, userId, groupId } = this.state;
+        const { names, isLoading, group_name, userId, groupId } = this.state;
         return (
-            <Page hasLinks={true} userId={userId} groupId={groupId}>
-                {is_loading ? (
-                    <div>Loading...</div>
-                ) : (
-                    <Fragment>
-                        <p className="c-paragraph">{group_name}</p>
-                        <p className="c-paragraph">Its your round</p>
-                        {names != null ? (
-                            <ol className="c-group-link-container">
-                                {names.map((e, index) => (
-                                    <GroupMember
-                                        name={`${e.first_name} ${e.last_name}`}
-                                        handleDelete={this.deleteMember}
-                                        handleComplete={this.completedOrder}
-                                        id={e.display_order}
-                                        isActive={index === 0}
-                                        key={index}
-                                    />
-                                ))}
-                            </ol>
-                        ) : (
-                            <p>There are no members in this group</p>
-                        )}
-                    </Fragment>
-                )}
+            <Page
+                hasLinks={true}
+                userId={userId}
+                groupId={groupId}
+                isLoading={isLoading}
+            >
+                <Fragment>
+                    <p className="c-paragraph">{group_name}</p>
+                    <p className="c-paragraph">Its your round</p>
+                    {names != null ? (
+                        <ol className="c-group-link-container">
+                            {names.map((e, index) => (
+                                <GroupMember
+                                    name={`${e.first_name} ${e.last_name}`}
+                                    handleDelete={this.deleteMember}
+                                    handleComplete={this.completedOrder}
+                                    id={e.display_order}
+                                    isActive={index === 0}
+                                    key={index}
+                                />
+                            ))}
+                        </ol>
+                    ) : (
+                        <p>There are no members in this group</p>
+                    )}
+                </Fragment>
             </Page>
         );
     }

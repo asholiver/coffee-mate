@@ -48,7 +48,7 @@ class Page extends Component {
         this.setState({ isSideBarVisible: !this.state.isSideBarVisible });
     };
     render() {
-        const { children, hasLinks } = this.props;
+        const { children, hasLinks, isLoading } = this.props;
         const { isSideBarVisible, userId, groupId } = this.state;
         return (
             <Fragment>
@@ -59,8 +59,11 @@ class Page extends Component {
                     userId={userId}
                 />
                 <Body>
-                    {userId}
-                    {children}
+                    {isLoading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <Fragment>{children}</Fragment>
+                    )}
                 </Body>
                 <Footer hasLinks={hasLinks} userId={userId} groupId={groupId} />
             </Fragment>
