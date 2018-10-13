@@ -27,7 +27,7 @@ const Select = ({
                     className="c-select__select"
                     onChange={onChange}
                 >
-                    <option disabled value="">
+                    <option disabled defaultValue value="">
                         Please select
                     </option>
                     {options.map((option, index) => (
@@ -36,7 +36,7 @@ const Select = ({
                         </option>
                     ))}
                 </select>
-                <Icon icon="hamburger" classes="c-select__icon" />
+                <Icon icon="arrow-down" classes="c-select__icon" />
             </span>
             <ErrorMessage message={errorMessage} />
         </div>

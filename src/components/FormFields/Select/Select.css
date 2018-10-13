@@ -37,8 +37,12 @@
     display: none;
 }
 
-.c-select.is-invalid {
+.c-select-container.is-invalid .c-select {
     border-color: var(--g-color-red-500);
+}
+
+.c-select-container.is-invalid .c-form-field__error_message {
+    display: block;
 }
 
 .c-select__icon {
