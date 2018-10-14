@@ -11,8 +11,7 @@ class GroupSettings extends Component {
         groupId: Number(this.props.match.params.groupId),
         data: [],
         members: [],
-        new_member: "",
-        users: [{ name: "hello", value: "2" }, { name: "goodbye", value: "2" }]
+        users: []
     };
     componentDidMount = () => {
         // Make a request for a user with a given ID
@@ -26,7 +25,6 @@ class GroupSettings extends Component {
                     data: response.data,
                     members: response.data.members
                 });
-                console.log(response);
             })
             .catch(function(error) {
                 // handle error
@@ -43,7 +41,6 @@ class GroupSettings extends Component {
                         name: `${user.first_name} ${user.last_name}`
                     }))
                 });
-                console.log(response);
             })
             .catch(function(error) {
                 // handle error
@@ -71,16 +68,22 @@ class GroupSettings extends Component {
     };
 
     deleteMember = e => {
+        const userToDelete = Number(e.currentTarget.value);
         axios
             .post(
                 `https://coffee-mate-server.herokuapp.com/api/user_groups/${this
                     .state.groupId}`,
                 {
-                    user_id: Number(e.currentTarget.value)
+                    user_id: userToDelete
                 }
             )
             .then(response => {
                 console.log("removed member");
+                this.setState({
+                    members: this.state.members.filter(
+                        user => user.user_id !== userToDelete
+                    )
+                });
             })
             .catch(function(error) {
                 console.log(error);
@@ -98,9 +101,11 @@ class GroupSettings extends Component {
                 group_id: this.state.groupId
             })
             .then(response => {
+                console.log(response);
                 this.setState({
                     new_member: ""
                 });
+                console.log("added member");
             })
             .catch(function(error) {
                 console.log(error);

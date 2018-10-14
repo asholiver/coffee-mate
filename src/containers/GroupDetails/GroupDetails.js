@@ -50,7 +50,7 @@ class GroupDetails extends Component {
         axios
             .post("https://coffee-mate-server.herokuapp.com/api/rounds", {
                 user_id: Number(e.currentTarget.value),
-                group_id: this.state.groupId
+                group_id: Number(this.state.groupId)
             })
             .then(response => {
                 this.setState({ names: move(this.state.names) });

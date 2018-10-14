@@ -4,8 +4,8 @@ import { Header, Sidebar, Body, Footer } from "./../../layout";
 
 class Page extends Component {
     state = {
-        userId: this.props.userId,
-        groupId: this.props.groupId,
+        userId: Number(this.props.userId),
+        groupId: Number(this.props.groupId),
         isSideBarVisible: false
     };
 
