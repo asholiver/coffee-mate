@@ -10,7 +10,7 @@ const Icon = ({ icon, size, ariaHidden, classes }) => {
     return (
         <svg
             aria-hidden={ariaHidden == null ? true : ariaHidden}
-            className={`${getClasses} ${classes}`}
+            className={`${getClasses} ${classes != null ? classes : ""}`}
         >
             <use xlinkHref={`#${icon}-icon`} />
         </svg>

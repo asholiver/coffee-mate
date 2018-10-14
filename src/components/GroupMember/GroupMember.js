@@ -10,7 +10,11 @@ const GroupMember = ({ name, handleDelete, handleComplete, id, isActive }) => {
     return (
         <li className={getClasses}>
             <span className="c-group-link__link">{name}</span>
-            {isActive ? <button onClick={handleComplete}>Done</button> : null}
+            {isActive ? (
+                <button value={id} onClick={handleComplete}>
+                    Done
+                </button>
+            ) : null}
             <button value={id} onClick={handleDelete}>
                 Delete
             </button>

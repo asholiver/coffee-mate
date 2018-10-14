@@ -2,10 +2,19 @@ import React from "react";
 import "./ButtonIconOnly.css";
 import { Icon } from "./../../icons";
 
-const ButtonIconOnly = ({ buttonOnClick, icon, classes, size, helpText }) => (
+const ButtonIconOnly = ({
+    buttonOnClick,
+    icon,
+    classes,
+    size,
+    helpText,
+    buttonValue,
+    type
+}) => (
     <button
-        type="button"
-        className={`c-button-icon-only ${classes}`}
+        value={buttonValue}
+        type={type == null ? "button" : type}
+        className={`c-button-icon-only ${classes != null ? classes : ""}`}
         onClick={buttonOnClick}
     >
         <span className="h-hide-visually">{helpText}</span>

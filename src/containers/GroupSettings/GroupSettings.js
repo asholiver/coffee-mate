@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Page } from "./../../layout";
-import { Button, Select } from "./../../components";
+import { Button, ButtonIconOnly, Select } from "./../../components";
 import { Redirect } from "react-router-dom";
 
 class GroupSettings extends Component {
@@ -12,7 +12,7 @@ class GroupSettings extends Component {
         data: [],
         members: [],
         new_member: "",
-        select: [{ name: "hello", value: "2" }, { name: "goodbye", value: "2" }]
+        users: [{ name: "hello", value: "2" }, { name: "goodbye", value: "2" }]
     };
     componentDidMount = () => {
         // Make a request for a user with a given ID
@@ -25,6 +25,23 @@ class GroupSettings extends Component {
                 this.setState({
                     data: response.data,
                     members: response.data.members
+                });
+                console.log(response);
+            })
+            .catch(function(error) {
+                // handle error
+                console.log(error);
+            })
+            .then(() => {});
+
+        axios
+            .get("https://coffee-mate-server.herokuapp.com/api/users")
+            .then(response => {
+                this.setState({
+                    users: response.data.map((user, index) => ({
+                        value: user.id,
+                        name: `${user.first_name} ${user.last_name}`
+                    }))
                 });
                 console.log(response);
             })
@@ -53,14 +70,32 @@ class GroupSettings extends Component {
             });
     };
 
+    deleteMember = e => {
+        axios
+            .post(
+                `https://coffee-mate-server.herokuapp.com/api/user_groups/${this
+                    .state.groupId}`,
+                {
+                    user_id: e.currentTarget.value
+                }
+            )
+            .then(response => {
+                console.log("removed member");
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    };
+
     handleChange = e => {
         this.setState({ new_member: e.target.value });
     };
 
     addMember = e => {
         axios
-            .post("https://coffee-mate-server.herokuapp.com/api//user_groups", {
-                user_id: this.state.new_member
+            .post("https://coffee-mate-server.herokuapp.com/api/user_groups", {
+                user_id: e.target.value,
+                group_id: this.state.groupId
             })
             .then(response => {
                 this.setState({
@@ -73,7 +108,7 @@ class GroupSettings extends Component {
     };
 
     render() {
-        const { userId, groupId, data, members, isLoading } = this.state;
+        const { userId, groupId, data, members, isLoading, users } = this.state;
         if (groupId > 0) {
             return (
                 <Page
@@ -84,27 +119,36 @@ class GroupSettings extends Component {
                 >
                     <Fragment>
                         <Select
-                            label="test"
+                            label="Add member"
                             name="new_member"
-                            options={this.state.select}
+                            options={users}
+                            onChange={this.addMember}
                         />
                         <p>Name: {data.name}</p>
                         <p>Admin: {data.created_by}</p>
                         {members != null ? (
-                            <div>
-                                Members:
-                                {members.map(member => (
-                                    <div key={member.user_id}>
-                                        <p>
-                                            {member.first_name}{" "}
-                                            {member.last_name}
-                                        </p>
-                                        <p>Order: {member.display_order}</p>
-                                        <p>{member.user_id}</p>
-                                        <p>Joined group: {member.added_on}</p>
-                                    </div>
-                                ))}
-                            </div>
+                            <Fragment>
+                                <p> Members:</p>
+                                <ol>
+                                    {members.map(member => (
+                                        <li key={member.user_id}>
+                                            <span>
+                                                {member.first_name}{" "}
+                                                {member.last_name}
+                                            </span>
+                                            <ButtonIconOnly
+                                                buttonValue={member.user_id}
+                                                buttonOnClick={
+                                                    this.deleteMember
+                                                }
+                                                icon="close"
+                                                size="x-small"
+                                                helpText="delete member"
+                                            />
+                                        </li>
+                                    ))}
+                                </ol>
+                            </Fragment>
                         ) : (
                             <p>No Members</p>
                         )}

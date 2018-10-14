@@ -45,20 +45,20 @@ class GroupDetails extends Component {
     };
 
     completedOrder = e => {
+        console.log(e.currentTarget.value);
+        console.log(this.state.groupId);
         axios
-            .post("https://coffee-mate-server.herokuapp.com/api/groups", {
-                new_name: this.state.new_group
+            .post("https://coffee-mate-server.herokuapp.com/api/rounds", {
+                user_id: Number(e.currentTarget.value),
+                group_id: this.state.groupId
             })
             .then(response => {
-                this.setState({
-                    newGroupId: response.data.id,
-                    new_group: ""
-                });
+                this.setState({ names: move(this.state.names) });
+                console.log("updated rounds");
             })
             .catch(function(error) {
                 console.log(error);
             });
-        this.setState({ names: move(this.state.names) });
     };
 
     render() {
@@ -77,10 +77,10 @@ class GroupDetails extends Component {
                         <ol className="c-group-link-container">
                             {names.map((e, index) => (
                                 <GroupMember
-                                    name={`${e.first_name} ${e.last_name}`}
+                                    name={`${e.first_name} ${e.last_name} ${e.user_id}`}
                                     handleDelete={this.deleteMember}
                                     handleComplete={this.completedOrder}
-                                    id={e.display_order}
+                                    id={e.user_id}
                                     isActive={index === 0}
                                     key={index}
                                 />

@@ -27,7 +27,7 @@ const Select = ({
                     className="c-select__select"
                     onChange={onChange}
                 >
-                    <option disabled defaultValue value="">
+                    <option defaultValue value="">
                         Please select
                     </option>
                     {options.map((option, index) => (
