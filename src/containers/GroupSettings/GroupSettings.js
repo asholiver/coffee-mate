@@ -11,7 +11,8 @@ class GroupSettings extends Component {
         groupId: Number(this.props.match.params.groupId),
         data: [],
         members: [],
-        users: []
+        users: [],
+        membersId: []
     };
     componentDidMount = () => {
         // Make a request for a user with a given ID
@@ -23,7 +24,10 @@ class GroupSettings extends Component {
             .then(response => {
                 this.setState({
                     data: response.data,
-                    members: response.data.members
+                    members: response.data.members,
+                    membersId: response.data.members.map((user, index) => ({
+                        id: user.user_id
+                    }))
                 });
             })
             .catch(function(error) {
@@ -90,10 +94,6 @@ class GroupSettings extends Component {
             });
     };
 
-    handleChange = e => {
-        this.setState({ new_member: e.target.value });
-    };
-
     addMember = e => {
         axios
             .post("https://coffee-mate-server.herokuapp.com/api/user_groups", {
@@ -103,7 +103,7 @@ class GroupSettings extends Component {
             .then(response => {
                 console.log(response);
                 this.setState({
-                    new_member: ""
+                    hasUpdated: true
                 });
                 console.log("added member");
             })
@@ -113,7 +113,15 @@ class GroupSettings extends Component {
     };
 
     render() {
-        const { userId, groupId, data, members, isLoading, users } = this.state;
+        const {
+            userId,
+            groupId,
+            data,
+            members,
+            isLoading,
+            users,
+            membersId
+        } = this.state;
         if (groupId > 0) {
             return (
                 <Page
@@ -123,6 +131,7 @@ class GroupSettings extends Component {
                     isLoading={isLoading}
                 >
                     <Fragment>
+                        {membersId.map(member => <p>{member.id}</p>)}
                         <Select
                             label="Add member"
                             name="new_member"
