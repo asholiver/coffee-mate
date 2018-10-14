@@ -76,7 +76,7 @@ class GroupSettings extends Component {
                 `https://coffee-mate-server.herokuapp.com/api/user_groups/${this
                     .state.groupId}`,
                 {
-                    user_id: e.currentTarget.value
+                    user_id: Number(e.currentTarget.value)
                 }
             )
             .then(response => {
