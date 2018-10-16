@@ -2,9 +2,10 @@ import React from "react";
 import "./Button.css";
 import classNames from "classnames";
 
-const Button = ({ text, buttonStyle, type, onClick }) => {
+const Button = ({ text, buttonStyle, type, onClick, size }) => {
     const classes = classNames({
         "c-button": true,
+        [`c-button--${size}`]: size == null ? false : true,
         [`c-button--${buttonStyle}`]: buttonStyle == null ? false : true
     });
     return (

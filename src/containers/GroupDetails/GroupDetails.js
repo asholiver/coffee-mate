@@ -77,7 +77,7 @@ class GroupDetails extends Component {
                         <ol className="c-group-link-container">
                             {names.map((e, index) => (
                                 <GroupMember
-                                    name={`${e.first_name} ${e.last_name} ${e.user_id}`}
+                                    name={`${e.first_name} ${e.last_name}`}
                                     handleDelete={this.deleteMember}
                                     handleComplete={this.completedOrder}
                                     id={e.user_id}

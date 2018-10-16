@@ -113,15 +113,7 @@ class GroupSettings extends Component {
     };
 
     render() {
-        const {
-            userId,
-            groupId,
-            data,
-            members,
-            isLoading,
-            users,
-            membersId
-        } = this.state;
+        const { userId, groupId, data, members, isLoading, users } = this.state;
         if (groupId > 0) {
             return (
                 <Page
@@ -131,7 +123,6 @@ class GroupSettings extends Component {
                     isLoading={isLoading}
                 >
                     <Fragment>
-                        {membersId.map(member => <p>{member.id}</p>)}
                         <Select
                             label="Add member"
                             name="new_member"
@@ -145,7 +136,7 @@ class GroupSettings extends Component {
                                 <p> Members:</p>
                                 <ol>
                                     {members.map(member => (
-                                        <li key={member.user_id}>
+                                        <li key={member.user_id} className="h-display-flex">
                                             <span>
                                                 {member.first_name}{" "}
                                                 {member.last_name}

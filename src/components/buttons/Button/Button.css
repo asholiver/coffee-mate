@@ -1,9 +1,12 @@
 .c-button {
+    align-items: center;
     border-radius: 3px;
+    display: flex;
     font-size: 16px;
     font-weight: lighter;
+    justify-content: center;
     padding: 8px 16px;
-    height: 60px;
+    min-height: 60px;
 }
 
 .c-button--primary {
@@ -14,4 +17,8 @@
 .c-button--secondary {
     background-color: var(--g-color-blue-500);
     color: var(--g-color-white-500);
+}
+
+.c-button--small {
+    min-height: 30px;
 }

@@ -11,11 +11,16 @@
 }
 
 .c-icon--small {
-    height: 36px;
-    width: 36px;
+    height: 32px;
+    width: 32px;
 }
 
 .c-icon--x-small {
-    height: 30px;
-    width: 30px;
+    height: 24px;
+    width: 24px;
+}
+
+.c-icon--2x-small {
+    height: 16px;
+    width: 16px;
 }
