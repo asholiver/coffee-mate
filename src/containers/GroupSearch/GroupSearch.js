@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Page } from "./../../layout";
+import API_ROOT from "./../../constants/api-root";
 
 class GroupSearch extends Component {
     state = {
@@ -12,10 +13,7 @@ class GroupSearch extends Component {
     componentDidMount = () => {
         // Make a request for a user with a given ID
         axios
-            .get(
-                `https://coffee-mate-server.herokuapp.com/api/users/${this.props
-                    .match.params.userId}`
-            )
+            .get(`${API_ROOT}api/users/${this.props.match.params.userId}`)
             .then(response => {
                 this.setState({
                     name: response.data.first_name

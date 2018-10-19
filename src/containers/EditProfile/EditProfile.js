@@ -3,6 +3,7 @@ import { Page } from "./../../layout";
 import { TextField, Button } from "./../../components";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import API_ROOT from "./../../constants/api-root";
 
 class EditProfile extends Component {
     state = {
@@ -15,10 +16,7 @@ class EditProfile extends Component {
     componentDidMount = () => {
         // Make a request for a user with a given ID
         axios
-            .get(
-                `https://coffee-mate-server.herokuapp.com/api/users/${this.state
-                    .userId}`
-            )
+            .get(`${API_ROOT}api/users/${this.state.userId}`)
             .then(response => {
                 this.setState({
                     new_first_name: response.data.first_name,
@@ -42,14 +40,10 @@ class EditProfile extends Component {
 
     updateUser = e => {
         axios
-            .put(
-                `https://coffee-mate-server.herokuapp.com/api/users/${this.state
-                    .userId}`,
-                {
-                    first_name: this.state.new_first_name,
-                    last_name: this.state.new_last_name
-                }
-            )
+            .put(`${API_ROOT}api/users/${this.state.userId}`, {
+                first_name: this.state.new_first_name,
+                last_name: this.state.new_last_name
+            })
             .then(response => {
                 this.setState({
                     hasUpdated: true

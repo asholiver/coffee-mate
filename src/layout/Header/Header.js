@@ -12,11 +12,6 @@ const Header = ({ buttonOnClick }) => (
             icon="hamburger"
             helpText="open sidebar"
         />
-        <ButtonIconOnly
-            buttonOnClick={buttonOnClick}
-            icon="cogs"
-            helpText="settings"
-        />
     </header>
 );
 

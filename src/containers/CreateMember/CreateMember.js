@@ -3,6 +3,7 @@ import { Page } from "./../../layout";
 import { TextField, Button } from "./../../components";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import API_ROOT from "./../../constants/api-root";
 
 class CreateMember extends Component {
     state = {
@@ -21,7 +22,7 @@ class CreateMember extends Component {
 
     addUser = e => {
         axios
-            .post("https://coffee-mate-server.herokuapp.com/api/users", {
+            .post(`${API_ROOT}api/users`, {
                 first_name: this.state.new_first_name,
                 last_name: this.state.new_last_name,
                 email: this.state.new_email

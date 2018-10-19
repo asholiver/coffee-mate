@@ -3,6 +3,7 @@ import axios from "axios";
 import { Page } from "./../../layout";
 import { Button, ButtonIconOnly, Select } from "./../../components";
 import { Redirect } from "react-router-dom";
+import API_ROOT from "./../../constants/api-root";
 
 class GroupSettings extends Component {
     state = {
@@ -17,10 +18,7 @@ class GroupSettings extends Component {
     componentDidMount = () => {
         // Make a request for a user with a given ID
         axios
-            .get(
-                `https://coffee-mate-server.herokuapp.com/api/groups/${this
-                    .state.groupId}`
-            )
+            .get(`${API_ROOT}api/groups/${this.state.groupId}`)
             .then(response => {
                 this.setState({
                     data: response.data,
@@ -37,7 +35,7 @@ class GroupSettings extends Component {
             .then(() => {});
 
         axios
-            .get("https://coffee-mate-server.herokuapp.com/api/users")
+            .get(`${API_ROOT}api/users`)
             .then(response => {
                 this.setState({
                     users: response.data.map((user, index) => ({
@@ -57,10 +55,7 @@ class GroupSettings extends Component {
 
     deleteGroup = e => {
         axios
-            .post(
-                `https://coffee-mate-server.herokuapp.com/api/groups/${this
-                    .state.groupId}`
-            )
+            .post(`${API_ROOT}api/groups/${this.state.groupId}`)
             .then(response => {
                 this.setState({
                     groupId: 0
@@ -74,13 +69,9 @@ class GroupSettings extends Component {
     deleteMember = e => {
         const userToDelete = Number(e.currentTarget.value);
         axios
-            .post(
-                `https://coffee-mate-server.herokuapp.com/api/user_groups/${this
-                    .state.groupId}`,
-                {
-                    user_id: userToDelete
-                }
-            )
+            .post(`${API_ROOT}api/user_groups/${this.state.groupId}`, {
+                user_id: userToDelete
+            })
             .then(response => {
                 console.log("removed member");
                 this.setState({
@@ -96,7 +87,7 @@ class GroupSettings extends Component {
 
     addMember = e => {
         axios
-            .post("https://coffee-mate-server.herokuapp.com/api/user_groups", {
+            .post(`${API_ROOT}api/user_groups`, {
                 user_id: e.target.value,
                 group_id: this.state.groupId
             })
@@ -136,7 +127,10 @@ class GroupSettings extends Component {
                                 <p> Members:</p>
                                 <ol>
                                     {members.map(member => (
-                                        <li key={member.user_id} className="h-display-flex">
+                                        <li
+                                            key={member.user_id}
+                                            className="h-display-flex"
+                                        >
                                             <span>
                                                 {member.first_name}{" "}
                                                 {member.last_name}

@@ -3,6 +3,7 @@ import { Page } from "./../../layout";
 import { TextField, Button } from "./../../components";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import API_ROOT from "./../../constants/api-root";
 
 class CreateGroup extends Component {
     state = {
@@ -16,10 +17,9 @@ class CreateGroup extends Component {
             new_group: e.target.value
         });
     };
-
     addGroup = e => {
         axios
-            .post("https://coffee-mate-server.herokuapp.com/api/groups", {
+            .post(`${API_ROOT}api/groups`, {
                 new_name: this.state.new_group
             })
             .then(response => {

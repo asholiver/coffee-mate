@@ -3,6 +3,7 @@ import { GroupMember } from "./../../components";
 import { Page } from "./../../layout";
 import { move } from "./../../utils";
 import axios from "axios";
+import API_ROOT from "./../../constants/api-root";
 
 class GroupDetails extends Component {
     state = {
@@ -16,10 +17,7 @@ class GroupDetails extends Component {
     componentDidMount = () => {
         // Make a request for a user with a given ID
         axios
-            .get(
-                `https://coffee-mate-server.herokuapp.com/api/groups/${this
-                    .props.match.params.groupId}`
-            )
+            .get(`${API_ROOT}api/groups/${this.props.match.params.groupId}`)
             .then(response => {
                 this.setState({
                     names: response.data.members,
@@ -48,7 +46,7 @@ class GroupDetails extends Component {
         console.log(e.currentTarget.value);
         console.log(this.state.groupId);
         axios
-            .post("https://coffee-mate-server.herokuapp.com/api/rounds", {
+            .post(`${API_ROOT}api/rounds`, {
                 user_id: Number(e.currentTarget.value),
                 group_id: Number(this.state.groupId)
             })
