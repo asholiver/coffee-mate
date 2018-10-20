@@ -13,8 +13,8 @@ const GroupMember = ({ name, handleDelete, handleComplete, id, isActive }) => {
             <span className="c-group-link__link">{name}</span>
             {isActive ? (
                 <Button
-                    type="submit"
-                    text="Done"
+                    text={`Done ${id}`}
+                    value={id}
                     buttonStyle="primary"
                     size="small"
                     onClick={handleComplete}

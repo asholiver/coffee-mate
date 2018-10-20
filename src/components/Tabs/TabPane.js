@@ -3,9 +3,13 @@ import "./TabSet.css";
 import classNames from "classnames";
 
 const TabPane = ({ children, id, isSelected }) => {
+    const classes = classNames({
+        "c-tabset__content": true,
+        "is-active": isSelected
+    });
     return (
         <section
-            className={`c-tabset__content ${isSelected ? "is-active" : ""}`}
+            className={classes}
             id={id}
             role="tabpanel"
             aria-hidden={!isSelected}

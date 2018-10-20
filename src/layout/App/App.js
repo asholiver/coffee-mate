@@ -7,7 +7,8 @@ import {
     Welcome,
     GroupDetails,
     GroupSearch,
-    GroupSettings
+    GroupSettings,
+    Blah
 } from "./../../containers";
 
 const App = () => {
@@ -28,6 +29,10 @@ const App = () => {
             <Route
                 path="/app/:userId/group_details/:groupId/settings"
                 component={GroupSettings}
+            />
+            <Route
+                path="/app/:userId/group_details/:groupId/tabset"
+                component={Blah}
             />
         </Fragment>
     );

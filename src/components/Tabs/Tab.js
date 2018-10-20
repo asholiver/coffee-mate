@@ -11,11 +11,15 @@ const Tab = ({
     isSelected,
     index
 }) => {
+    const classes = classNames({
+        "c-tabset__tab": true,
+        "is-active": isSelected
+    });
     return (
         <li className="c-tabset__item" role="presentation">
             <a
                 data-index={index}
-                className={`c-tabset__tab ${isSelected ? "is-active" : ""}`}
+                className={classes}
                 onKeyDown={handleKeyPress}
                 onClick={handleClick}
                 href={`#${href}`}

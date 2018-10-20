@@ -43,8 +43,6 @@ class GroupDetails extends Component {
     };
 
     completedOrder = e => {
-        console.log(e.currentTarget.value);
-        console.log(this.state.groupId);
         axios
             .post(`${API_ROOT}api/rounds`, {
                 user_id: Number(e.currentTarget.value),

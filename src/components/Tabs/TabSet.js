@@ -1,62 +1,67 @@
 import React, { Component } from "react";
 import "./TabSet.css";
-import classNames from "classnames";
+import { Tab, TabList, TabPane } from "./index";
+import Container from "./../Container";
+import { KEYCODES } from "./../../constants/constants";
 
 class TabSet extends Component {
     state = {
         indexSelected: this.props.defaultIndex
     };
-    render() {
-        const { data } = this.props;
-        const { indexSelected } = this.state;
 
-        const handleClick = event => {
-            const index = event.target.getAttribute("data-index");
-            this.setState({
-                indexSelected: index
-            });
-        };
+    handleClick = e => {
+        const index = e.target.getAttribute("data-index");
+        this.setState({
+            indexSelected: index
+        });
+    };
 
-        const handleKeyPress = event => {
-            if (
-                event.keyCode == KEYCODES.leftArrow ||
-                event.keyCode == KEYCODES.rightArrow
-            ) {
-                const currentIndex = Number(
-                    event.target.getAttribute("data-index")
-                );
-                let newIndex;
-                if (event.keyCode == KEYCODES.leftArrow) {
-                    newIndex =
-                        currentIndex === 0 ? data.length - 1 : currentIndex - 1;
-                } else {
-                    //if right arrow
-                    newIndex =
-                        currentIndex === data.length - 1 ? 0 : currentIndex + 1;
-                }
-                this.setState({
-                    indexSelected: String(newIndex)
-                });
+    handleKeyPress = e => {
+        if (
+            e.keyCode === KEYCODES.leftArrow ||
+            e.keyCode === KEYCODES.rightArrow
+        ) {
+            const currentIndex = Number(e.target.getAttribute("data-index"));
+            let newIndex;
+            if (e.keyCode === KEYCODES.leftArrow) {
+                newIndex =
+                    currentIndex === 0
+                        ? this.props.tabData.length - 1
+                        : currentIndex - 1;
+            } else {
+                //if right arrow
+                newIndex =
+                    currentIndex === this.props.tabData.length - 1
+                        ? 0
+                        : currentIndex + 1;
             }
-        };
-
+            this.setState({
+                indexSelected: String(newIndex)
+            });
+        }
+    };
+    render() {
+        const { tabData } = this.props;
+        const { indexSelected } = this.state;
         return (
             <Container>
-                <Tablist>
-                    {data.map((item, i) => (
+                <TabList>
+                    {tabData.map((item, i) => (
                         <Tab
+                            key={item.id}
                             index={i}
-                            handleKeyPress={handleKeyPress}
-                            handleClick={handleClick}
+                            handleKeyPress={this.handleKeyPress}
+                            handleClick={this.handleClick}
                             id={item.id}
                             href={item.href}
                             isSelected={indexSelected === String(i)}
                             label={item.label}
                         />
                     ))}
-                </Tablist>
-                {data.map((item, i) => (
+                </TabList>
+                {tabData.map((item, i) => (
                     <TabPane
+                        key={item.id}
                         id={item.id}
                         title={item.title}
                         isSelected={indexSelected === String(i)}

@@ -2,7 +2,7 @@ import React from "react";
 import "./Button.css";
 import classNames from "classnames";
 
-const Button = ({ text, buttonStyle, type, onClick, size }) => {
+const Button = ({ text, buttonStyle, type, onClick, size, value }) => {
     const classes = classNames({
         "c-button": true,
         [`c-button--${size}`]: size == null ? false : true,
@@ -13,6 +13,7 @@ const Button = ({ text, buttonStyle, type, onClick, size }) => {
             type={type == null ? "button" : "submit"}
             className={classes}
             onClick={onClick}
+            value={value}
         >
             {text}
         </button>

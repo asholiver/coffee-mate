@@ -16,6 +16,10 @@ const Footer = ({ userId, groupId, hasLinks }) => {
         {
             name: "Settings",
             to: `/app/${userId}/group_details/${groupId}/settings`
+        },
+        {
+            name: "Tabset",
+            to: `/app/${userId}/group_details/${groupId}/tabset`
         }
     ];
 

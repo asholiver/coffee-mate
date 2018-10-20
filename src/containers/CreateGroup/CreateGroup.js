@@ -14,7 +14,7 @@ class CreateGroup extends Component {
 
     handleChange = e => {
         this.setState({
-            new_group: e.target.value
+            [e.target.name]: e.target.value
         });
     };
     addGroup = e => {

@@ -5,6 +5,7 @@ import GroupDetails from "./GroupDetails";
 import GroupSearch from "./GroupSearch";
 import GroupSettings from "./GroupSettings";
 import LandingPage from "./LandingPage";
+import Blah from "./Blah";
 import Welcome from "./Welcome";
 
 export {
@@ -15,5 +16,6 @@ export {
     GroupSearch,
     GroupSettings,
     LandingPage,
-    Welcome
+    Welcome,
+    Blah
 };
