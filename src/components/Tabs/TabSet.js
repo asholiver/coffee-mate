@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import "./TabSet.css";
 import { Tab, TabList, TabPane } from "./index";
 import Container from "./../Container";
-import { KEYCODES } from "./../../constants/constants";
+
+const KEYCODES = {
+    leftArrow: 37,
+    rightArrow: 39
+};
 
 class TabSet extends Component {
     state = {
@@ -10,6 +14,7 @@ class TabSet extends Component {
     };
 
     handleClick = e => {
+        console.log("click");
         const index = e.target.getAttribute("data-index");
         this.setState({
             indexSelected: index
@@ -17,6 +22,7 @@ class TabSet extends Component {
     };
 
     handleKeyPress = e => {
+        const { tabData } = this.props;
         if (
             e.keyCode === KEYCODES.leftArrow ||
             e.keyCode === KEYCODES.rightArrow
@@ -25,50 +31,49 @@ class TabSet extends Component {
             let newIndex;
             if (e.keyCode === KEYCODES.leftArrow) {
                 newIndex =
-                    currentIndex === 0
-                        ? this.props.tabData.length - 1
-                        : currentIndex - 1;
+                    currentIndex === 0 ? tabData.length - 1 : currentIndex - 1;
             } else {
                 //if right arrow
                 newIndex =
-                    currentIndex === this.props.tabData.length - 1
-                        ? 0
-                        : currentIndex + 1;
+                    currentIndex === tabData.length - 1 ? 0 : currentIndex + 1;
             }
             this.setState({
                 indexSelected: String(newIndex)
             });
         }
     };
+
     render() {
         const { tabData } = this.props;
         const { indexSelected } = this.state;
         return (
             <Container>
-                <TabList>
+                <div className="c-tabset-container">
+                    <TabList>
+                        {tabData.map((item, i) => (
+                            <Tab
+                                key={item.id}
+                                index={i}
+                                handleKeyPress={this.handleKeyPress}
+                                handleClick={this.handleClick}
+                                id={item.id}
+                                href={item.href}
+                                isSelected={indexSelected === String(i)}
+                                label={item.label}
+                            />
+                        ))}
+                    </TabList>
                     {tabData.map((item, i) => (
-                        <Tab
+                        <TabPane
                             key={item.id}
-                            index={i}
-                            handleKeyPress={this.handleKeyPress}
-                            handleClick={this.handleClick}
                             id={item.id}
-                            href={item.href}
+                            title={item.title}
                             isSelected={indexSelected === String(i)}
-                            label={item.label}
-                        />
+                        >
+                            {item.content}
+                        </TabPane>
                     ))}
-                </TabList>
-                {tabData.map((item, i) => (
-                    <TabPane
-                        key={item.id}
-                        id={item.id}
-                        title={item.title}
-                        isSelected={indexSelected === String(i)}
-                    >
-                        {item.content}
-                    </TabPane>
-                ))}
+                </div>
             </Container>
         );
     }
