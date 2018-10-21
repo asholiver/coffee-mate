@@ -5,7 +5,7 @@
 }
 
 .c-nav-item__link {
-    color: var(--g-color-white-500);
+    color: var(--g-color-tertiary);
     display: block;
     text-decoration: none;
     padding: 32px 0px;

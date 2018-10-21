@@ -1,6 +1,7 @@
 import React from "react";
 import "./TabSet.css";
 import classNames from "classnames";
+import { Icon } from "./../icons";
 
 const Tab = ({
     label,
@@ -9,15 +10,26 @@ const Tab = ({
     handleClick,
     handleKeyPress,
     isSelected,
-    index
+    index,
+    icon
 }) => {
     const classes = classNames({
         "c-tabset__tab": true,
         "is-active": isSelected
     });
+
+    const ref = {
+        ref: isSelected
+            ? tab => {
+                  if (isSelected && tab) tab.focus();
+              }
+            : null
+        // https://facebook.github.io/react/docs/refs-and-the-dom.html#adding-a-ref-to-a-dom-element
+    };
     return (
         <li className="c-tabset__item" role="presentation">
             <a
+                {...ref}
                 data-index={index}
                 className={classes}
                 onKeyDown={handleKeyPress}
@@ -28,7 +40,8 @@ const Tab = ({
                 aria-controls={id}
                 aria-selected={isSelected}
             >
-                {label}
+                <Icon icon={icon} classes="c-tabset__tab--icon" size="x-small"/>
+                <span className="c-tabset__tab--text">{label}</span>
             </a>
         </li>
     );

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./TabSet.css";
 import { Tab, TabList, TabPane } from "./index";
-import Container from "./../Container";
 
 const KEYCODES = {
     leftArrow: 37,
@@ -47,34 +46,33 @@ class TabSet extends Component {
         const { tabData } = this.props;
         const { indexSelected } = this.state;
         return (
-            <Container>
-                <div className="c-tabset-container">
-                    <TabList>
-                        {tabData.map((item, i) => (
-                            <Tab
-                                key={item.id}
-                                index={i}
-                                handleKeyPress={this.handleKeyPress}
-                                handleClick={this.handleClick}
-                                id={item.id}
-                                href={item.href}
-                                isSelected={indexSelected === String(i)}
-                                label={item.label}
-                            />
-                        ))}
-                    </TabList>
+            <div className="c-tabset-container">
+                <TabList>
                     {tabData.map((item, i) => (
-                        <TabPane
+                        <Tab
                             key={item.id}
+                            index={i}
+                            handleKeyPress={this.handleKeyPress}
+                            handleClick={this.handleClick}
                             id={item.id}
-                            title={item.title}
+                            href={item.href}
                             isSelected={indexSelected === String(i)}
-                        >
-                            {item.content}
-                        </TabPane>
+                            label={item.label}
+                            icon={item.icon}
+                        />
                     ))}
-                </div>
-            </Container>
+                </TabList>
+                {tabData.map((item, i) => (
+                    <TabPane
+                        key={item.id}
+                        id={item.id}
+                        title={item.title}
+                        isSelected={indexSelected === String(i)}
+                    >
+                        {item.content}
+                    </TabPane>
+                ))}
+            </div>
         );
     }
 }

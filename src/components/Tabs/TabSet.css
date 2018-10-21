@@ -1,11 +1,10 @@
 .c-tabset {
     display: flex;
     z-index: 4;
-    background-color: var(--g-color-brown-500);
-    border-top: 5px solid var(--g-color-white-500);
+    background-color: black;
+    border-top: 1px solid #666;
     bottom: 0;
     box-sizing: border-box;
-    height: var(--g-footer-height);
     left: 0;
     position: fixed;
     right: 0;
@@ -16,21 +15,34 @@
     flex-grow: 1;
 }
 
-.c-tabset__tab {
-    flex-grow: 1;
-    background-color: var(--g-color-brown-500);
-    color: #fff;
-    display: block;
-    padding: 32px 16px;
+.c-tabset__tab--icon {
+    color: #666;
+    pointer-events: none;
 }
 
-.c-tabset__item:not(:last-child) {
-    border-right: 1px solid var(--g-color-white-500);
+.c-tabset__tab {
+    align-items: center;
+    background-color: #d9d9d9;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    padding-top: 4px;
+}
+
+.c-tabset__tab--text {
+    margin-top: 4px;
+    font-size: 10px;
 }
 
 .c-tabset__tab.is-active,
 .c-tabset__tab:focus {
-    color: var(--g-color-blue-500);
+    color: #aaaa55;
+}
+
+.c-tabset__tab.is-active .c-tabset__tab--icon {
+    color: #aaaa55;
 }
 
 .c-tabset__tab:focus {
@@ -38,10 +50,15 @@
 }
 
 .c-tabset__content {
-    background-color: var(--g-color-blue-500);
+    background-color: #f2f2f2;
     display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: var(--g-footer-height);
     padding: 48px 16px;
-    border: 1px solid #fff;
+    flex-grow: 1;
 }
 
 .c-tabset__content.is-active {

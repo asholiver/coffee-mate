@@ -1,10 +1,9 @@
 :root {
-    --g-color-primary: #231200;
-    --g-color-secondary: #50351a;
-    --g-color-tertiary: #7f5e2d;
-    --g-color-quad: #ac8d40;
-    --g-color-quint: #d5c056;
-    --g-color-hex: #f9f871;
+    --g-color-primary: #f2f2f2;
+    --g-color-secondary: #d9d9d9;
+    --g-color-tertiary: #666;
+    --g-color-active: #aaaa55;
+
     --g-color-red-500: #e53935;
     --g-color-blue-500: #96cbd1;
     --g-color-brown-500: #573646;

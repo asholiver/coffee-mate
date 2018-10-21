@@ -4,7 +4,7 @@ import {
     CreateGroup,
     CreateMember,
     EditProfile,
-    Welcome,
+    Welcome2,
     GroupDetails,
     GroupSearch,
     GroupSettings,
@@ -14,7 +14,7 @@ import {
 const App = () => {
     return (
         <Fragment>
-            <Route exact path="/app/:userId" component={Welcome} />
+            <Route exact path="/app/:userId" component={Welcome2} />
             <Route path="/app/:userId/create_group" component={CreateGroup} />
             <Route path="/app/:userId/create_member" component={CreateMember} />
             <Route path="/app/:userId/edit_profile" component={EditProfile} />

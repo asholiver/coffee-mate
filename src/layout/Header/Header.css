@@ -1,10 +1,9 @@
-.l-header {
+.c-header {
     align-items: center;
-    background-color: var(--g-color-brown-500);
-    border-bottom: 5px solid var(--g-color-white-500);
+    background-color: var(--g-color-secondary);
+    border-bottom: 1px solid var(--g-color-tertiary);
     box-sizing: border-box;
     display: flex;
-    height: var(--g-header-height);
     justify-content: space-between;
     left: 0;
     position: fixed;
@@ -13,7 +12,11 @@
     z-index: 2;
 }
 
-.l-header__logo {
+.c-header__title {
+    color: var(--g-color-tertiary);
+}
+
+.c-header__button {
     align-items: center;
     background-color: var(--g-color-brown-500);
     border: 2px solid var(--g-color-white-500);
