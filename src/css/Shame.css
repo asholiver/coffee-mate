@@ -37,4 +37,35 @@
     animation: slide-bottom 1s ease-in-out 1s both;
 }
 
+.h-display-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.c-group-container {
+    align-items: center;
+    display: flex;
+    height: 40px;
+}
 
+.c-group-container.is-pushed-right {
+    padding-left: 40px;
+    transition: padding-left 0.3s ease-out;
+}
+
+.c-group-container.is-pushed-right .c-group__placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+}
+.c-group__placeholder {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    background-color: pink;
+    width: 40px;
+    opacity: 0;
+}
+.c-group__item {
+    flex-grow: 1;
+    padding: 16px;
+    text-align: left;
+}

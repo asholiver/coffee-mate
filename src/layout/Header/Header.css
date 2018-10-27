@@ -13,7 +13,10 @@
 }
 
 .c-header__title {
+    font-size: 24px;
     color: var(--g-color-tertiary);
+    flex-grow: 1;
+    text-align: center;
 }
 
 .c-header__button {
@@ -30,4 +33,3 @@
     transform: translate(-50%, -50%);
     width: var(--g-header-height);
 }
-

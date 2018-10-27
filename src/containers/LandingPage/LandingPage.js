@@ -37,7 +37,7 @@ class LandingPage extends Component {
                             <Button text="Signup" buttonStyle="primary" />
                             <Link
                                 className="c-button c-button--secondary"
-                                to="/app/2"
+                                to="/app/2/"
                             >
                                 Login
                             </Link>

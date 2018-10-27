@@ -1,5 +1,12 @@
 .c-nav {
     display: flex;
+    z-index: 4;
+    bottom: 0;
+    box-sizing: border-box;
+    left: 0;
+    position: fixed;
+    right: 0;
+    opacity: 1;
 }
 
 .c-nav--column {
@@ -7,6 +14,7 @@
     width: 100%;
 }
 
-.c-nav--inline {
-    height: 100%;
+.c-nav.is-hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }

@@ -126,7 +126,15 @@ class Blah extends Component {
     };
 
     render() {
-        const { userId, groupId, members, groupName, isLoading, users, data } = this.state;
+        const {
+            userId,
+            groupId,
+            members,
+            groupName,
+            isLoading,
+            users,
+            data
+        } = this.state;
 
         if (groupId > 0) {
             return (

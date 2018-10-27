@@ -2,7 +2,7 @@
     align-items: center;
     border-radius: 3px;
     display: flex;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: lighter;
     justify-content: center;
     padding: 8px 16px;
@@ -21,4 +21,8 @@
 
 .c-button--small {
     min-height: 30px;
+}
+
+.c-button--narrow {
+    max-height: 48px;
 }

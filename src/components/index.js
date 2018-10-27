@@ -4,6 +4,7 @@ import { Select, TextField } from "./FormFields";
 import { Icon, Icons } from "./icons";
 import Link from "./Link";
 import GroupMember from "./GroupMember";
+import Group from "./Group";
 import { NavItem, NavList } from "./navigation";
 import { TabSet } from "./Tabs/";
 
@@ -16,6 +17,7 @@ export {
     Icons,
     Link,
     GroupMember,
+    Group,
     NavItem,
     NavList,
     Select,

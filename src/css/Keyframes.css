@@ -34,6 +34,24 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(300px);
+        transform: translateX(60px);
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(60px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-48px);
     }
 }

@@ -8,7 +8,6 @@ import GroupSettings from "./GroupSettings";
 import LandingPage from "./LandingPage";
 import Blah from "./Blah";
 import Welcome from "./Welcome";
-import Welcome2 from "./Welcome2";
 
 export {
     CreateGroup,
@@ -19,7 +18,6 @@ export {
     GroupSettings,
     LandingPage,
     Welcome,
-    Welcome2,
     Blah,
     Groups
 };
