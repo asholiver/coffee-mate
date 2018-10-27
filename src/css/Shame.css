@@ -60,7 +60,6 @@
     align-items: center;
     display: flex;
     justify-content: flex-end;
-    background-color: pink;
     width: 40px;
     opacity: 0;
 }

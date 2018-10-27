@@ -55,3 +55,12 @@
         transform: translateY(-48px);
     }
 }
+
+@keyframes slide-right-up {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-1000px);
+    }
+}

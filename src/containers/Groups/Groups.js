@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
-import { Header, Body, Footer, Sidebar } from "./../../layout";
+import { Header, Body, Footer, BottomBar } from "./../../layout";
 import { Button, Group } from "./../../components";
 
 class Groups extends Component {
     state = {
-        userId: this.props.match.params.userId,
+        userId: Number(this.props.match.params.userId),
         groups: [],
-        isSideBarVisible: false
+        editMode: false,
+        isBottomBarVisible: false
     };
     componentDidMount = () => {
         // Make a request for a user with a given ID
@@ -24,32 +25,42 @@ class Groups extends Component {
             });
     };
 
-    toggleSidebar = e => {
-        this.setState({ isSideBarVisible: !this.state.isSideBarVisible });
+    toggleEditMode = e => {
+        this.setState({ editMode: !this.state.editMode });
+    };
+
+    toggleBottomBar = e => {
+        this.setState({ isBottomBarVisible: !this.state.isBottomBarVisible });
     };
 
     render() {
-        const { userId, groups, isSideBarVisible } = this.state;
+        const { userId, groups, editMode, isBottomBarVisible } = this.state;
         return (
             <Fragment>
                 <Header>
                     <Button
-                        onClick={this.toggleSidebar}
-                        text={isSideBarVisible ? "Done" : "Edit"}
+                        onClick={this.toggleEditMode}
+                        text={editMode ? "Done" : "Edit"}
                     />
                     <h1 className="c-header__title">Groups</h1>
+                    <Button onClick={this.toggleBottomBar} text="Create" />
                 </Header>
-                {/*<Sidebar isVisible={isSideBarVisible} /> */}
-                <Body>
+
+                <Body hasHiddenElements={true} hasNav={true}>
                     {groups.map((item, index) => (
                         <Group
                             key={index}
                             group={item}
-                            isSideBarVisible={isSideBarVisible}
+                            isSideBarVisible={editMode}
                         />
                     ))}
                 </Body>
-                <Footer userId={userId} isSideBarVisible={isSideBarVisible} />
+                <Footer userId={userId} isSideBarVisible={editMode} />
+                <BottomBar
+                    isVisible={isBottomBarVisible}
+                    onClick={this.toggleBottomBar}
+                    userId={userId}
+                />
             </Fragment>
         );
     }

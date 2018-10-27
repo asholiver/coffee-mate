@@ -18,18 +18,3 @@
     flex-grow: 1;
     text-align: center;
 }
-
-.c-header__button {
-    align-items: center;
-    background-color: var(--g-color-brown-500);
-    border: 2px solid var(--g-color-white-500);
-    border-radius: 50%;
-    display: flex;
-    height: var(--g-header-height);
-    justify-content: center;
-    left: 50%;
-    position: absolute;
-    top: 100%;
-    transform: translate(-50%, -50%);
-    width: var(--g-header-height);
-}

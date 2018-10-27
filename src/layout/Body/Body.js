@@ -2,10 +2,11 @@ import React from "react";
 import "./Body.css";
 import classNames from "classnames";
 
-const Body = ({ children, isSideBarVisible }) => {
+const Body = ({ children, hasHiddenElements, hasNav }) => {
     const classes = classNames({
         "l-body": true,
-        "is-pushed-right": isSideBarVisible
+        "l-body--hidden": hasHiddenElements,
+        "l-body--has-nav": hasNav
     });
     return <div className={classes}>{children}</div>;
 };
