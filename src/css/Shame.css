@@ -52,6 +52,16 @@
     transition: padding-left 0.3s ease-out;
 }
 
+.c-group-container.is-pushed-left {
+    padding-left: 0;
+    transition: padding-left 0.3s ease-out;
+}
+
+.c-group-container.is-pushed-left .c-group__placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+}
+
 .c-group-container.is-pushed-right .c-group__placeholder {
     opacity: 1;
     transition: opacity 0.3s ease-out;

@@ -4,10 +4,11 @@ import { NavList, Button } from "./../../components";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-const Footer = ({ userId, isSideBarVisible }) => {
+const Footer = ({ userId, editMode, readOnlyMode }) => {
     const getClasses = classNames({
         "c-footer__buttons": true,
-        "is-active": isSideBarVisible
+        "is-active": editMode,
+        "is-disabled": readOnlyMode
     });
     const links = [
         {
@@ -47,11 +48,7 @@ const Footer = ({ userId, isSideBarVisible }) => {
 
     return (
         <div className="l-footer">
-            <NavList
-                arr={links}
-                userId={userId}
-                isSideBarVisible={isSideBarVisible}
-            />
+            <NavList arr={links} userId={userId} isSideBarVisible={editMode} />
             <div className={getClasses}>
                 {editButtons.map((button, index) => (
                     <Button key={index} text={button.text} size="narrow" />

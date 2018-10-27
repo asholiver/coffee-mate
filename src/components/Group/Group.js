@@ -2,10 +2,11 @@ import React from "react";
 import classNames from "classnames";
 import "./Group.css";
 
-const Group = ({ group, isSideBarVisible }) => {
+const Group = ({ group, editMode, readOnlyMode }) => {
     const getClasses = classNames({
         "c-group-container": true,
-        "is-pushed-right": isSideBarVisible
+        "is-pushed-right": editMode,
+        "is-pushed-left": readOnlyMode
     });
     return (
         <div className={getClasses}>

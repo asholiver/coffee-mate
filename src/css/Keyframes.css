@@ -56,6 +56,15 @@
     }
 }
 
+@keyframes slide-down {
+    0% {
+        transform: translateY(-48px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 @keyframes slide-right-up {
     0% {
         transform: translateY(0);

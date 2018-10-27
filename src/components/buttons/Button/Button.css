@@ -5,8 +5,8 @@
     font-size: 12px;
     font-weight: lighter;
     justify-content: center;
-    padding: 8px 16px;
     min-height: 60px;
+    width: 62px;
 }
 
 .c-button--primary {

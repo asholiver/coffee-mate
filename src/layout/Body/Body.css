@@ -1,17 +1,15 @@
 .l-body {
     background-color: #f2f2f2;
     position: fixed;
-    left: 0;
+    left: -40px;
     right: 0;
     top: 0;
-    bottom: 0;
+    bottom: 48px;
     padding: 72px 0;
 }
 
 .l-body--hidden {
-    left: -40px;
 }
 
 .l-body--has-nav {
-    bottom: 48px;
 }

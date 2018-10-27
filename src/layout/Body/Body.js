@@ -2,11 +2,9 @@ import React from "react";
 import "./Body.css";
 import classNames from "classnames";
 
-const Body = ({ children, hasHiddenElements, hasNav }) => {
+const Body = ({ children }) => {
     const classes = classNames({
-        "l-body": true,
-        "l-body--hidden": hasHiddenElements,
-        "l-body--has-nav": hasNav
+        "l-body": true
     });
     return <div className={classes}>{children}</div>;
 };

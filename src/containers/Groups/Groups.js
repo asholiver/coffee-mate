@@ -9,6 +9,7 @@ class Groups extends Component {
         userId: Number(this.props.match.params.userId),
         groups: [],
         editMode: false,
+        readOnly: false,
         isBottomBarVisible: false
     };
     componentDidMount = () => {
@@ -26,7 +27,11 @@ class Groups extends Component {
     };
 
     toggleEditMode = e => {
-        this.setState({ editMode: !this.state.editMode });
+        this.setState({ editMode: !this.state.editMode, readOnly: false });
+    };
+
+    toggleReadOnly = e => {
+        this.setState({ readOnly: !this.state.readOnly, editMode: false });
     };
 
     toggleBottomBar = e => {
@@ -34,28 +39,41 @@ class Groups extends Component {
     };
 
     render() {
-        const { userId, groups, editMode, isBottomBarVisible } = this.state;
+        const {
+            userId,
+            groups,
+            editMode,
+            isBottomBarVisible,
+            readOnly
+        } = this.state;
         return (
             <Fragment>
                 <Header>
                     <Button
-                        onClick={this.toggleEditMode}
+                        onClick={
+                            editMode ? this.toggleReadOnly : this.toggleEditMode
+                        }
                         text={editMode ? "Done" : "Edit"}
                     />
                     <h1 className="c-header__title">Groups</h1>
                     <Button onClick={this.toggleBottomBar} text="Create" />
                 </Header>
 
-                <Body hasHiddenElements={true} hasNav={true}>
+                <Body>
                     {groups.map((item, index) => (
                         <Group
                             key={index}
                             group={item}
-                            isSideBarVisible={editMode}
+                            editMode={editMode}
+                            readOnlyMode={readOnly}
                         />
                     ))}
                 </Body>
-                <Footer userId={userId} isSideBarVisible={editMode} />
+                <Footer
+                    userId={userId}
+                    editMode={editMode}
+                    readOnlyMode={readOnly}
+                />
                 <BottomBar
                     isVisible={isBottomBarVisible}
                     onClick={this.toggleBottomBar}
