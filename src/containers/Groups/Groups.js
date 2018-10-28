@@ -12,9 +12,8 @@ class Groups extends Component {
         groupId: 0,
         editMode: false,
         readOnly: false,
-        isBottomBarVisible: false,
-        initialLoad: true,
-        slideIn: false
+        showBottomBar: false,
+        hideBottomBar: false
     };
 
     getViewportSize = () => {
@@ -33,9 +32,6 @@ class Groups extends Component {
             .then(response => {
                 this.setState({ groups: response.data });
                 console.log(response.data);
-                if (!this.state.initialLoad) {
-                    this.setState({ slideIn: true });
-                }
                 this.getViewportSize();
             })
             .catch(function(error) {
@@ -45,7 +41,7 @@ class Groups extends Component {
     };
 
     toggleRightSidebar = e => {
-        this.setState({ initialLoad: false, groupId: e.target.value });
+        this.setState({ groupId: e.target.value });
     };
 
     toggleEditMode = e => {
@@ -56,8 +52,18 @@ class Groups extends Component {
         this.setState({ readOnly: !this.state.readOnly, editMode: false });
     };
 
-    toggleBottomBar = e => {
-        this.setState({ isBottomBarVisible: !this.state.isBottomBarVisible });
+    openBottomBar = e => {
+        this.setState({
+            showBottomBar: !this.state.showBottomBar,
+            hideBottomBar: false
+        });
+    };
+
+    closeBottomBar = e => {
+        this.setState({
+            hideBottomBar: !this.state.hideBottomBar,
+            showBottomBar: false
+        });
     };
 
     render() {
@@ -65,7 +71,8 @@ class Groups extends Component {
             userId,
             groups,
             editMode,
-            isBottomBarVisible,
+            showBottomBar,
+            hideBottomBar,
             readOnly,
             groupId
         } = this.state;
@@ -79,7 +86,7 @@ class Groups extends Component {
                         text={editMode ? "Done" : "Edit"}
                     />
                     <h1 className="c-header__title">Groups</h1>
-                    <Button onClick={this.toggleBottomBar} text="Create" />
+                    <Button onClick={this.openBottomBar} text="Create" />
                 </Header>
 
                 <Body hasHiddenElements={true} hasNav={true}>
@@ -108,8 +115,9 @@ class Groups extends Component {
                 ) : null}
 
                 <BottomBar
-                    isVisible={isBottomBarVisible}
-                    onClick={this.toggleBottomBar}
+                    isVisible={showBottomBar}
+                    isClosed={hideBottomBar}
+                    onClick={this.closeBottomBar}
                     userId={userId}
                 />
             </Fragment>

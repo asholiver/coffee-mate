@@ -9,10 +9,11 @@ class BottomBar extends Component {
     };
 
     render() {
-        const { isVisible, onClick, userId } = this.props;
+        const { isVisible, onClick, userId, isClosed } = this.props;
         const classes = classNames({
             "c-bottombar": true,
-            "is-active": isVisible
+            "is-active": isVisible,
+            "is-closed": isClosed
         });
         return (
             <div className={classes}>

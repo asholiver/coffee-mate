@@ -67,9 +67,9 @@ class GroupChannel extends Component {
                         <h1 className="c-header__title">{group_name}</h1>
                         <Button
                             onClick={onClick}
+                            value={0}
                             className="c-button c-button--narrow"
                             text="Back"
-                            value={0}
                         />
                     </div>
 
