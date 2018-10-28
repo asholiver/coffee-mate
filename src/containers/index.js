@@ -1,7 +1,7 @@
 import CreateGroup from "./CreateGroup";
 import CreateMember from "./CreateMember";
 import EditProfile from "./EditProfile";
-import GroupDetails from "./GroupDetails";
+import GroupChannel from "./GroupChannel";
 import Groups from "./Groups";
 import GroupSearch from "./GroupSearch";
 import GroupSettings from "./GroupSettings";
@@ -13,7 +13,7 @@ export {
     CreateGroup,
     CreateMember,
     EditProfile,
-    GroupDetails,
+    GroupChannel,
     GroupSearch,
     GroupSettings,
     LandingPage,

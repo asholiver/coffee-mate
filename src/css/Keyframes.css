@@ -70,6 +70,15 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(-1000px);
+        transform: translateY(calc(var(--g-viewport-height) * -1));
+    }
+}
+
+@keyframes slide-right-in {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(var(--g-viewport-width) * -1));
     }
 }

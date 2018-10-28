@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./BottomBar.css";
 import { Button } from "./../../components";
 import classNames from "classnames";
-import { Header, Body } from "./../../layout";
 
 class BottomBar extends Component {
     componentDidMount = () => {

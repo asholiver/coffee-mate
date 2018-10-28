@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import "./Group.css";
 
-const Group = ({ group, editMode, readOnlyMode }) => {
+const Group = ({ group, editMode, readOnlyMode, userId, onClick }) => {
     const getClasses = classNames({
         "c-group-container": true,
         "is-pushed-right": editMode,
@@ -13,8 +13,12 @@ const Group = ({ group, editMode, readOnlyMode }) => {
             <div className="c-group__placeholder">
                 <input type="checkbox" />
             </div>
-            <button type="button" className="c-group__item">
-                {group.id}
+            <button
+                type="button"
+                className="c-group__item"
+                onClick={onClick}
+                value={group.id}
+            >
                 {group.name}
             </button>
         </div>

@@ -11,4 +11,7 @@
 
     --g-header-height: 100px;
     --g-footer-height: 100px;
+
+    --g-viewport-height: 0;
+    --g-viewport-width: 0;
 }
