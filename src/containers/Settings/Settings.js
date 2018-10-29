@@ -1,14 +1,15 @@
-import React, { Component, Fragment } from "react";
-import { Header, Body, Footer } from "./../../layout";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import { Footer, Page } from "./../../layout";
 import axios from "axios";
+import { TextField, Button, PageHeader } from "./../../components";
 import API_ROOT from "./../../constants/api-root";
 
 class Settings extends Component {
     state = {
         userId: Number(this.props.match.params.userId),
         new_first_name: "",
-        new_last_name: ""
+        new_last_name: "",
+        hasUpdated: false
     };
 
     componentDidMount = () => {
@@ -46,31 +47,60 @@ class Settings extends Component {
                 this.setState({
                     hasUpdated: true
                 });
+                console.log("updated user");
             })
             .catch(function(error) {
                 console.log(error);
             });
     };
     render() {
-        const { userId } = this.state;
+        const {
+            userId,
+            hasUpdated,
+            new_first_name,
+            new_last_name
+        } = this.state;
+        const headerItems = [
+            {
+                type: "empty"
+            },
+            {
+                type: "title",
+                text: "Settings"
+            },
+            {
+                type: "link",
+                to: "create_member",
+                text: "Create Member"
+            }
+        ];
         return (
-            <Fragment>
-                <Header>
-                    <h1 className="c-header__title">Settings</h1>
-                </Header>
-
-                <Body hasNav={true}>
-                    Settings feature coming soon!!
-                    <Link
-                        className="c-button c-button--primary"
-                        to={"create_member"}
-                    >
-                        Create member
-                    </Link>
-                </Body>
+            <Page slideFromDirection="none">
+                <PageHeader items={headerItems} />
+                <div className="c-bottombar__content">
+                    {hasUpdated ? <p>Username has been updated!</p> : null}
+                    <TextField
+                        label="First name"
+                        name="new_first_name"
+                        value={new_first_name}
+                        onChange={this.handleChange}
+                    />
+                    <TextField
+                        label="Last name"
+                        name="new_last_name"
+                        value={new_last_name}
+                        onChange={this.handleChange}
+                    />
+                    <Button
+                        text="Update"
+                        type="submit"
+                        buttonStyle="primary"
+                        onClick={this.updateUser}
+                    />
+                </div>
 
                 <Footer userId={userId} editMode={false} readOnlyMode={false} />
-            </Fragment>
+            </Page>
         );
     }
 }

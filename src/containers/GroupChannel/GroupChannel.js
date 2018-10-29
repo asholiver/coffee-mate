@@ -16,32 +16,28 @@ class GroupChannel extends Component {
         names: []
     };
 
-    componentDidMount = () => {
-        // Make a request for a user with a given ID
+    getData = (groupId, isInitial) => {
         axios
-            .get(`${API_ROOT}api/groups/${this.state.groupId}`)
+            .get(`${API_ROOT}api/groups/${Number(groupId)}`)
             .then(response => {
                 this.setState({
                     names: response.data.members,
                     group_name: response.data.name
                 });
-                console.log(response);
             })
             .catch(function(error) {
                 // handle error
                 console.log(error);
             })
             .then(() => {
-                this.setState({ isLoading: false });
+                if (isInitial) {
+                    this.setState({ isLoading: false });
+                }
             });
     };
 
-    deleteMember = e => {
-        this.setState({
-            names: this.state.names.filter(
-                (item, index) => index !== Number(e.target.value)
-            )
-        });
+    componentDidMount = () => {
+        this.getData(this.state.groupId, true);
     };
 
     toggleGroupDetails = e => {
@@ -58,7 +54,6 @@ class GroupChannel extends Component {
             })
             .then(response => {
                 this.setState({ names: move(this.state.names) });
-                console.log("updated rounds");
             })
             .catch(function(error) {
                 console.log(error);
@@ -73,27 +68,25 @@ class GroupChannel extends Component {
             groupId,
             showGroupDetailsPage
         } = this.state;
-        const { onClick } = this.props;
-        const headerButtons = [
+        const { onClick, handleDelete } = this.props;
+        const headerItems = [
             {
-                isButton: true,
+                type: "button",
                 text: "back",
-                value: "",
                 onClick: onClick
             },
             {
-                isButton: true,
+                type: "button",
                 text: group_name,
-                value: "",
                 onClick: this.toggleGroupDetails
             },
             {
-                isEmpty: true
+                type: "empty"
             }
         ];
         return (
             <Page isOpen={!isLoading} slideFromDirection="right">
-                <PageHeader buttons={headerButtons} />
+                <PageHeader items={headerItems} />
                 <div className="c-bottombar__content">
                     {groupId}
                     {names != null ? (
@@ -116,6 +109,10 @@ class GroupChannel extends Component {
                 <GroupDetails
                     onClick={this.toggleGroupDetails}
                     isOpen={showGroupDetailsPage}
+                    members={names}
+                    groupId={groupId}
+                    updateData={this.getData}
+                    handleDelete={handleDelete}
                 />
             </Page>
         );

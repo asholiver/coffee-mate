@@ -30,7 +30,6 @@ class Groups extends Component {
             .get(`${API_ROOT}api/groups?owner=${this.state.userId}`)
             .then(response => {
                 this.setState({ groups: response.data });
-                console.log(response.data);
                 this.getViewportSize();
             })
             .catch(function(error) {
@@ -65,9 +64,41 @@ class Groups extends Component {
         });
     };
 
+    deleteGroup = groupId => {
+        axios
+            .post(`${API_ROOT}api/groups/${groupId}`)
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    groupId: 0
+                });
+                return axios
+                    .get(`${API_ROOT}api/groups?owner=${this.state.userId}`)
+                    .then(response => {
+                        this.setState({ groups: response.data });
+                    })
+                    .catch(function(error) {
+                        // handle error
+                        console.log(error);
+                    });
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    };
+
     addGroup = id => {
         this.setState({ groupId: Number(id) });
         this.closeBottomBar();
+        axios
+            .get(`${API_ROOT}api/groups?owner=${this.state.userId}`)
+            .then(response => {
+                this.setState({ groups: response.data });
+            })
+            .catch(function(error) {
+                // handle error
+                console.log(error);
+            });
     };
 
     render() {
@@ -80,25 +111,25 @@ class Groups extends Component {
             readOnly,
             groupId
         } = this.state;
-        const headerButtons = [
+        const headerItems = [
             {
-                isButton: true,
+                type: "button",
                 text: editMode ? "Done" : "Edit",
                 onClick: editMode ? this.toggleReadOnly : this.toggleEditMode
             },
             {
-                isButton: true,
+                type: "title",
                 text: "Groups"
             },
             {
-                isButton: true,
+                type: "button",
                 text: "Create",
                 onClick: this.openBottomBar
             }
         ];
         return (
             <Fragment>
-                <PageHeader buttons={headerButtons} />
+                <PageHeader items={headerItems} />
                 <Body hasHiddenElements={true} hasNav={true}>
                     {groups.map((item, index) => (
                         <Group
@@ -121,6 +152,7 @@ class Groups extends Component {
                         groupId={Number(groupId)}
                         userId={userId}
                         onClick={this.toggleRightSidebar}
+                        handleDelete={this.deleteGroup}
                     />
                 ) : null}
 

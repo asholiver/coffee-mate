@@ -37,7 +37,11 @@ class BottomBar extends Component {
                 new_name: this.state.new_name
             })
             .then(response => {
+                console.log("success");
                 this.props.handleSubmit(response.data.id);
+                this.setState({
+                    new_name: ""
+                });
             })
             .catch(function(error) {
                 console.log(error);
@@ -50,21 +54,28 @@ class BottomBar extends Component {
         });
     };
 
+    toggleBottomBar = e => {
+        this.setState({
+            new_name: ""
+        });
+        this.props.onClick();
+    };
+
     render() {
-        const { isVisible, onClick, userId, isClosed } = this.props;
-        const { users } = this.state;
-        const headerButtons = [
+        const { isVisible, userId, isClosed } = this.props;
+        const { users, new_name } = this.state;
+        const headerItems = [
             {
-                isEmpty: true
+                type: "empty"
             },
             {
-                isButton: true,
+                type: "title",
                 text: "New Group"
             },
             {
-                isButton: true,
+                type: "button",
                 text: "Cancel",
-                onClick: onClick
+                onClick: this.toggleBottomBar
             }
         ];
         return (
@@ -73,11 +84,12 @@ class BottomBar extends Component {
                 isOpen={isVisible}
                 isClosed={isClosed}
             >
-                <PageHeader buttons={headerButtons} />
+                <PageHeader items={headerItems} />
                 <div className="c-bottombar__content">
                     <TextField
                         label="Group Name"
                         name="new_name"
+                        value={new_name}
                         onChange={this.handleChange}
                     />
 

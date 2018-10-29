@@ -1,5 +1,11 @@
-import React, { Component } from "react";
-import { PageHeader } from "./../../components";
+import React, { Component, Fragment } from "react";
+import {
+    PageHeader,
+    Select,
+    ButtonGroup,
+    Button,
+    ButtonIconOnly
+} from "./../../components";
 import { Page } from "./../../layout";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
@@ -9,35 +15,47 @@ class GroupDetails extends Component {
         userId: Number(this.props.userId),
         groupId: Number(this.props.groupId),
         group_name: "",
-        names: []
+        users: [],
+        showDeleteWarning: false
     };
 
-    deleteGroup = e => {
+    componentDidMount = () => {
         axios
-            .post(`${API_ROOT}api/groups/${this.state.groupId}`)
+            .get(`${API_ROOT}api/users`)
             .then(response => {
                 this.setState({
-                    groupId: 0
+                    users: response.data.map((user, index) => ({
+                        value: user.id,
+                        name: `${user.first_name} ${user.last_name}`
+                    }))
                 });
             })
             .catch(function(error) {
+                // handle error
                 console.log(error);
+            })
+            .then(() => {
+                this.setState({ isLoading: false });
             });
     };
 
+    toggleDeleteWarning = e => {
+        this.setState({ showDeleteWarning: !this.state.showDeleteWarning });
+    };
+
+    deleteGroup = e => {
+        this.props.handleDelete(this.state.groupId);
+    };
+
     deleteMember = e => {
-        const userToDelete = Number(e.currentTarget.value);
+        const userToDelete = e.currentTarget.value;
         axios
             .post(`${API_ROOT}api/user_groups/${this.state.groupId}`, {
                 user_id: userToDelete
             })
             .then(response => {
                 console.log("removed member");
-                this.setState({
-                    members: this.state.members.filter(
-                        user => user.user_id !== userToDelete
-                    )
-                });
+                this.props.updateData(this.state.groupId);
             })
             .catch(function(error) {
                 console.log(error);
@@ -51,11 +69,7 @@ class GroupDetails extends Component {
                 group_id: this.state.groupId
             })
             .then(response => {
-                console.log(response);
-                this.setState({
-                    hasUpdated: true
-                });
-                console.log("added member");
+                this.props.updateData(this.state.groupId);
             })
             .catch(function(error) {
                 console.log(error);
@@ -63,26 +77,77 @@ class GroupDetails extends Component {
     };
 
     render() {
-        const { onClick, isOpen } = this.props;
-        const headerButtons = [
+        const { onClick, isOpen, members } = this.props;
+        const { users, showDeleteWarning } = this.state;
+        const headerItems = [
             {
-                isButton: true,
+                type: "button",
                 text: "back",
                 onClick: onClick
             },
             {
-                isButton: true,
+                type: "title",
                 text: "Group Info"
             },
             {
-                isEmpty: true
+                type: "empty"
             }
         ];
         return (
             <Page isOpen={isOpen} slideFromDirection="right">
-                <PageHeader buttons={headerButtons} />
+                <PageHeader items={headerItems} />
                 <div className="c-bottombar__content">
-                    Details coming soon!!
+                    <Select
+                        label="Add member"
+                        name="new_member"
+                        options={users}
+                        onChange={this.addMember}
+                    />
+                    {members != null ? (
+                        <Fragment>
+                            {members.map((e, index) => (
+                                <div className="h-display-flex" key={index}>
+                                    <span>
+                                        {e.first_name} {e.last_name}
+                                    </span>
+                                    <ButtonIconOnly
+                                        buttonValue={e.user_id}
+                                        buttonOnClick={this.deleteMember}
+                                        icon="close"
+                                        size="x-small"
+                                        helpText="delete member"
+                                    />
+                                </div>
+                            ))}
+                        </Fragment>
+                    ) : (
+                        <p>There are no members in this group</p>
+                    )}
+
+                    {showDeleteWarning ? (
+                        <Fragment>
+                            <p>Are you sure you want to delete this group?</p>
+                            <ButtonGroup type="space-between">
+                                <Button
+                                    text="Cancel"
+                                    buttonStyle="primary"
+                                    onClick={this.toggleDeleteWarning}
+                                />
+                                <Button
+                                    text="Delete"
+                                    type="submit"
+                                    buttonStyle="primary"
+                                    onClick={this.deleteGroup}
+                                />
+                            </ButtonGroup>
+                        </Fragment>
+                    ) : (
+                        <Button
+                            onClick={this.toggleDeleteWarning}
+                            buttonStyle="primary"
+                            text="Delete group"
+                        />
+                    )}
                 </div>
             </Page>
         );

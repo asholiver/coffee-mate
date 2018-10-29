@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Page } from "./../../layout";
-import { TextField, Button } from "./../../components";
+import { TextField, Button, PageHeader } from "./../../components";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
@@ -46,29 +46,47 @@ class CreateMember extends Component {
             return <Redirect to={`/app/${userId}/groups`} />;
         }
 
+        const headerItems = [
+            {
+                type: "link",
+                to: `/app/${userId}/groups`,
+                text: "Cancel"
+            },
+            {
+                type: "title",
+                text: "Create member"
+            },
+            {
+                type: "empty"
+            }
+        ];
+
         return (
-            <Page hasLinks={false} userId={userId}>
-                <TextField
-                    label="First name"
-                    name="new_first_name"
-                    onChange={this.handleChange}
-                />
-                <TextField
-                    label="Last name"
-                    name="new_last_name"
-                    onChange={this.handleChange}
-                />
-                <TextField
-                    label="Email"
-                    name="new_email"
-                    onChange={this.handleChange}
-                />
-                <Button
-                    type="submit"
-                    text="Create"
-                    buttonStyle="primary"
-                    onClick={this.addUser}
-                />
+            <Page slideFromDirection="none">
+                <PageHeader items={headerItems} />
+                <div className="c-bottombar__content">
+                    <TextField
+                        label="First name"
+                        name="new_first_name"
+                        onChange={this.handleChange}
+                    />
+                    <TextField
+                        label="Last name"
+                        name="new_last_name"
+                        onChange={this.handleChange}
+                    />
+                    <TextField
+                        label="Email"
+                        name="new_email"
+                        onChange={this.handleChange}
+                    />
+                    <Button
+                        type="submit"
+                        text="Create"
+                        buttonStyle="primary"
+                        onClick={this.addUser}
+                    />
+                </div>
             </Page>
         );
     }
