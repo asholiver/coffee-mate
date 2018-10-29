@@ -43,7 +43,7 @@ class CreateMember extends Component {
     render() {
         const { userId, newUserId } = this.state;
         if (newUserId > 0) {
-            return <Redirect to={`/app/${userId}`} />;
+            return <Redirect to={`/app/${userId}/groups`} />;
         }
 
         return (

@@ -82,27 +82,41 @@
 
 .l-page {
     background-color: #f2f2f2;
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: column;
-    top: 0;
-    bottom: 0;
     right: 0;
-    left: var(--g-viewport-width);
     overflow-y: hidden;
-    width: var(--g-viewport-width);
-    height: 100%;
     z-index: 5;
 }
 
-.l-page.has-loaded {
+.l-page--right {
+    bottom: 0;
+    height: 100%;
+    left: var(--g-viewport-width);
+    top: 0;
+    width: var(--g-viewport-width);
+}
+
+.l-page--bottom {
+    bottom: calc(var(--g-viewport-height) * -1);
+    height: var(--g-viewport-height);
+    left: 0;
+    width: 100%;
+}
+
+.l-page--right.is-open {
     animation: slide-right-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-.l-page.is-closed {
+.l-page--right.is-closed {
     animation: slide-right-out 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
+.l-page--bottom.is-open {
+    animation: slide-right-up 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
 
-
-
+.l-page--bottom.is-closed {
+    animation: slide-right-down 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}

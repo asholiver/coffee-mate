@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from "react";
-import { GroupMember, Button } from "./../../components";
+import React, { Component } from "react";
+import { GroupMember, PageHeader } from "./../../components";
 import { Page } from "./../../layout";
 import { move } from "./../../utils";
+import { GroupDetails } from "./../../containers";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
 
@@ -11,13 +12,14 @@ class GroupChannel extends Component {
         groupId: Number(this.props.groupId),
         isLoading: true,
         group_name: "",
+        showGroupDetailsPage: false,
         names: []
     };
 
     componentDidMount = () => {
         // Make a request for a user with a given ID
         axios
-            .get(`${API_ROOT}api/groups/${this.props.groupId}`)
+            .get(`${API_ROOT}api/groups/${this.state.groupId}`)
             .then(response => {
                 this.setState({
                     names: response.data.members,
@@ -42,10 +44,16 @@ class GroupChannel extends Component {
         });
     };
 
+    toggleGroupDetails = e => {
+        this.setState({
+            showGroupDetailsPage: !this.state.showGroupDetailsPage
+        });
+    };
+
     completedOrder = e => {
         axios
             .post(`${API_ROOT}api/rounds`, {
-                user_id: Number(e.currentTarget.value),
+                user_id: Number(e.target.value),
                 group_id: Number(this.state.groupId)
             })
             .then(response => {
@@ -58,40 +66,57 @@ class GroupChannel extends Component {
     };
 
     render() {
-        const { names, isLoading, group_name } = this.state;
+        const {
+            names,
+            isLoading,
+            group_name,
+            groupId,
+            showGroupDetailsPage
+        } = this.state;
         const { onClick } = this.props;
+        const headerButtons = [
+            {
+                isButton: true,
+                text: "back",
+                value: "",
+                onClick: onClick
+            },
+            {
+                isButton: true,
+                text: group_name,
+                value: "",
+                onClick: this.toggleGroupDetails
+            },
+            {
+                isEmpty: true
+            }
+        ];
         return (
-            <Page isLoading={isLoading}>
-                <Fragment>
-                    <div className="c-bottombar__header">
-                        <h1 className="c-header__title">{group_name}</h1>
-                        <Button
-                            onClick={onClick}
-                            value={0}
-                            className="c-button c-button--narrow"
-                            text="Back"
-                        />
-                    </div>
-
-                    <div className="c-bottombar__content">
-                        {names != null ? (
-                            <ol className="c-group-link-container">
-                                {names.map((e, index) => (
-                                    <GroupMember
-                                        name={`${e.first_name} ${e.last_name}`}
-                                        handleDelete={this.deleteMember}
-                                        handleComplete={this.completedOrder}
-                                        id={e.user_id}
-                                        isActive={index === 0}
-                                        key={index}
-                                    />
-                                ))}
-                            </ol>
-                        ) : (
-                            <p>There are no members in this group</p>
-                        )}
-                    </div>
-                </Fragment>
+            <Page isOpen={!isLoading} slideFromDirection="right">
+                <PageHeader buttons={headerButtons} />
+                <div className="c-bottombar__content">
+                    {groupId}
+                    {names != null ? (
+                        <ol className="c-group-link-container">
+                            {names.map((e, index) => (
+                                <GroupMember
+                                    name={`${e.first_name} ${e.last_name}`}
+                                    handleDelete={this.deleteMember}
+                                    handleComplete={this.completedOrder}
+                                    id={e.user_id}
+                                    isActive={index === 0}
+                                    key={index}
+                                />
+                            ))}
+                        </ol>
+                    ) : (
+                        <p>There are no members in this group</p>
+                    )}
+                </div>
+                <GroupDetails
+                    onClick={this.toggleGroupDetails}
+                    isOpen={showGroupDetailsPage}
+                />
             </Page>
         );
     }

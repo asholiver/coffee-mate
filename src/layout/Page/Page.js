@@ -1,10 +1,13 @@
 import React from "react";
 import classNames from "classnames";
 
-const Page = ({ children, isLoading }) => {
+const Page = ({ children, isOpen, isClosed, slideFromDirection }) => {
     const getClasses = classNames({
         "l-page": true,
-        "has-loaded": !isLoading
+        [`l-page--${slideFromDirection}`]:
+            slideFromDirection !== "" ? true : false,
+        "is-open": isOpen,
+        "is-closed": isClosed
     });
     return <div className={getClasses}>{children}</div>;
 };

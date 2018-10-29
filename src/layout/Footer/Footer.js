@@ -28,7 +28,7 @@ const Footer = ({ userId, editMode, readOnlyMode }) => {
         },
         {
             name: "Groups",
-            to: `/app/${userId}`,
+            to: `/app/${userId}/groups`,
             icon: "close"
         },
         {

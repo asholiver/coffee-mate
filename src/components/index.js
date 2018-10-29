@@ -5,8 +5,8 @@ import { Icon, Icons } from "./icons";
 import Link from "./Link";
 import GroupMember from "./GroupMember";
 import Group from "./Group";
+import PageHeader from "./PageHeader";
 import { NavItem, NavList } from "./navigation";
-import { TabSet } from "./Tabs/";
 
 export {
     Button,
@@ -20,7 +20,7 @@ export {
     Group,
     NavItem,
     NavList,
+    PageHeader,
     Select,
-    TabSet,
     TextField
 };

@@ -1,6 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { Route } from "react-router-dom";
-import { Groups, GroupChannel } from "./../../containers";
+import {
+    Groups,
+    Search,
+    Rewards,
+    Favourites,
+    Settings,
+    CreateMember
+} from "./../../containers";
 
 class App extends Component {
     state = {
@@ -10,13 +17,15 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <Route exact path="/app/:userId" component={Groups} />
+                <Route exact path="/app/:userId/groups" component={Groups} />
+                <Route path="/app/:userId/search" component={Search} />
+                <Route path="/app/:userId/rewards" component={Rewards} />
+                <Route path="/app/:userId/favourites" component={Favourites} />
+                <Route path="/app/:userId/settings" component={Settings} />
                 <Route
-                    path="/app/:userId/channel/:groupId"
-                    component={GroupChannel}
+                    path="/app/:userId/create_member"
+                    component={CreateMember}
                 />
-                {/*<Route exact path="/app/:userId/settings" render={Settings} /> */}
-                {/* <Route exact path="/app/:userId/rewards" render={Rewards} /> */}
             </Fragment>
         );
     }

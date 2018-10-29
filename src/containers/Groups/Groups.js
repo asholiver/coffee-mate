@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
-import { Header, Body, Footer, BottomBar } from "./../../layout";
-import { Button, Group } from "./../../components";
+import { Body, Footer, BottomBar } from "./../../layout";
+import { Group, PageHeader } from "./../../components";
 import { GroupChannel } from "./../../containers";
 
 class Groups extends Component {
@@ -22,7 +22,6 @@ class Groups extends Component {
         const rootEl = document.querySelector("html");
         rootEl.style.setProperty("--g-viewport-height", height + "px");
         rootEl.style.setProperty("--g-viewport-width", width + "px");
-        console.log(height, width);
     };
 
     componentDidMount = () => {
@@ -66,6 +65,11 @@ class Groups extends Component {
         });
     };
 
+    addGroup = id => {
+        this.setState({ groupId: Number(id) });
+        this.closeBottomBar();
+    };
+
     render() {
         const {
             userId,
@@ -76,19 +80,25 @@ class Groups extends Component {
             readOnly,
             groupId
         } = this.state;
+        const headerButtons = [
+            {
+                isButton: true,
+                text: editMode ? "Done" : "Edit",
+                onClick: editMode ? this.toggleReadOnly : this.toggleEditMode
+            },
+            {
+                isButton: true,
+                text: "Groups"
+            },
+            {
+                isButton: true,
+                text: "Create",
+                onClick: this.openBottomBar
+            }
+        ];
         return (
             <Fragment>
-                <Header>
-                    <Button
-                        onClick={
-                            editMode ? this.toggleReadOnly : this.toggleEditMode
-                        }
-                        text={editMode ? "Done" : "Edit"}
-                    />
-                    <h1 className="c-header__title">Groups</h1>
-                    <Button onClick={this.openBottomBar} text="Create" />
-                </Header>
-
+                <PageHeader buttons={headerButtons} />
                 <Body hasHiddenElements={true} hasNav={true}>
                     {groups.map((item, index) => (
                         <Group
@@ -119,6 +129,7 @@ class Groups extends Component {
                     isClosed={hideBottomBar}
                     onClick={this.closeBottomBar}
                     userId={userId}
+                    handleSubmit={this.addGroup}
                 />
             </Fragment>
         );
