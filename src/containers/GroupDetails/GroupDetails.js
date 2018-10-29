@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { PageHeader } from "./../../components";
 import { Page } from "./../../layout";
+import axios from "axios";
+import API_ROOT from "./../../constants/api-root";
 
 class GroupDetails extends Component {
     state = {
