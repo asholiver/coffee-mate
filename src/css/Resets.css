@@ -16,7 +16,7 @@ ol {
 }
 
 a {
-    color: #666;
+    color: var(--g-color-tertiary);
     text-decoration: none;
 }
 

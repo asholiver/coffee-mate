@@ -1,7 +1,7 @@
 .l-footer {
     display: flex;
     background-color: #d9d9d9;
-    border-top: 1px solid #666;
+    border-top: 1px solid var(--g-color-tertiary);
     bottom: 0;
     box-sizing: border-box;
     height: 48px;
@@ -10,7 +10,7 @@
 
 .c-footer__buttons {
     background-color: #d9d9d9;
-    border-top: 1px solid #666;
+    border-top: 1px solid var(--g-color-tertiary);
     color: black;
     position: fixed;
     display: flex;

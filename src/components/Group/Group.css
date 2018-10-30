@@ -32,9 +32,9 @@
 .c-group__item {
     display: flex;
     align-items: center;
-    color: #666;
+    color: var(--g-color-tertiary);
     flex-grow: 1;
     padding: 16px;
     text-align: left;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid var(--g-color-tertiary);
 }
