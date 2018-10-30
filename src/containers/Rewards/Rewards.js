@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from "react";
-import { Header, Body, Footer } from "./../../layout";
+import React, { Component } from "react";
+import { Header, Body, Footer, Page } from "./../../layout";
+import { PageHeader } from "./../../components";
 
 class Rewards extends Component {
     state = {
@@ -8,16 +9,27 @@ class Rewards extends Component {
         names: []
     };
     render() {
+        const headerItems = [
+            {
+                type: "empty"
+            },
+            {
+                type: "title",
+                text: "Rewards"
+            },
+            {
+                type: "empty"
+            }
+        ];
         const { userId } = this.state;
         return (
-            <Fragment>
-                <Header>
-                    <h1 className="c-header__title">Rewards</h1>
-                </Header>
-
-                <Body hasNav={true}>Rewards feature coming soon!!</Body>
+            <Page slideFromDirection="none">
+                <PageHeader items={headerItems} />
+                <div className="c-bottombar__content">
+                    Rewards feature coming soon!!
+                </div>
                 <Footer userId={userId} editMode={false} readOnlyMode={false} />
-            </Fragment>
+            </Page>
         );
     }
 }

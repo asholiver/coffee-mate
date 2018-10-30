@@ -24,5 +24,35 @@
     flex-grow: 1;
     overflow-y: auto;
     padding: 16px;
-    margin-top: 100px;
+    position: relative;
+}
+
+.c-bottombar__content--inner {
+    position: absolute;
+    top: 0;
+    left: -40px;
+    right: 0;
+    bottom: 0;
+}
+
+.c-bottombar__content--left {
+    padding-left: -40px;
+}
+
+.l-body {
+    background-color: #f2f2f2;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 72px 0;
+}
+
+.l-body--hidden {
+    left: -40px;
+}
+
+.l-body--has-nav {
+    bottom: 48px;
 }

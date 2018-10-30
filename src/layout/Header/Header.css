@@ -1,17 +1,3 @@
-.c-header {
-    align-items: center;
-    background-color: var(--g-color-secondary);
-    border-bottom: 1px solid var(--g-color-tertiary);
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    left: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-}
-
 .c-header__title {
     font-size: 24px;
     color: var(--g-color-tertiary);

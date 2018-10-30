@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
-import { Body, Footer, BottomBar } from "./../../layout";
+import { Body, Footer, BottomBar, Page } from "./../../layout";
 import { Group, PageHeader } from "./../../components";
 import { GroupChannel } from "./../../containers";
 
@@ -128,20 +128,22 @@ class Groups extends Component {
             }
         ];
         return (
-            <Fragment>
+            <Page slideFromDirection="none">
                 <PageHeader items={headerItems} />
-                <Body hasHiddenElements={true} hasNav={true}>
-                    {groups.map((item, index) => (
-                        <Group
-                            key={index}
-                            group={item}
-                            editMode={editMode}
-                            readOnlyMode={readOnly}
-                            onClick={this.toggleRightSidebar}
-                            userId={userId}
-                        />
-                    ))}
-                </Body>
+                <div className="c-bottombar__content">
+                    <div className="c-bottombar__content--inner">
+                        {groups.map((item, index) => (
+                            <Group
+                                key={index}
+                                group={item}
+                                editMode={editMode}
+                                readOnlyMode={readOnly}
+                                onClick={this.toggleRightSidebar}
+                                userId={userId}
+                            />
+                        ))}
+                    </div>
+                </div>
                 <Footer
                     userId={userId}
                     editMode={editMode}
@@ -163,7 +165,7 @@ class Groups extends Component {
                     userId={userId}
                     handleSubmit={this.addGroup}
                 />
-            </Fragment>
+            </Page>
         );
     }
 }

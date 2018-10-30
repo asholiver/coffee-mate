@@ -41,44 +41,6 @@
     display: flex;
     justify-content: space-between;
 }
-.c-group-container {
-    align-items: center;
-    display: flex;
-    height: 40px;
-}
-
-.c-group-container.is-pushed-right {
-    padding-left: 40px;
-    transition: padding-left 0.3s ease-out;
-}
-
-.c-group-container.is-pushed-left {
-    padding-left: 0;
-    transition: padding-left 0.3s ease-out;
-}
-
-.c-group-container.is-pushed-left .c-group__placeholder {
-    opacity: 1;
-    transition: opacity 0.3s ease-out;
-}
-
-.c-group-container.is-pushed-right .c-group__placeholder {
-    opacity: 1;
-    transition: opacity 0.3s ease-out;
-}
-.c-group__placeholder {
-    align-items: center;
-    display: flex;
-    justify-content: flex-end;
-    width: 40px;
-    opacity: 0;
-}
-.c-group__item {
-    color: #666;
-    flex-grow: 1;
-    padding: 16px;
-    text-align: left;
-}
 
 .l-page {
     background-color: #f2f2f2;
