@@ -6,7 +6,7 @@ import {
     Button,
     ButtonIconOnly
 } from "./../../components";
-import { Page } from "./../../layout";
+import { Page, Body } from "./../../layout";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
 
@@ -96,7 +96,7 @@ class GroupDetails extends Component {
         return (
             <Page isOpen={isOpen} slideFromDirection="right">
                 <PageHeader items={headerItems} />
-                <div className="c-bottombar__content">
+                <Body>
                     <Select
                         label="Add member"
                         name="new_member"
@@ -148,7 +148,7 @@ class GroupDetails extends Component {
                             text="Delete group"
                         />
                     )}
-                </div>
+                </Body>
             </Page>
         );
     }

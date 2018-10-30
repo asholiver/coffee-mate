@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./BottomBar.css";
 import axios from "axios";
-import { Page } from "./../../layout";
+import { Page, Body } from "./../../layout";
 import { Button, TextField, Group, PageHeader } from "./../../components";
 import API_ROOT from "./../../constants/api-root";
 
@@ -85,7 +85,7 @@ class BottomBar extends Component {
                 isClosed={isClosed}
             >
                 <PageHeader items={headerItems} />
-                <div className="c-bottombar__content">
+                <Body>
                     <TextField
                         label="Group Name"
                         name="new_name"
@@ -108,7 +108,7 @@ class BottomBar extends Component {
                         buttonStyle="primary"
                         onClick={this.addGroup}
                     />
-                </div>
+                </Body>
             </Page>
         );
     }

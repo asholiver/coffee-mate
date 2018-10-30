@@ -25,9 +25,7 @@ class Favourites extends Component {
         return (
             <Page slideFromDirection="none">
                 <PageHeader items={headerItems} />
-                <div className="c-bottombar__content">
-                    Favourites feature coming soon!!
-                </div>
+                <Body>Favourites feature coming soon!!</Body>
                 <Footer userId={userId} editMode={false} readOnlyMode={false} />
             </Page>
         );

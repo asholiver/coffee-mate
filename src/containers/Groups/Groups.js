@@ -130,20 +130,18 @@ class Groups extends Component {
         return (
             <Page slideFromDirection="none">
                 <PageHeader items={headerItems} />
-                <div className="c-bottombar__content">
-                    <div className="c-bottombar__content--inner">
-                        {groups.map((item, index) => (
-                            <Group
-                                key={index}
-                                group={item}
-                                editMode={editMode}
-                                readOnlyMode={readOnly}
-                                onClick={this.toggleRightSidebar}
-                                userId={userId}
-                            />
-                        ))}
-                    </div>
-                </div>
+                <Body hasInner={true}>
+                    {groups.map((item, index) => (
+                        <Group
+                            key={index}
+                            group={item}
+                            editMode={editMode}
+                            readOnlyMode={readOnly}
+                            onClick={this.toggleRightSidebar}
+                            userId={userId}
+                        />
+                    ))}
+                </Body>
                 <Footer
                     userId={userId}
                     editMode={editMode}

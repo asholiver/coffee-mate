@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Footer, Page } from "./../../layout";
+import { Footer, Page, Body } from "./../../layout";
 import axios from "axios";
 import { TextField, Button, PageHeader } from "./../../components";
 import API_ROOT from "./../../constants/api-root";
@@ -77,7 +77,7 @@ class Settings extends Component {
         return (
             <Page slideFromDirection="none">
                 <PageHeader items={headerItems} />
-                <div className="c-bottombar__content">
+                <Body>
                     {hasUpdated ? <p>Username has been updated!</p> : null}
                     <TextField
                         label="First name"
@@ -97,7 +97,7 @@ class Settings extends Component {
                         buttonStyle="primary"
                         onClick={this.updateUser}
                     />
-                </div>
+                </Body>
 
                 <Footer userId={userId} editMode={false} readOnlyMode={false} />
             </Page>

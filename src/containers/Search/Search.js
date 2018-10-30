@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Header, Body, Footer, Page } from "./../../layout";
 import { PageHeader } from "./../../components";
 
@@ -25,9 +25,7 @@ class Search extends Component {
         return (
             <Page slideFromDirection="none">
                 <PageHeader items={headerItems} />
-                <div className="c-bottombar__content">
-                    Search feature coming soon!!
-                </div>
+                <Body>Search feature coming soon!!</Body>
                 <Footer userId={userId} editMode={false} readOnlyMode={false} />
             </Page>
         );

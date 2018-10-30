@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { GroupMember, PageHeader } from "./../../components";
-import { Page } from "./../../layout";
+import { Page, Body } from "./../../layout";
 import { move } from "./../../utils";
 import { GroupDetails } from "./../../containers";
 import axios from "axios";
@@ -87,7 +87,7 @@ class GroupChannel extends Component {
         return (
             <Page isOpen={!isLoading} slideFromDirection="right">
                 <PageHeader items={headerItems} />
-                <div className="c-bottombar__content">
+                <Body>
                     {groupId}
                     {names != null ? (
                         <ol className="c-group-link-container">
@@ -105,7 +105,7 @@ class GroupChannel extends Component {
                     ) : (
                         <p>There are no members in this group</p>
                     )}
-                </div>
+                </Body>
                 <GroupDetails
                     onClick={this.toggleGroupDetails}
                     isOpen={showGroupDetailsPage}
