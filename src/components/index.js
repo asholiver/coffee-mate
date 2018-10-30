@@ -5,7 +5,6 @@ import { Icon, Icons } from "./icons";
 import Link from "./Link";
 import GroupMember from "./GroupMember";
 import Group from "./Group";
-import PageHeader from "./PageHeader";
 import { NavItem, NavList } from "./navigation";
 
 export {
@@ -20,7 +19,6 @@ export {
     Group,
     NavItem,
     NavList,
-    PageHeader,
     Select,
     TextField
 };

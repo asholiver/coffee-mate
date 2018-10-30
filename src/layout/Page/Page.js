@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import "./Page.css";
 
 const Page = ({ children, isOpen, isClosed, slideFromDirection }) => {
     const getClasses = classNames({

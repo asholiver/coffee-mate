@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from "react";
 import {
-    PageHeader,
     Select,
     ButtonGroup,
     Button,
     ButtonIconOnly
 } from "./../../components";
-import { Page, Body } from "./../../layout";
+import { Page, Body, Header } from "./../../layout";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
 
@@ -95,7 +94,7 @@ class GroupDetails extends Component {
         ];
         return (
             <Page isOpen={isOpen} slideFromDirection="right">
-                <PageHeader items={headerItems} />
+                <Header items={headerItems} />
                 <Body>
                     <Select
                         label="Add member"

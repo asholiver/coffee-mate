@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
-import { Body, Footer, BottomBar, Page } from "./../../layout";
-import { Group, PageHeader } from "./../../components";
-import { GroupChannel } from "./../../containers";
+import { Body, Header, Footer, Page } from "./../../layout";
+import { Group } from "./../../components";
+import { GroupChannel, CreateGroup } from "./../../containers";
 
 class Groups extends Component {
     state = {
@@ -129,7 +129,7 @@ class Groups extends Component {
         ];
         return (
             <Page slideFromDirection="none">
-                <PageHeader items={headerItems} />
+                <Header items={headerItems} />
                 <Body hasInner={true}>
                     {groups.map((item, index) => (
                         <Group
@@ -156,7 +156,7 @@ class Groups extends Component {
                     />
                 ) : null}
 
-                <BottomBar
+                <CreateGroup
                     isVisible={showBottomBar}
                     isClosed={hideBottomBar}
                     onClick={this.closeBottomBar}

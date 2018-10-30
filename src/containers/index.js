@@ -1,4 +1,5 @@
 import CreateMember from "./CreateMember";
+import CreateGroup from "./CreateGroup";
 import Favourites from "./Favourites";
 import GroupChannel from "./GroupChannel";
 import GroupDetails from "./GroupDetails";
@@ -10,6 +11,7 @@ import Settings from "./Settings";
 
 export {
     CreateMember,
+    CreateGroup,
     Favourites,
     GroupChannel,
     GroupDetails,

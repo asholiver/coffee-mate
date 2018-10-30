@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Header, Body, Footer, Page } from "./../../layout";
-import { PageHeader } from "./../../components";
 
 class Search extends Component {
     state = {
@@ -24,7 +23,7 @@ class Search extends Component {
         const { userId } = this.state;
         return (
             <Page slideFromDirection="none">
-                <PageHeader items={headerItems} />
+                <Header items={headerItems} />
                 <Body>Search feature coming soon!!</Body>
                 <Footer userId={userId} editMode={false} readOnlyMode={false} />
             </Page>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { GroupMember, PageHeader } from "./../../components";
-import { Page, Body } from "./../../layout";
+import { GroupMember } from "./../../components";
+import { Page, Body, Header } from "./../../layout";
 import { move } from "./../../utils";
 import { GroupDetails } from "./../../containers";
 import axios from "axios";
@@ -86,7 +86,7 @@ class GroupChannel extends Component {
         ];
         return (
             <Page isOpen={!isLoading} slideFromDirection="right">
-                <PageHeader items={headerItems} />
+                <Header items={headerItems} />
                 <Body>
                     {groupId}
                     {names != null ? (

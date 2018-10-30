@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Header, Body, Footer, Page } from "./../../layout";
-import { PageHeader } from "./../../components";
 
 class Favourites extends Component {
     state = {
@@ -24,7 +23,7 @@ class Favourites extends Component {
         const { userId } = this.state;
         return (
             <Page slideFromDirection="none">
-                <PageHeader items={headerItems} />
+                <Header items={headerItems} />
                 <Body>Favourites feature coming soon!!</Body>
                 <Footer userId={userId} editMode={false} readOnlyMode={false} />
             </Page>

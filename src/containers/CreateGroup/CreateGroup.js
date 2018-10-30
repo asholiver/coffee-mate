@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "./BottomBar.css";
+import "./CreateGroup.css";
 import axios from "axios";
-import { Page, Body } from "./../../layout";
-import { Button, TextField, Group, PageHeader } from "./../../components";
+import { Page, Body, Header } from "./../../layout";
+import { Button, TextField, Group } from "./../../components";
 import API_ROOT from "./../../constants/api-root";
 
-class BottomBar extends Component {
+class CreateGroup extends Component {
     state = {
         is_loading: true,
         users: [],
@@ -84,7 +84,7 @@ class BottomBar extends Component {
                 isOpen={isVisible}
                 isClosed={isClosed}
             >
-                <PageHeader items={headerItems} />
+                <Header items={headerItems} />
                 <Body>
                     <TextField
                         label="Group Name"
@@ -114,4 +114,4 @@ class BottomBar extends Component {
     }
 }
 
-export default BottomBar;
+export default CreateGroup;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Page } from "./../../layout";
-import { TextField, Button, PageHeader } from "./../../components";
+import { Page, Body, Header } from "./../../layout";
+import { TextField, Button } from "./../../components";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
@@ -63,8 +63,8 @@ class CreateMember extends Component {
 
         return (
             <Page slideFromDirection="none">
-                <PageHeader items={headerItems} />
-                <div className="c-bottombar__content">
+                <Header items={headerItems} />
+                <Body>
                     <TextField
                         label="First name"
                         name="new_first_name"
@@ -86,7 +86,7 @@ class CreateMember extends Component {
                         buttonStyle="primary"
                         onClick={this.addUser}
                     />
-                </div>
+                </Body>
             </Page>
         );
     }

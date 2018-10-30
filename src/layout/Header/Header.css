@@ -1,3 +1,11 @@
+.c-header {
+    background-color: var(--g-color-secondary);
+    border-bottom: 1px solid var(--g-color-tertiary);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+
 .c-header__title {
     font-size: 24px;
     color: var(--g-color-tertiary);
@@ -8,3 +16,4 @@
 .c-header__item--empty {
     width: 62px;
 }
+

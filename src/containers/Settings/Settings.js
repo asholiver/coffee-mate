@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Footer, Page, Body } from "./../../layout";
+import { Footer, Page, Body, Header } from "./../../layout";
 import axios from "axios";
-import { TextField, Button, PageHeader } from "./../../components";
+import { TextField, Button } from "./../../components";
 import API_ROOT from "./../../constants/api-root";
 
 class Settings extends Component {
@@ -76,7 +76,7 @@ class Settings extends Component {
         ];
         return (
             <Page slideFromDirection="none">
-                <PageHeader items={headerItems} />
+                <Header items={headerItems} />
                 <Body>
                     {hasUpdated ? <p>Username has been updated!</p> : null}
                     <TextField
