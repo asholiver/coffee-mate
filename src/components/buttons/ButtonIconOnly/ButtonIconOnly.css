@@ -3,7 +3,7 @@
     line-height: 1;
     display: flex;
     justify-content: center;
-    margin: 4px;
-    padding: 4px;
+    margin: var(--g-spacing-2x-small);
+    padding: var(--g-spacing-2x-small);
 }
 

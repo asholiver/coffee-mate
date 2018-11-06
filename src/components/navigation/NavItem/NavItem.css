@@ -22,7 +22,7 @@
 }
 
 .c-nav-item__text {
-    margin-top: 4px;
+    margin-top: var(--g-spacing-2x-small);
     font-size: 10px;
 }
 

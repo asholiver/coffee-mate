@@ -15,6 +15,10 @@ ol {
     padding: 0;
 }
 
+p {
+    margin: 0;
+}
+
 a {
     color: var(--g-color-tertiary);
     text-decoration: none;

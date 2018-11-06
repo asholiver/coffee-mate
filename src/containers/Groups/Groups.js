@@ -3,6 +3,7 @@ import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
 import { Body, Header, Footer, Page } from "./../../layout";
 import { Group } from "./../../components";
+import { getViewportSize } from "./../../utils";
 import { GroupChannel, CreateGroup } from "./../../containers";
 
 class Groups extends Component {
@@ -16,21 +17,14 @@ class Groups extends Component {
         hideBottomBar: false
     };
 
-    getViewportSize = () => {
-        const width = document.documentElement.clientWidth;
-        const height = document.documentElement.clientHeight;
-        const rootEl = document.querySelector("html");
-        rootEl.style.setProperty("--g-viewport-height", height + "px");
-        rootEl.style.setProperty("--g-viewport-width", width + "px");
-    };
-
-    componentDidMount = () => {
-        // Make a request for a user with a given ID
+    getData = (id, isInitial = false) => {
         axios
-            .get(`${API_ROOT}api/groups?owner=${this.state.userId}`)
+            .get(`${API_ROOT}api/groups?owner=${id}`)
             .then(response => {
+                if (isInitial) {
+                    getViewportSize();
+                }
                 this.setState({ groups: response.data });
-                this.getViewportSize();
             })
             .catch(function(error) {
                 // handle error
@@ -38,30 +32,8 @@ class Groups extends Component {
             });
     };
 
-    toggleRightSidebar = e => {
-        this.setState({ groupId: e.target.value });
-    };
-
-    toggleEditMode = e => {
-        this.setState({ editMode: !this.state.editMode, readOnly: false });
-    };
-
-    toggleReadOnly = e => {
-        this.setState({ readOnly: !this.state.readOnly, editMode: false });
-    };
-
-    openBottomBar = e => {
-        this.setState({
-            showBottomBar: !this.state.showBottomBar,
-            hideBottomBar: false
-        });
-    };
-
-    closeBottomBar = e => {
-        this.setState({
-            hideBottomBar: !this.state.hideBottomBar,
-            showBottomBar: false
-        });
+    componentDidMount = () => {
+        this.getData(Number(this.props.match.params.userId), true);
     };
 
     deleteGroup = groupId => {
@@ -72,15 +44,7 @@ class Groups extends Component {
                 this.setState({
                     groupId: 0
                 });
-                return axios
-                    .get(`${API_ROOT}api/groups?owner=${this.state.userId}`)
-                    .then(response => {
-                        this.setState({ groups: response.data });
-                    })
-                    .catch(function(error) {
-                        // handle error
-                        console.log(error);
-                    });
+                this.getData(this.state.userId);
             })
             .catch(function(error) {
                 console.log(error);
@@ -90,15 +54,7 @@ class Groups extends Component {
     addGroup = id => {
         this.setState({ groupId: Number(id) });
         this.closeBottomBar();
-        axios
-            .get(`${API_ROOT}api/groups?owner=${this.state.userId}`)
-            .then(response => {
-                this.setState({ groups: response.data });
-            })
-            .catch(function(error) {
-                // handle error
-                console.log(error);
-            });
+        this.getData(this.state.userId);
     };
 
     render() {
@@ -115,7 +71,17 @@ class Groups extends Component {
             {
                 type: "button",
                 text: editMode ? "Done" : "Edit",
-                onClick: editMode ? this.toggleReadOnly : this.toggleEditMode
+                onClick: editMode
+                    ? () =>
+                          this.setState({
+                              readOnly: !readOnly,
+                              editMode: false
+                          })
+                    : () =>
+                          this.setState({
+                              editMode: !editMode,
+                              readOnly: false
+                          })
             },
             {
                 type: "title",
@@ -124,7 +90,11 @@ class Groups extends Component {
             {
                 type: "button",
                 text: "Create",
-                onClick: this.openBottomBar
+                onClick: () =>
+                    this.setState({
+                        showBottomBar: !showBottomBar,
+                        hideBottomBar: false
+                    })
             }
         ];
         return (
@@ -137,8 +107,9 @@ class Groups extends Component {
                             group={item}
                             editMode={editMode}
                             readOnlyMode={readOnly}
-                            onClick={this.toggleRightSidebar}
+                            onClick={() => this.setState({ groupId: item.id })}
                             userId={userId}
+                            currentRound="blah"
                         />
                     ))}
                 </Body>
@@ -151,7 +122,7 @@ class Groups extends Component {
                     <GroupChannel
                         groupId={Number(groupId)}
                         userId={userId}
-                        onClick={this.toggleRightSidebar}
+                        onClick={() => this.setState({ groupId: 0 })}
                         handleDelete={this.deleteGroup}
                     />
                 ) : null}
@@ -159,7 +130,11 @@ class Groups extends Component {
                 <CreateGroup
                     isVisible={showBottomBar}
                     isClosed={hideBottomBar}
-                    onClick={this.closeBottomBar}
+                    onClick={() =>
+                        this.setState({
+                            hideBottomBar: !hideBottomBar,
+                            showBottomBar: false
+                        })}
                     userId={userId}
                     handleSubmit={this.addGroup}
                 />

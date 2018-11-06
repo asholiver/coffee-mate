@@ -1,15 +1,15 @@
 .l-footer {
     display: flex;
-    background-color: #d9d9d9;
+    background-color: var(--g-color-secondary);
     border-top: 1px solid var(--g-color-tertiary);
     bottom: 0;
     box-sizing: border-box;
-    height: 48px;
+    min-height: var(--g-spacing-3x-large);
     z-index: 2;
 }
 
 .c-footer__buttons {
-    background-color: #d9d9d9;
+    background-color: var(--g-color-secondary);
     border-top: 1px solid var(--g-color-tertiary);
     color: black;
     position: fixed;
@@ -18,9 +18,9 @@
     justify-content: space-between;
     right: 0;
     left: 0;
-    height: 48px;
+    height: var(--g-spacing-3x-large);
     box-sizing: border-box;
-    bottom: -48px;
+    bottom: calc(var(--g-spacing-3x-large) * -1);
     z-index: 4;
 }
 

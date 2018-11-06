@@ -1,5 +1,5 @@
 .l-page {
-    background-color: #f2f2f2;
+    background-color: var(--g-color-primary);
     position: absolute;
     display: flex;
     flex-direction: column;

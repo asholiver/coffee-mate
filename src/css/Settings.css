@@ -9,8 +9,14 @@
     --g-color-brown-500: #573646;
     --g-color-white-500: #fefef2;
 
-    --g-header-height: 100px;
-    --g-footer-height: 100px;
+    --g-spacing-2x-small: 4px;
+    --g-spacing-x-small: 8px;
+    --g-spacing-small: 12px;
+    --g-spacing: 16px;
+    --g-spacing-large: 24px;
+    --g-spacing-x-large: 32px;
+    --g-spacing-2x-large: 40px;
+    --g-spacing-3x-large: 48px;
 
     --g-viewport-height: 0;
     --g-viewport-width: 0;

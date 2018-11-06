@@ -52,13 +52,13 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(-48px);
+        transform: translateY(calc(var(--g-spacing-3x-large) * -1));
     }
 }
 
 @keyframes slide-down {
     0% {
-        transform: translateY(-48px);
+        transform: translateY(calc(var(--g-spacing-3x-large) * -1));
     }
     100% {
         transform: translateY(0);

@@ -1,8 +1,8 @@
 .c-paragraph {
-    margin: 16px;
+    margin: var(--g-spacing);
     text-align: center;
-    padding: 16px;
-    font-size: 24px;
+    padding: var(--g-spacing);
+    font-size: var(--g-spacing-large);
 }
 
 .h-container {
@@ -33,12 +33,7 @@
     color: var(--g-color-white-500);
     font-size: 46px;
     text-transform: uppercase;
-    margin-bottom: 32px;
+    margin-bottom: var(--g-spacing-x-large);
     animation: slide-bottom 1s ease-in-out 1s both;
-}
-
-.h-display-flex {
-    display: flex;
-    justify-content: space-between;
 }
 

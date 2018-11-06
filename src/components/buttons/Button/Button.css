@@ -2,7 +2,7 @@
     align-items: center;
     border-radius: 3px;
     display: flex;
-    font-size: 12px;
+    font-size: var(--g-spacing-small);
     font-weight: lighter;
     justify-content: center;
     min-height: 60px;
@@ -24,5 +24,5 @@
 }
 
 .c-button--narrow {
-    max-height: 48px;
+    max-height: var(--g-spacing-3x-large);
 }

@@ -1,22 +1,22 @@
 .c-form-field {
     display: flex;
     flex-direction: column;
-    margin-bottom: 16px;
+    margin-bottom: var(--g-spacing);
     text-align: left;
 }
 
 .c-form-field__input {
     border: 2px solid white;
-    border-radius: 3px;
-    margin-bottom: 4px;
-    font-size: 16px;
-    padding: 8px;
+    border-radius: var(--g-spacing-2x-small);
+    margin-bottom: var(--g-spacing-2x-small);
+    font-size: var(--g-spacing);
+    padding: var(--g-spacing-x-small);
 }
 
 .c-form-field__label {
     color: var(--g-color-tertiary);
     font-weight: lighter;
-    margin-bottom: 4px;
+    margin-bottom: var(--g-spacing-2x-small);
 }
 
 .c-form-field.is-invalid .c-form-field__input {

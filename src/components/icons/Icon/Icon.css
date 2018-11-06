@@ -1,8 +1,8 @@
 .c-icon {
     color: var(--g-color-white-500);
     display: block;
-    height: 48px;
-    width: 48px;
+    height: var(--g-spacing-3x-large);
+    width: var(--g-spacing-3x-large);
 }
 
 .c-icon--large {
@@ -11,16 +11,16 @@
 }
 
 .c-icon--small {
-    height: 32px;
-    width: 32px;
+    height: var(--g-spacing-x-large);
+    width: var(--g-spacing-x-large);
 }
 
 .c-icon--x-small {
-    height: 24px;
-    width: 24px;
+    height: var(--g-spacing-large);
+    width: var(--g-spacing-large);
 }
 
 .c-icon--2x-small {
-    height: 16px;
-    width: 16px;
+    height: var(--g-spacing);
+    width: var(--g-spacing);
 }

@@ -3,11 +3,11 @@
 
     > button:not(:first-child),
     > .c-button:not(:first-child) {
-        margin-left: 16px;
+        margin-left: var(--g-spacing);
     }
 
     > .c-button-icon-only:not(:first-child) {
-        margin-left: 12px;
+        margin-left: var(--g-spacing-small);
     }
 }
 

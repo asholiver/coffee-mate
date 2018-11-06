@@ -1,15 +1,15 @@
 .c-select-container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 16px;
+    margin-bottom: var(--g-spacing);
     text-align: left;
 }
 
 .c-select {
     background-color: var(--g-color-white-500);
     border: 2px solid white;
-    border-radius: 3px;
-    margin-bottom: 4px;
+    border-radius: var(--g-spacing-2x-small);
+    margin-bottom: var(--g-spacing-2x-small);
     position: relative;
     width: 100%;
     align-items: center;
@@ -25,10 +25,10 @@
     box-shadow: none;
     cursor: pointer;
     display: block;
-    font-size: 16px;
+    font-size: var(--g-spacing);
     height: 42px;
-    padding-left: 12px;
-    padding-right: 32px;
+    padding-left: var(--g-spacing-small);
+    padding-right: var(--g-spacing-x-large);
     width: 100%;
     text-align: left;
 }
@@ -47,11 +47,11 @@
 
 .c-select__icon {
     color: currentColor;
-    height: 16px;
+    height: var(--g-spacing);
     pointer-events: none;
     position: absolute;
-    right: 8px;
+    right: var(--g-spacing-x-small);
     top: 50%;
     transform: translateY(-50%);
-    width: 16px;
+    width: var(--g-spacing);
 }

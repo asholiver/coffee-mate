@@ -1,14 +1,14 @@
 .l-body {
     flex-grow: 1;
     overflow-y: auto;
-    padding: 16px;
+    padding: var(--g-spacing);
     position: relative;
 }
 
 .l-body--inner {
     position: absolute;
     top: 0;
-    left: -40px;
+    left: calc(var(--g-spacing-2x-large) * -1);
     right: 0;
     bottom: 0;
 }
