@@ -12,7 +12,7 @@ import "./css/Shame.css";
 import "./css/Keyframes.css";
 
 ReactDOM.render(
-  <BrowserRouter basename="/coffee_mate">
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Fragment>
       <Icons />
       <Route exact path="/" component={LandingPage} />
