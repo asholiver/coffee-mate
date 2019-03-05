@@ -30,5 +30,18 @@
 }
 
 .h-spacing {
-    padding-bottom: var(--g-spacing);
+    margin-bottom: var(--g-spacing);
+}
+
+
+.h-spacing-large {
+    margin-bottom: var(--g-spacing-large);
+}
+
+.h-spacing-x-large {
+    margin-bottom: var(--g-spacing-x-large);
+}
+
+.h-spacing-2x-large {
+    margin-bottom: var(--g-spacing-2x-large);
 }
