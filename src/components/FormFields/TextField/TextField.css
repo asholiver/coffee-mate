@@ -6,7 +6,10 @@
 }
 
 .c-form-field__input {
-    border: 2px solid white;
+    border: 2px solid var(--g-color-brown-900);
+    background-color: var(--g-color-brown-900);
+    color: var(--g-color-white-500);
+    font-weight: lighter;
     border-radius: var(--g-spacing-2x-small);
     margin-bottom: var(--g-spacing-2x-small);
     font-size: var(--g-spacing);
@@ -14,13 +17,13 @@
 }
 
 .c-form-field__label {
-    color: var(--g-color-tertiary);
+    color: var(--g-color-white-500);
     font-weight: lighter;
     margin-bottom: var(--g-spacing-2x-small);
 }
 
 .c-form-field.is-invalid .c-form-field__input {
-    border: 2px solid var(--g-color-red-500);
+    border: 2px solid var(--g-color-white-500);
 }
 
 .c-form-field.is-invalid .c-form-field__error_message {
