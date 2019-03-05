@@ -5,11 +5,6 @@
     font-size: var(--g-spacing-large);
 }
 
-.l-container {
-    margin: 0 auto;
-    max-width: 30rem;
-    padding-top: 4rem;
-}
 
 .c-logo-container {
     align-items: center;
@@ -40,7 +35,7 @@
 
 
 .c-home-page {
-    background-color: rgba(87, 54, 70, 0.8);
+    background-color: rgba(87, 54, 70, 0.6);
     border: 2px solid var(--g-color-brown-900);
     border-radius: 3px;
     display: flex;

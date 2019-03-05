@@ -1,3 +1,10 @@
 .l-container {
     padding: var(--g-spacing);
 }
+
+
+.l-container--fixed-width {
+    margin: 0 auto;
+    max-width: 30rem;
+    padding-top: 4rem;
+}
