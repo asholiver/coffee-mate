@@ -19,6 +19,10 @@
     color: var(--g-color-white-500);
 }
 
+.c-button--full-width {
+    width: 100%;
+}
+
 .c-button--small {
     min-height: 30px;
 }

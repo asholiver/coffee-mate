@@ -1,16 +1,12 @@
 .c-button-group {
     display: flex;
-
-    > button:not(:first-child),
-    > .c-button:not(:first-child) {
-        margin-left: var(--g-spacing);
-    }
-
-    > .c-button-icon-only:not(:first-child) {
-        margin-left: var(--g-spacing-small);
-    }
 }
 
+.c-button-group .c-button-icon-only:not(:first-child),
+.c-button-group button:not(:first-child),
+.c-button-group .c-button:not(:first-child) {
+    margin-left: var(--g-spacing-small);
+}
 /*
 * Modifiers
 */
