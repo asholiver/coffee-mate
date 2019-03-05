@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import { App } from "./layout";
-import { LandingPage } from "./containers";
+import { Login, CreateAccount, ResetPassword } from "./containers";
 import registerServiceWorker from "./registerServiceWorker";
 import { Icons } from "./components";
 import "./css/Helpers.css";
@@ -15,7 +15,9 @@ ReactDOM.render(
   <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Fragment>
       <Icons />
-      <Route exact path="/" component={LandingPage} />
+      <Route exact path="/" component={Login} />
+      <Route exact path="/create" component={CreateAccount} />
+      <Route exact path="/reset_password" component={ResetPassword} />
       <Route path="/app/:userId" component={App} />
     </Fragment>
   </BrowserRouter>,
