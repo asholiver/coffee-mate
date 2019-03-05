@@ -1,5 +1,4 @@
 .l-page {
-    background-color: var(--g-color-primary);
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -7,6 +6,7 @@
     overflow-y: hidden;
     z-index: 5;
 }
+
 
 .l-page--none {
     bottom: 0;
