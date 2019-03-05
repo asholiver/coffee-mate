@@ -12,13 +12,13 @@ import "./css/Shame.css";
 import "./css/Keyframes.css";
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Fragment>
-            <Icons />
-            <Route exact path="/" component={LandingPage} />
-            <Route path="/app/:userId" component={App} />
-        </Fragment>
-    </BrowserRouter>,
-    document.getElementById("root")
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <Fragment>
+      <Icons />
+      <Route exact path="/" component={LandingPage} />
+      <Route path="/app/:userId" component={App} />
+    </Fragment>
+  </BrowserRouter>,
+  document.getElementById("root")
 );
 registerServiceWorker();
