@@ -24,13 +24,6 @@
     color: var(--g-color-brown-900);
 }
 
-.root {
-    background-image: url("./../coffee-shop.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: opacity(80%);
-    width: 100%;
-}
 
 
 .c-home-page {
