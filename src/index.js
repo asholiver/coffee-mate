@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
+// CSS Must come before the `Routes` where component overrides live
+import "backpack.css";
 import { App } from "./layout";
 import { Login, CreateAccount, ResetPassword } from "./containers";
 import registerServiceWorker from "./registerServiceWorker";
