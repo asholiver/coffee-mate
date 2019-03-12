@@ -5,12 +5,13 @@
   "homepage": "https://asholiver.github.io/coffee-mate",
   "dependencies": {
     "axios": "^0.18.0",
+    "backpack.css": "2.0.0",
     "classnames": "^2.2.6",
     "gh-pages": "^2.0.1",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "^2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -19,5 +20,11 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
