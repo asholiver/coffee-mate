@@ -19,7 +19,8 @@ const CreateAccount = () => {
     200: "Last name cannot be empty",
     300: "Email is not valid.",
     400: "Account already exists for this email.",
-    500: "Passwords do not match."
+    500: "Passwords do not match.",
+    600: "Password must be 3 characters or more."
   };
 
   const [errorText, setErrorText] = useState("");
@@ -84,7 +85,7 @@ const CreateAccount = () => {
           }
         />
         <TextField
-          label="Username"
+          label="Email"
           name="new_email"
           onChange={handleChange}
           error={
