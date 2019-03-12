@@ -1,12 +1,14 @@
 import React from "react";
 import "./ErrorMessage.css";
 
-const ErrorMessage = ({ message }) => {
-    return (
-        <span className="c-form-field__error_message">
-            {message == null ? "This field is required." : message}
-        </span>
-    );
+const ErrorMessage = ({ message, id }) => {
+  return (
+    message && (
+      <p id={id} className="c-form-field__error_message">
+        {message}
+      </p>
+    )
+  );
 };
 
 export default ErrorMessage;
