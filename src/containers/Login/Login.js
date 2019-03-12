@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import API_ROOT from "./../../constants/api-root";
-import { TextField, Button, ButtonGroup } from "../../components";
+import {
+  Form,
+  TextField,
+  Button,
+  ButtonGroup,
+  Spacing
+} from "../../components";
 import { LoggedOut } from "../../layout";
 
 const Login = () => {
@@ -58,7 +64,7 @@ const Login = () => {
   }
   return (
     <LoggedOut>
-      <form onSubmit={handleSubmit} action="login">
+      <Form onSubmit={handleSubmit} action="login">
         <TextField
           label="Username"
           name="new_email"
@@ -79,14 +85,14 @@ const Login = () => {
             ]
           }
         />
-        <div className="h-spacing">
+        <Spacing>
           <Button
             text="Login"
             type="submit"
             size="full-width"
             buttonStyle="secondary"
           />
-        </div>
+        </Spacing>
 
         <ButtonGroup type="space-between">
           <Link
@@ -102,7 +108,7 @@ const Login = () => {
             Forgot Password
           </Link>
         </ButtonGroup>
-      </form>
+      </Form>
     </LoggedOut>
   );
 };
