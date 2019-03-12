@@ -1,42 +1,93 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { TextField, ButtonGroup } from "../../components";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import axios from "axios";
+import API_ROOT from "./../../constants/api-root";
+import { TextField, Button, ButtonGroup } from "../../components";
 import { LoggedOut } from "../../layout";
 
-class Login extends Component {
-  state = {
-    is_loading: true,
-    names: [],
-    new_username: "",
-    isSideBarVisible: false
+const Login = () => {
+  const [values, setValues] = useState({
+    new_email: "",
+    new_password: ""
+  });
+
+  const [isValid, setIsValid] = useState(false);
+
+  const [user, setUser] = useState(null);
+
+  const loginErrorMessages = {
+    100: "No account associated with this email.",
+    200: "New user - no password",
+    300: "Password is incorrect."
   };
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
+
+  const [errorText, setErrorText] = useState("");
+
+  const handleSubmit = async e => {
+    console.log("submitting");
+    e.preventDefault();
+    axios
+      .post(`${API_ROOT}api/login`, {
+        new_email: values.new_email,
+        new_password: values.new_password
+      })
+      .then(response => {
+        setUser(response.data.id);
+      })
+      .then(() => {
+        setIsValid(true);
+      })
+      .catch(function(error) {
+        if (error.response) {
+          console.log("error");
+          setErrorText(error.response.data.fields);
+        }
+      });
+  };
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value
     });
   };
-  render() {
-    return (
-      <LoggedOut>
+
+  if (isValid) {
+    return <Redirect to={`/app/${user}/groups`} />;
+  }
+  return (
+    <LoggedOut>
+      <form onSubmit={handleSubmit} action="login">
         <TextField
           label="Username"
-          name="new_username"
-          onChange={this.handleChange}
+          name="new_email"
+          onChange={handleChange}
+          error={
+            loginErrorMessages[errorText.new_email && errorText.new_email.type]
+          }
         />
         <TextField
-          label="Password"
+          label="password"
           name="new_password"
-          isInvalid="true"
+          isInvalid={values.password_invalid}
           type="password"
-          onChange={this.handleChange}
-          errorMessage="The password you have entered is incorrect"
+          onChange={handleChange}
+          error={
+            loginErrorMessages[
+              errorText.new_password && errorText.new_password.type
+            ]
+          }
         />
-        <Link
-          className="c-button c-button--secondary c-button--full-width h-spacing"
-          to="/app/2/groups"
-        >
-          Login
-        </Link>
+        <div className="h-spacing">
+          <Button
+            text="Login"
+            type="submit"
+            size="full-width"
+            buttonStyle="secondary"
+          />
+        </div>
+
         <ButtonGroup type="space-between">
           <Link
             className="c-button c-button--primary c-button--small c-button--full-width"
@@ -51,9 +102,9 @@ class Login extends Component {
             Forgot Password
           </Link>
         </ButtonGroup>
-      </LoggedOut>
-    );
-  }
-}
+      </form>
+    </LoggedOut>
+  );
+};
 
 export default Login;
