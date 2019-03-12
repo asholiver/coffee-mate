@@ -27,7 +27,7 @@
 
 
 .c-home-page {
-    background-color: rgba(87, 54, 70, 0.6);
+    background-color: rgba(87, 54, 70, 0.9);
     border: 2px solid var(--g-color-brown-900);
     border-radius: 3px;
     display: flex;
