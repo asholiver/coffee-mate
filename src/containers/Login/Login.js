@@ -30,7 +30,6 @@ const Login = () => {
   const [errorText, setErrorText] = useState("");
 
   const handleSubmit = async e => {
-    console.log("submitting");
     e.preventDefault();
     axios
       .post(`${API_ROOT}api/login`, {
