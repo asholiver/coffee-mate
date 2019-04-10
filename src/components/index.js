@@ -2,7 +2,7 @@ import { Button, ButtonGroup, ButtonIconOnly } from "./buttons";
 import Container from "./Container";
 import Form from "./Form";
 import { Select, TextField } from "./FormFields";
-import { Icon, Icons } from "./icons";
+import { Icon, Icons } from "./Icons";
 import Link from "./Link";
 import GroupMember from "./GroupMember";
 import Group from "./Group";
